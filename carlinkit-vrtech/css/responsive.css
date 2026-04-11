@@ -1,0 +1,113 @@
+@media (max-width: 1200px){
+  .issue-grid{grid-template-columns:repeat(3,1fr)}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .feature-grid,.trust-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media (max-width: 768px){
+  .hero-grid,
+  .split-grid,
+  .compare-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-visual{
+    min-height:460px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .issue-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .search-box{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .navbar{
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:18px 0;
+  }
+
+  .navbar.open{
+    display:flex;
+  }
+
+  .header-contact{
+    margin-left:auto;
+  }
+}
+
+@media (max-width: 640px){
+  .section{
+    padding:64px 0;
+  }
+
+  .topbar{
+    min-height:72px;
+  }
+
+  .header-contact{
+    display:none;
+  }
+
+  .logo-image img{
+    width:94px;
+  }
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .hero-content h2{
+    font-size:20px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .issue-grid,
+  .feature-grid,
+  .trust-grid,
+  .product-grid,
+  .exp-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-visual{
+    min-height:360px;
+  }
+
+  .phone-mock{
+    width:150px;
+  }
+
+  .car-mock{
+    width:210px;
+  }
+
+  .cta-box{
+    padding:24px;
+  }
+}
