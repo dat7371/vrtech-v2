@@ -1,9 +1,11 @@
 .site-header{
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   backdrop-filter: blur(14px);
-  background: rgba(8,10,12,.86);
+  background: rgba(8,10,12,.78);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
