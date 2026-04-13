@@ -8,6 +8,11 @@
   background: rgba(8,10,12,.78);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
+.site-header.scrolled{
+  background: rgba(8,10,12,.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.4);
+}
 
 .topbar{
   min-height: 78px;

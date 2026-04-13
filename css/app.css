@@ -1,0 +1,193 @@
+
+
+body[data-page="app"] {
+  padding-top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.app-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.app-logo a {
+  display: inline-block;
+}
+
+.app-hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 0 0 12px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.app-hero h2 {
+  font-size: clamp(20px, 3vw, 28px);
+  margin: 0 0 12px;
+  color: #e6ebf2;
+  font-weight: 700;
+}
+
+.app-hero p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.app-section {
+  margin-bottom: 30px;
+}
+
+.app-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.app-devices {
+  text-align: center;
+}
+
+.app-devices ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-devices li {
+  font-size: 14px;
+  color: #d5dbe4;
+  padding: 8px 0;
+}
+
+.app-benefits {
+  text-align: center;
+}
+
+.app-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .app-benefits ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.app-benefits li {
+  font-size: 13px;
+  color: #d5dbe4;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-benefits li::before {
+  content: "✓";
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.app-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.app-cta .btn {
+  width: 100%;
+  height: 56px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btn-app-store {
+  background: linear-gradient(135deg, var(--gold), #ffc107);
+  color: #000;
+}
+
+.btn-app-store:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3);
+}
+
+.btn-play-store {
+  background: linear-gradient(135deg, #00c853, #00a833);
+  color: #fff;
+}
+
+.btn-play-store:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+}
+
+.app-footnote {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-footnote p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 30px 16px;
+  }
+
+  .app-hero h1 {
+    font-size: 32px;
+  }
+
+  .app-logo img {
+    height: 36px;
+  }
+}
