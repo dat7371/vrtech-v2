@@ -25,7 +25,9 @@
   }
 
   .search-box{
-    display:none;
+    flex: 0 1 220px;
+    max-width: 220px;
+    margin-left: 8px;
   }
 
   .menu-toggle{
@@ -45,7 +47,16 @@
   }
 
   .header-contact{
-    margin-left:auto;
+    display: flex;
+    gap: 10px;
+  }
+
+  .contact-pill {
+    padding: 8px 12px;
+  }
+
+  .contact-text {
+    display: none;
   }
 }
 
@@ -56,10 +67,35 @@
 
   .topbar{
     min-height:72px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1;
+    max-width: 100%;
+    margin-left: 0;
+    min-width: 0;
   }
 
   .header-contact{
-    display:none;
+    display:flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .contact-pill {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .contact-text {
+    display: none;
+  }
+
+  .contact-pill svg {
+    width: 16px;
+    height: 16px;
   }
 
   .logo-image img{

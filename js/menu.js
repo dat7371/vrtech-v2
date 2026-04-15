@@ -20,4 +20,10 @@ document.addEventListener("componentsLoaded", () => {
       }
     });
   });
+
+  document.querySelectorAll('a[href*="index.html"], a[href*="pages/"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      nav?.classList.remove("open");
+    });
+  });
 });
