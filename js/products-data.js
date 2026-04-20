@@ -4,6 +4,14 @@ window.PRODUCTS = {
     badge: "Bản tiêu chuẩn",
     subtitle: "Dễ tiếp cận – phù hợp xe phổ thông",
     desc: "Phiên bản dễ tiếp cận để bước vào hệ Carlinkit V2 by VRTECH, phù hợp khách hàng cần giải pháp ổn định và dễ dùng.",
+    hero_image: "images/products/s2a/s2a-Artboard 1 (3).jpg",
+    nexus_image: "images/products/app/app-vrtechnexus.jpg",
+    gallery: [
+      "images/products/s2a/s2a-hình 1.jpg",
+      "images/products/s2a/s2a-hình 2.jpg",
+      "images/products/s2a/s2a-hình 3.jpg",
+      "images/products/s2a/s2a-hình 4.jpg"
+    ],
     reasons: [
       "Chi phí dễ tiếp cận cho khách hàng phổ thông.",
       "Đáp ứng tốt nhu cầu giải trí, dẫn đường và kết nối cơ bản.",
@@ -39,6 +47,14 @@ window.PRODUCTS = {
     badge: "Bán chạy nhất",
     subtitle: "Cấu hình ổn định – phù hợp đa số xe",
     desc: "Lựa chọn tốt nhất về giá / hiệu năng trong hệ Carlinkit V2 by VRTECH. Đây là model dễ bán và phù hợp với phần lớn khách hàng.",
+    hero_image: "images/products/s2p/s2p-Artboard 2.jpg",
+    nexus_image: "images/products/app/app-vrtechnexus.jpg",
+    gallery: [
+      "images/products/s2p/s2p-hình 1.jpg",
+      "images/products/s2p/s2p-hình 2.jpg",
+      "images/products/s2p/s2p-hình 3.jpg",
+      "images/products/s2p/s2p-hình 4.jpg"
+    ],
     reasons: [
       "Mẫu bán chạy nhất trong hệ V2.",
       "Cấu hình ổn định, trải nghiệm thực tế tốt.",
@@ -57,7 +73,7 @@ window.PRODUCTS = {
       "Điều khiển giọng nói"
     ],
     compare_good: [
-      "Best value",
+      "Giá / hiệu năng tốt nhất",
       "Dễ chốt đơn",
       "Ổn định cao",
       "Phù hợp đa số xe"
@@ -74,6 +90,14 @@ window.PRODUCTS = {
     badge: "Nâng cấp hợp lý",
     subtitle: "Mượt hơn – thoải mái hơn cho dùng hằng ngày",
     desc: "Bản nâng cấp hợp lý cho khách hàng muốn trải nghiệm cao hơn nhóm phổ thông nhưng chưa cần lên Ultra.",
+    hero_image: "images/products/plus/plus-Artboard 1 (2).jpg",
+    nexus_image: "images/products/app/app-vrtechnexus.jpg",
+    gallery: [
+      "images/products/plus/plus-hình 1.jpg",
+      "images/products/plus/plus-hình 2.jpg",
+      "images/products/plus/plus-hình 3.jpg",
+      "images/products/plus/plus-hình 4.jpg"
+    ],
     reasons: [
       "Trải nghiệm mượt hơn bản phổ thông.",
       "Cân bằng giữa nâng cấp và chi phí đầu tư.",
@@ -109,6 +133,14 @@ window.PRODUCTS = {
     badge: "Thẩm mỹ cao cấp",
     subtitle: "Thiết kế đẹp – LED ambient – trải nghiệm hiện đại",
     desc: "Phiên bản dành cho khách hàng đề cao thiết kế, ánh sáng ambient và cảm giác cao cấp trong khoang xe.",
+    hero_image: "images/products/ambient/ambient-Artboard 1.jpg",
+    nexus_image: "images/products/app/app-vrtechnexus.jpg",
+    gallery: [
+      "images/products/ambient/ambient-hình 1.jpg",
+      "images/products/ambient/ambient-hình 2.jpg",
+      "images/products/ambient/ambient-hình 3.jpg",
+      "images/products/ambient/ambient-hình 4.jpg"
+    ],
     reasons: [
       "Ngoại hình đẹp và nổi bật hơn.",
       "Tạo cảm giác cao cấp khi đặt trong nội thất.",
@@ -144,6 +176,14 @@ window.PRODUCTS = {
     badge: "Hiệu năng mạnh nhất",
     subtitle: "Flagship – mượt tối đa – dành cho khách khó tính",
     desc: "Phiên bản mạnh nhất trong hệ Carlinkit V2 by VRTECH, dành cho nhóm khách hàng đòi hỏi hiệu năng cao cấp và độ mượt tối đa.",
+    hero_image: "images/products/ultra/ultra-Artboard 1 (1).jpg",
+    nexus_image: "images/products/app/app-vrtechnexus.jpg",
+    gallery: [
+      "images/products/ultra/ultra-hình 1.jpg",
+      "images/products/ultra/ultra-hình 2.jpg",
+      "images/products/ultra/ultra-hình 3.jpg",
+      "images/products/ultra/ultra-hình 4.jpg"
+    ],
     reasons: [
       "Chip mạnh, xử lý đa nhiệm tốt hơn.",
       "Trải nghiệm cao cấp cho nhóm khách khó tính.",

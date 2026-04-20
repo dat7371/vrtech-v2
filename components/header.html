@@ -1,40 +1,40 @@
 <header class="site-header">
   <div class="topbar container">
-    <a href="index.html" class="logo logo-image">
-      <img src="images/vrtech-icon-lg.png" alt="VRTECH Logo">
+    <a href="index.html" class="logo logo-image" aria-label="VRTECH Home">
+      <span class="logo-shell">
+        <img src="images/logo/LOGO VRTECH-02.png" alt="Carlinkit VN Store x VRTECH" width="224" height="58">
+      </span>
     </a>
 
-    <form class="search-box" action="#">
-      <input type="text" placeholder="Tìm sản phẩm..." />
-      <button type="submit" aria-label="Tìm kiếm">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="7"></circle>
-          <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-        </svg>
-      </button>
-    </form>
-
-    <div class="header-contact">
-      <a href="tel:0909123456" class="contact-pill">
-        <span>📞 Hotline: 0909 123 456</span>
-      </a>
-
-      <a href="mailto:support@vrtech.vn" class="contact-pill">
-        <span>✉ support@vrtech.vn</span>
-      </a>
-    </div>
-
-    <button class="menu-toggle" id="menuToggle">☰</button>
-  </div>
-
-  <div class="navbar-wrap">
-    <nav class="navbar container" id="mobileNav">
+    <nav class="navbar" id="mobileNav" aria-label="Điều hướng chính">
       <a href="index.html#hero">Trang chủ</a>
-      <a href="pages/app-vrtech.html">App VRTECH Nexus</a>
+      <a href="pages/app-vrtech.html">VRTECH Nexus</a>
       <a href="index.html#products">Sản phẩm</a>
-      <a href="index.html#official">Chính hãng / VAT</a>
       <a href="index.html#warranty">Bảo hành</a>
       <a href="index.html#contact">Liên hệ</a>
     </nav>
+
+    <div class="header-contact">
+      <a href="tel:0909123456" class="contact-pill">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.29a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </span>
+        <span class="contact-text">0909 123 456</span>
+      </a>
+      <a href="index.html#contact" class="header-cta">MUA NGAY</a>
+    </div>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Mở menu điều hướng"
+      aria-expanded="false"
+      aria-controls="mobileNav"
+    >
+      <span aria-hidden="true">☰</span>
+    </button>
   </div>
 </header>

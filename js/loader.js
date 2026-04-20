@@ -1,58 +1,40 @@
-function loadComponent(id, file) {
-  return fetch(file)
-    .then((res) => {
-      if (!res.ok) throw new Error(`Không tải được ${file}`);
-      return res.text();
-    })
-    .then((html) => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = html;
-    })
-    .catch((err) => console.error(err));
-}
+const LANDING_COMPONENTS = [
+  ["header", "header"],
+  ["hero", "hero"],
+  ["problem", "problem"],
+  ["solution", "solution"],
+  ["nexus", "nexus"],
+  ["products", "products"],
+  ["compare", "compare"],
+  ["experience", "experience"],
+  ["official", "official"],
+  ["vietmap", "vietmap"],
+  ["warranty", "warranty"],
+  ["cta", "cta"],
+  ["footer", "footer"],
+];
 
-function fixComponentPaths() {
-  // Detect if we're in a nested page (pages/products/)
-  const isNestedPage = window.location.pathname.includes('/pages/products/');
-  const basePath = isNestedPage ? '../../' : './';
+function injectComponent(targetId, componentKey) {
+  const container = document.getElementById(targetId);
+  const template = window.COMPONENT_REGISTRY?.[componentKey];
 
-  // Fix header image paths
-  const headerImg = document.querySelector('.logo-image img');
-  if (headerImg && headerImg.src.includes('images/')) {
-    headerImg.src = basePath + 'images/vrtech-icon-lg.png';
+  if (!container || !template) {
+    return;
   }
 
-  // Fix menu links
-  const menuLinks = document.querySelectorAll('.navbar a, .header-contact a[href^="index"], .logo-image[href="index.html"]');
-  menuLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('index.html')) {
-      link.setAttribute('href', basePath + href);
-    } else if (href && href === 'pages/app-vrtech.html') {
-      link.setAttribute('href', basePath + href);
-    }
+  container.innerHTML = template;
+}
+
+function loadAllComponents() {
+  LANDING_COMPONENTS.forEach(([targetId, componentKey]) => {
+    injectComponent(targetId, componentKey);
   });
+
+  setTimeout(() => {
+    document.dispatchEvent(new Event("componentsLoaded"));
+  }, 0);
 }
 
-async function loadAllComponents() {
-  await Promise.all([
-    loadComponent("header", "components/header.html"),
-    loadComponent("hero", "components/hero.html"),
-    loadComponent("problem", "components/problem.html"),
-    loadComponent("solution", "components/solution.html"),
-    loadComponent("nexus", "components/nexus.html"),
-    loadComponent("products", "components/products.html"),
-    loadComponent("compare", "components/compare.html"),
-    loadComponent("experience", "components/experience.html"),
-    loadComponent("official", "components/official.html"),
-    loadComponent("vietmap", "components/vietmap.html"),
-    loadComponent("warranty", "components/warranty.html"),
-    loadComponent("cta", "components/cta.html"),
-    loadComponent("footer", "components/footer.html"),
-  ]);
-
-  fixComponentPaths();
-  document.dispatchEvent(new Event("componentsLoaded"));
+if (document.getElementById("hero")) {
+  loadAllComponents();
 }
-
-loadAllComponents();

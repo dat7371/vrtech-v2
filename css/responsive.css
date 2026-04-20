@@ -1,6 +1,7 @@
 @media (max-width: 1200px){
   .issue-grid{grid-template-columns:repeat(3,1fr)}
   .product-grid{grid-template-columns:repeat(3,1fr)}
+  .product-grid .product-card:last-child{grid-column:auto;max-width:none}
   .feature-grid,.trust-grid{grid-template-columns:repeat(2,1fr)}
   .exp-grid{grid-template-columns:repeat(3,1fr)}
 }
@@ -24,12 +25,6 @@
     grid-template-columns:repeat(2,1fr);
   }
 
-  .search-box{
-    flex: 0 1 220px;
-    max-width: 220px;
-    margin-left: 8px;
-  }
-
   .menu-toggle{
     display:block;
   }
@@ -39,7 +34,16 @@
     flex-direction:column;
     align-items:flex-start;
     gap:16px;
-    padding:18px 0;
+    padding:18px;
+    position:absolute;
+    top:calc(100% + 12px);
+    left:0;
+    right:0;
+    margin-left:0;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    background:linear-gradient(180deg, rgba(13,16,20,.98), rgba(18,22,29,.95));
+    box-shadow:0 20px 40px rgba(0,0,0,.38);
   }
 
   .navbar.open{
@@ -49,6 +53,10 @@
   .header-contact{
     display: flex;
     gap: 10px;
+  }
+
+  .header-cta{
+    padding: 0 14px;
   }
 
   .contact-pill {
@@ -71,17 +79,16 @@
     flex-wrap: wrap;
   }
 
-  .search-box {
-    flex: 1;
-    max-width: 100%;
-    margin-left: 0;
-    min-width: 0;
-  }
-
   .header-contact{
     display:flex;
     gap: 8px;
     flex-wrap: nowrap;
+  }
+
+  .header-cta{
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 12px;
   }
 
   .contact-pill {
@@ -99,7 +106,12 @@
   }
 
   .logo-image img{
-    width:94px;
+    width:100%;
+  }
+
+  .logo-shell{
+    width: 187px;
+    height: 46px;
   }
 
   .hero-content h1{
