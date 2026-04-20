@@ -247,7 +247,7 @@ body[data-product] {
 
 .product-image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 40px;
 }
@@ -267,6 +267,100 @@ body[data-product] {
   aspect-ratio: 1;
   object-fit: cover;
   display: block;
+  cursor: zoom-in;
+}
+
+.product-gallery-card img:focus-visible {
+  outline: 2px solid rgba(255, 193, 7, 0.92);
+  outline-offset: -4px;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.gallery-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 8, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.gallery-lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1100px);
+  display: grid;
+  gap: 16px;
+}
+
+.gallery-lightbox-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.lightbox-action {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(14, 18, 23, 0.88);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox-action:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(229, 9, 20, 0.14);
+  border-color: rgba(229, 9, 20, 0.32);
+}
+
+.lightbox-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.gallery-lightbox-viewport {
+  min-height: min(72vh, 860px);
+  max-height: 78vh;
+  overflow: auto;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(12, 16, 20, 0.92), rgba(8, 10, 14, 0.96));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.44);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.gallery-lightbox-image {
+  width: min(100%, 980px);
+  height: auto;
+  transform-origin: center center;
+  transition: transform 0.18s ease;
 }
 
 
@@ -386,7 +480,7 @@ body[data-product] {
   }
 
   .product-image-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .product-trust-grid {
@@ -404,5 +498,24 @@ body[data-product] {
 
   .product-cta-actions .btn {
     width: 100%;
+  }
+
+  .gallery-lightbox {
+    padding: 16px;
+  }
+
+  .gallery-lightbox-dialog {
+    width: 100%;
+  }
+
+  .gallery-lightbox-viewport {
+    min-height: 62vh;
+    max-height: 72vh;
+    padding: 16px;
+  }
+
+  .lightbox-action {
+    width: 44px;
+    height: 44px;
   }
 }

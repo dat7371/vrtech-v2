@@ -120,6 +120,8 @@ function initializeHeader() {
   const toggle = document.getElementById("menuToggle");
   const nav = document.getElementById("mobileNav");
   const header = document.querySelector(".site-header");
+  const productDropdown = nav?.querySelector(".nav-dropdown");
+  const productToggle = productDropdown?.querySelector(".nav-dropdown-toggle");
 
   if (!toggle || !nav || !header || header.dataset.navReady === "true") {
     document.querySelectorAll(".search-box").forEach(handleSearch);
@@ -130,11 +132,15 @@ function initializeHeader() {
 
   const closeNav = () => {
     nav.classList.remove("open");
+    header.classList.remove("nav-open");
     toggle.setAttribute("aria-expanded", "false");
+    productDropdown?.classList.remove("open");
+    productToggle?.setAttribute("aria-expanded", "false");
   };
 
   const openNav = () => {
     nav.classList.add("open");
+    header.classList.add("nav-open");
     toggle.setAttribute("aria-expanded", "true");
   };
 
@@ -147,6 +153,13 @@ function initializeHeader() {
     openNav();
   });
 
+  productToggle?.addEventListener("click", () => {
+    const isOpen = productDropdown?.classList.contains("open");
+    productDropdown?.classList.toggle("open", !isOpen);
+    productToggle.setAttribute("aria-expanded", String(!isOpen));
+    header.classList.toggle("nav-open", !isOpen || nav.classList.contains("open"));
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeNav();
@@ -155,6 +168,14 @@ function initializeHeader() {
 
   document.addEventListener("click", (event) => {
     if (!nav.classList.contains("open")) {
+      if (productDropdown?.classList.contains("open")) {
+        if (event.target instanceof Node && !productDropdown.contains(event.target)) {
+          productDropdown.classList.remove("open");
+          productToggle?.setAttribute("aria-expanded", "false");
+          header.classList.toggle("nav-open", nav.classList.contains("open"));
+        }
+      }
+
       return;
     }
 

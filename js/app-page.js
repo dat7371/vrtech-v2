@@ -34,6 +34,11 @@ function fixAppPageHeaderPaths() {
 
     if (href === "pages/app-vrtech.html") {
       link.setAttribute("href", "../pages/app-vrtech.html");
+      return;
+    }
+
+    if (href.startsWith("pages/products/")) {
+      link.setAttribute("href", `../${href}`);
     }
   });
 }

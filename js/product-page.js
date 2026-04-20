@@ -12,6 +12,10 @@ const PRODUCT_PAGE_COMPONENTS = [
   ["footer", "footer"],
 ];
 
+const LIGHTBOX_MIN_SCALE = 1;
+const LIGHTBOX_MAX_SCALE = 3;
+const LIGHTBOX_SCALE_STEP = 0.25;
+
 function injectProductComponent(targetId, componentKey) {
   const container = document.getElementById(targetId);
   const template = window.COMPONENT_REGISTRY?.[componentKey];
@@ -21,6 +25,14 @@ function injectProductComponent(targetId, componentKey) {
   }
 
   container.innerHTML = template;
+}
+
+function isImageElement(element) {
+  return !!element && element instanceof HTMLElement && element.tagName === "IMG";
+}
+
+function isButtonElement(element) {
+  return !!element && element instanceof HTMLElement && element.tagName === "BUTTON";
 }
 
 function fixProductPagePaths() {
@@ -48,6 +60,11 @@ function fixProductPagePaths() {
 
     if (href === "pages/app-vrtech.html") {
       link.setAttribute("href", "../../pages/app-vrtech.html");
+      return;
+    }
+
+    if (href.startsWith("pages/products/")) {
+      link.setAttribute("href", `../../${href}`);
     }
   });
 }
@@ -58,10 +75,140 @@ function loadProductPage() {
   });
 
   renderProductData();
+  initializeProductGalleryLightbox();
   fixProductPagePaths();
   setTimeout(() => {
     document.dispatchEvent(new Event("componentsLoaded"));
   }, 0);
+}
+
+function initializeProductGalleryLightbox() {
+  if (document.body.dataset.galleryLightboxReady === "true") {
+    return;
+  }
+
+  const gallery = document.getElementById("product-gallery-list");
+  if (!gallery) {
+    return;
+  }
+
+  document.body.dataset.galleryLightboxReady = "true";
+
+  const lightbox = document.createElement("div");
+  lightbox.className = "gallery-lightbox";
+  lightbox.setAttribute("aria-hidden", "true");
+  lightbox.innerHTML = `
+    <div class="gallery-lightbox-backdrop" data-lightbox-close></div>
+    <div class="gallery-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Xem ảnh sản phẩm">
+      <div class="gallery-lightbox-toolbar">
+        <button type="button" class="lightbox-action" data-lightbox-zoom-out aria-label="Thu nhỏ ảnh">-</button>
+        <button type="button" class="lightbox-action" data-lightbox-zoom-in aria-label="Phóng to ảnh">+</button>
+        <button type="button" class="lightbox-action lightbox-close" data-lightbox-close aria-label="Đóng ảnh">×</button>
+      </div>
+      <div class="gallery-lightbox-viewport">
+        <img class="gallery-lightbox-image" alt="">
+      </div>
+    </div>
+  `;
+
+  document.body.append(lightbox);
+
+  const lightboxImage = lightbox.querySelector(".gallery-lightbox-image");
+  const zoomInButton = lightbox.querySelector("[data-lightbox-zoom-in]");
+  const zoomOutButton = lightbox.querySelector("[data-lightbox-zoom-out]");
+  const closeButtons = lightbox.querySelectorAll("[data-lightbox-close]");
+
+  if (!isImageElement(lightboxImage) || !isButtonElement(zoomInButton) || !isButtonElement(zoomOutButton)) {
+    return;
+  }
+
+  let currentScale = LIGHTBOX_MIN_SCALE;
+
+  const syncZoomState = () => {
+    lightboxImage.style.transform = `scale(${currentScale})`;
+    zoomOutButton.disabled = currentScale <= LIGHTBOX_MIN_SCALE;
+    zoomInButton.disabled = currentScale >= LIGHTBOX_MAX_SCALE;
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lightbox-open");
+    currentScale = LIGHTBOX_MIN_SCALE;
+    syncZoomState();
+  };
+
+  const openLightbox = (image) => {
+    if (!isImageElement(image)) {
+      return;
+    }
+
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    currentScale = LIGHTBOX_MIN_SCALE;
+    syncZoomState();
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lightbox-open");
+  };
+
+  gallery.addEventListener("click", (event) => {
+    const clickedImage = event.target instanceof HTMLElement ? event.target.closest(".product-gallery-card img") : null;
+    if (!isImageElement(clickedImage)) {
+      return;
+    }
+
+    openLightbox(clickedImage);
+  });
+
+  gallery.querySelectorAll(".product-gallery-card img").forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", `${image.alt}. Nhấn để xem toàn màn hình`);
+
+    image.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(image);
+      }
+    });
+  });
+
+  zoomInButton.addEventListener("click", () => {
+    currentScale = Math.min(currentScale + LIGHTBOX_SCALE_STEP, LIGHTBOX_MAX_SCALE);
+    syncZoomState();
+  });
+
+  zoomOutButton.addEventListener("click", () => {
+    currentScale = Math.max(currentScale - LIGHTBOX_SCALE_STEP, LIGHTBOX_MIN_SCALE);
+    syncZoomState();
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeLightbox);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      zoomInButton.click();
+      return;
+    }
+
+    if (event.key === "-") {
+      event.preventDefault();
+      zoomOutButton.click();
+    }
+  });
 }
 
 function renderProductData() {

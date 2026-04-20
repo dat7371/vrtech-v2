@@ -9,7 +9,27 @@
     <nav class="navbar" id="mobileNav" aria-label="Điều hướng chính">
       <a href="index.html#hero">Trang chủ</a>
       <a href="pages/app-vrtech.html">VRTECH Nexus</a>
-      <a href="index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-head">
+          <a href="index.html#products" class="nav-dropdown-link">Sản phẩm</a>
+          <button
+            class="nav-dropdown-toggle"
+            type="button"
+            aria-label="Mở danh sách sản phẩm"
+            aria-expanded="false"
+            aria-controls="productsMenu"
+          >
+          <span class="nav-chevron" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="nav-submenu" id="productsMenu">
+          <a href="pages/products/s2a.html">TBOX S2A V2</a>
+          <a href="pages/products/s2p.html">TBOX S2P V2</a>
+          <a href="pages/products/plus.html">TBOX PLUS V2</a>
+          <a href="pages/products/ambient.html">TBOX AMBIENT V2</a>
+          <a href="pages/products/ultra.html">TBOX ULTRA / ULTRA MAX V2</a>
+        </div>
+      </div>
       <a href="index.html#warranty">Bảo hành</a>
       <a href="index.html#contact">Liên hệ</a>
     </nav>
