@@ -70,3 +70,24 @@
     radial-gradient(circle at 80% 50%, rgba(229,9,20,.24), transparent 34%),
     linear-gradient(135deg,#171a20,#0d1015 70%);
 }
+
+.contact-details{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.contact-detail-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  color:#e8edf5;
+  font-weight:700;
+}

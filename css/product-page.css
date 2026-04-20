@@ -441,6 +441,10 @@ body.lightbox-open {
   flex-wrap: wrap;
 }
 
+.product-cta .contact-details {
+  margin-top: 22px;
+}
+
 .product-cta-actions .btn {
   min-height: 56px;
   padding: 0 32px;
