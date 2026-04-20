@@ -17,10 +17,10 @@
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: min(720px, 54vw);
+  width: min(980px, 68vw);
   background:
-    linear-gradient(90deg, rgba(136, 0, 8, .94) 0%, rgba(96, 0, 8, .86) 48%, rgba(58, 4, 8, .56) 74%, rgba(18, 8, 10, .18) 88%, rgba(8, 10, 12, 0) 100%),
-    radial-gradient(circle at 16% 50%, rgba(255, 44, 44, .26) 0%, rgba(255, 44, 44, 0) 58%);
+    linear-gradient(90deg, rgba(148, 0, 10, .96) 0%, rgba(118, 0, 10, .9) 42%, rgba(82, 2, 10, .72) 64%, rgba(44, 6, 10, .4) 82%, rgba(14, 10, 12, .12) 93%, rgba(8, 10, 12, 0) 100%),
+    radial-gradient(circle at 14% 50%, rgba(255, 44, 44, .3) 0%, rgba(255, 44, 44, .08) 42%, rgba(255, 44, 44, 0) 66%);
   pointer-events: none;
 }
 .site-header.scrolled{
