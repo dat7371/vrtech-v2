@@ -1,6 +1,7 @@
 const PRODUCT_PAGE_COMPONENTS = [
   ["header", "header"],
   ["product-hero", "product-hero"],
+  ["product-specs", "product-specs"],
   ["product-reasons", "product-reasons"],
   ["product-nexus", "product-nexus"],
   ["product-performance", "product-performance"],
@@ -15,6 +16,14 @@ const PRODUCT_PAGE_COMPONENTS = [
 const LIGHTBOX_MIN_SCALE = 1;
 const LIGHTBOX_MAX_SCALE = 3;
 const LIGHTBOX_SCALE_STEP = 0.25;
+const LIGHTBOX_FOCUSABLE_SELECTORS = [
+  "button:not([disabled])",
+  "[href]",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  "[tabindex]:not([tabindex='-1'])",
+].join(", ");
 
 function injectProductComponent(targetId, componentKey) {
   const container = document.getElementById(targetId);
@@ -117,12 +126,24 @@ function initializeProductGalleryLightbox() {
   const zoomInButton = lightbox.querySelector("[data-lightbox-zoom-in]");
   const zoomOutButton = lightbox.querySelector("[data-lightbox-zoom-out]");
   const closeButtons = lightbox.querySelectorAll("[data-lightbox-close]");
+  const lightboxDialog = lightbox.querySelector(".gallery-lightbox-dialog");
 
-  if (!isImageElement(lightboxImage) || !isButtonElement(zoomInButton) || !isButtonElement(zoomOutButton)) {
+  if (
+    !isImageElement(lightboxImage) ||
+    !isButtonElement(zoomInButton) ||
+    !isButtonElement(zoomOutButton) ||
+    !(lightboxDialog instanceof HTMLElement)
+  ) {
     return;
   }
 
   let currentScale = LIGHTBOX_MIN_SCALE;
+  let lastFocusedElement = null;
+
+  const getFocusableElements = () =>
+    Array.from(lightbox.querySelectorAll(LIGHTBOX_FOCUSABLE_SELECTORS)).filter(
+      (element) => element instanceof HTMLElement && !element.hasAttribute("hidden")
+    );
 
   const syncZoomState = () => {
     lightboxImage.style.transform = `scale(${currentScale})`;
@@ -136,6 +157,10 @@ function initializeProductGalleryLightbox() {
     document.body.classList.remove("lightbox-open");
     currentScale = LIGHTBOX_MIN_SCALE;
     syncZoomState();
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
   };
 
   const openLightbox = (image) => {
@@ -143,6 +168,7 @@ function initializeProductGalleryLightbox() {
       return;
     }
 
+    lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     lightboxImage.src = image.currentSrc || image.src;
     lightboxImage.alt = image.alt;
     currentScale = LIGHTBOX_MIN_SCALE;
@@ -150,28 +176,17 @@ function initializeProductGalleryLightbox() {
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
+    closeButtons[closeButtons.length - 1]?.focus();
   };
 
   gallery.addEventListener("click", (event) => {
-    const clickedImage = event.target instanceof HTMLElement ? event.target.closest(".product-gallery-card img") : null;
+    const clickedButton = event.target instanceof HTMLElement ? event.target.closest(".product-gallery-trigger") : null;
+    const clickedImage = clickedButton?.querySelector("img");
     if (!isImageElement(clickedImage)) {
       return;
     }
 
     openLightbox(clickedImage);
-  });
-
-  gallery.querySelectorAll(".product-gallery-card img").forEach((image) => {
-    image.tabIndex = 0;
-    image.setAttribute("role", "button");
-    image.setAttribute("aria-label", `${image.alt}. Nhấn để xem toàn màn hình`);
-
-    image.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openLightbox(image);
-      }
-    });
   });
 
   zoomInButton.addEventListener("click", () => {
@@ -195,6 +210,30 @@ function initializeProductGalleryLightbox() {
 
     if (event.key === "Escape") {
       closeLightbox();
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusableElements = getFocusableElements();
+      if (!focusableElements.length) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
       return;
     }
 
@@ -225,6 +264,22 @@ function renderProductData() {
   if (heroImage && heroImage.tagName === "IMG" && product.hero_image) {
     heroImage.src = `../../${product.hero_image}`;
     heroImage.alt = product.name;
+  }
+
+  const heroThumbs = document.getElementById("product-hero-thumbs");
+  if (heroThumbs && product.hero_image) {
+    const heroGallery = [product.hero_image, ...(product.gallery || []).slice(0, 4)];
+    heroThumbs.innerHTML = heroGallery.map((image, index) => `
+      <button
+        type="button"
+        class="product-thumb-button${index === 0 ? " active" : ""}"
+        data-hero-image="../../${image}"
+        data-hero-alt="${product.name} - góc nhìn ${index + 1}"
+        aria-label="Xem ảnh ${index + 1} của ${product.name}"
+      >
+        <img src="../../${image}" alt="${product.name} - thumbnail ${index + 1}" width="800" height="800" loading="lazy">
+      </button>
+    `).join("");
   }
 
   const nexusImage = document.querySelector("[data-product-nexus-image]");
@@ -262,13 +317,19 @@ function renderProductData() {
   if (galleryWrap && Array.isArray(product.gallery)) {
     galleryWrap.innerHTML = product.gallery.map((image, index) => `
       <figure class="product-gallery-card reveal">
-        <img
-          src="../../${image}"
-          alt="${product.name} - hình thực tế ${index + 1}"
-          width="2000"
-          height="2000"
-          loading="lazy"
+        <button
+          type="button"
+          class="product-gallery-trigger"
+          aria-label="Xem toàn màn hình ảnh ${index + 1} của ${product.name}"
         >
+          <img
+            src="../../${image}"
+            alt="${product.name} - hình thực tế ${index + 1}"
+            width="2000"
+            height="2000"
+            loading="lazy"
+          >
+        </button>
       </figure>
     `).join("");
   }
@@ -282,6 +343,55 @@ function renderProductData() {
   if (badWrap) {
     badWrap.innerHTML = product.compare_bad.map(item => `<li>${item}</li>`).join("");
   }
+
+  const highlightWrap = document.getElementById("product-highlight-list");
+  if (highlightWrap && Array.isArray(product.highlights)) {
+    highlightWrap.innerHTML = product.highlights.map(item => `<li>${item}</li>`).join("");
+  }
+
+  const specWrap = document.getElementById("product-spec-list");
+  if (specWrap && Array.isArray(product.specs)) {
+    specWrap.innerHTML = product.specs.map(item => `
+      <article class="product-spec-card reveal">
+        <span class="product-spec-label">${item.label}</span>
+        <strong class="product-spec-value">${item.value}</strong>
+      </article>
+    `).join("");
+  }
+
+  initializeHeroGallery();
+}
+
+function initializeHeroGallery() {
+  const heroImage = document.querySelector("[data-product-hero-image]");
+  const heroThumbs = document.getElementById("product-hero-thumbs");
+
+  if (!(heroImage instanceof HTMLElement) || !heroThumbs) {
+    return;
+  }
+
+  heroThumbs.addEventListener("click", (event) => {
+    const button = event.target instanceof HTMLElement ? event.target.closest(".product-thumb-button") : null;
+    if (!(button instanceof HTMLElement)) {
+      return;
+    }
+
+    const nextImage = button.getAttribute("data-hero-image");
+    const nextAlt = button.getAttribute("data-hero-alt");
+
+    if (!nextImage) {
+      return;
+    }
+
+    heroImage.setAttribute("src", nextImage);
+    heroImage.setAttribute("alt", nextAlt || "");
+
+    heroThumbs.querySelectorAll(".product-thumb-button").forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+  });
 }
 
 loadProductPage();

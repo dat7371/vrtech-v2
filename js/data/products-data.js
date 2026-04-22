@@ -12,6 +12,20 @@ window.PRODUCTS = {
       "images/products12th/s2av2/TBOX S2A V2-18.jpg",
       "images/products12th/s2av2/TBOX S2A V2-19.jpg"
     ],
+    highlights: [
+      "Bản dễ tiếp cận cho khách hàng phổ thông",
+      "Giải trí, dẫn đường và kết nối cơ bản ổn định",
+      "Tương thích nhiều dòng xe có CarPlay có dây",
+      "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Tiêu chuẩn, dễ tiếp cận" },
+      { label: "Nhóm khách phù hợp", value: "Xe phổ thông, nhu cầu cơ bản" },
+      { label: "Trải nghiệm chính", value: "YouTube, Maps, nghe nhạc, kết nối app" },
+      { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, Bluetooth" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+    ],
     reasons: [
       "Chi phí dễ tiếp cận cho khách hàng phổ thông.",
       "Đáp ứng tốt nhu cầu giải trí, dẫn đường và kết nối cơ bản.",
@@ -54,6 +68,20 @@ window.PRODUCTS = {
       "images/products12th/s2p/TBOX S2P-24.jpg",
       "images/products12th/s2p/TBOX S2P-25.jpg",
       "images/products12th/s2p/TBOX S2P-26.jpg"
+    ],
+    highlights: [
+      "Phiên bản bán chạy nhất trong hệ Carlinkit V2",
+      "Chip Qualcomm 6225 cho trải nghiệm ổn định hằng ngày",
+      "Dễ tư vấn, dễ lắp, phù hợp đa số dòng xe",
+      "VRTECH Nexus, chính ngạch, VAT và bảo hành điện tử 12 tháng"
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Bán chạy nhất, cân bằng nhất" },
+      { label: "Chip xử lý", value: "Qualcomm 6225" },
+      { label: "Nhóm khách phù hợp", value: "Đa số xe và nhu cầu sử dụng thực tế" },
+      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình" },
+      { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, SIM 4G, Bluetooth" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ, VRTECH Nexus" }
     ],
     reasons: [
       "Là model bán chạy nhất vì dễ chốt với đa số khách hàng cần một bản ổn định và dễ dùng.",
@@ -98,6 +126,20 @@ window.PRODUCTS = {
       "images/products12th/plusv2/TBOX PLUS V2-11.jpg",
       "images/products12th/plusv2/TBOX PLUS V2-12.jpg"
     ],
+    highlights: [
+      "Bản nâng cấp hợp lý từ nhóm phổ thông",
+      "Đa nhiệm tốt hơn, chuyển app mượt hơn",
+      "Phù hợp khách muốn dùng thoải mái mỗi ngày",
+      "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Trung cấp, nâng cấp hợp lý" },
+      { label: "Nhóm khách phù hợp", value: "Muốn mượt hơn nhưng chưa cần flagship" },
+      { label: "Trải nghiệm chính", value: "Đa nhiệm tốt, app phản hồi nhanh hơn" },
+      { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, Bluetooth" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + hậu mãi điện tử" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+    ],
     reasons: [
       "Trải nghiệm mượt hơn bản phổ thông.",
       "Cân bằng giữa nâng cấp và chi phí đầu tư.",
@@ -141,6 +183,20 @@ window.PRODUCTS = {
       "images/products12th/ambientv2/TBOX AMBIENT v2-05.jpg",
       "images/products12th/ambientv2/TBOX AMBIENT v2-06.jpg"
     ],
+    highlights: [
+      "Phiên bản thiên về thẩm mỹ và cảm giác cao cấp",
+      "LED ambient tạo điểm nhấn rõ trong khoang xe",
+      "Vừa đẹp vừa đủ mạnh cho dùng hằng ngày",
+      "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Thẩm mỹ cao cấp" },
+      { label: "Nhóm khách phù hợp", value: "Ưu tiên trải nghiệm đẹp và khác biệt" },
+      { label: "Điểm nổi bật", value: "LED ambient, giao diện hiện đại" },
+      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, nội thất nổi bật hơn" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+    ],
     reasons: [
       "Ngoại hình đẹp và nổi bật hơn.",
       "Tạo cảm giác cao cấp khi đặt trong nội thất.",
@@ -183,6 +239,20 @@ window.PRODUCTS = {
       "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-31.jpg",
       "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-32.jpg",
       "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-33.jpg"
+    ],
+    highlights: [
+      "Phiên bản mạnh nhất trong hệ Carlinkit V2",
+      "Tối ưu cho đa nhiệm nặng và khách hàng khó tính",
+      "Trải nghiệm nhanh, mượt và cao cấp nhất",
+      "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Flagship hiệu năng" },
+      { label: "Nhóm khách phù hợp", value: "Yêu cầu trải nghiệm mạnh và cao cấp" },
+      { label: "Trải nghiệm chính", value: "Đa nhiệm nặng, phản hồi nhanh, mượt tối đa" },
+      { label: "Điểm nổi bật", value: "Bản đầu bảng, dễ chốt nhóm khách premium" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
     ],
     reasons: [
       "Chip mạnh, xử lý đa nhiệm tốt hơn.",

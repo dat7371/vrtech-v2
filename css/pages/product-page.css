@@ -5,7 +5,7 @@ body[data-product] {
 .product-hero {
   position: relative;
   overflow: hidden;
-  padding: 72px 0;
+  padding: 54px 0 72px;
   background:
     radial-gradient(circle at left top, rgba(229, 9, 20, 0.16), transparent 28%),
     linear-gradient(180deg, #0d1014 0%, #12161d 100%);
@@ -28,9 +28,9 @@ body[data-product] {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, .92fr);
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+  gap: 34px;
+  align-items: start;
 }
 
 .product-hero-content {
@@ -40,26 +40,87 @@ body[data-product] {
 
 .product-hero-media {
   position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.product-hero-main {
+  position: relative;
 }
 
 .product-hero-frame {
-  border-radius: 36px;
+  border-radius: 32px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  box-shadow: 0 34px 90px rgba(0,0,0,.44);
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  box-shadow: 0 30px 90px rgba(0,0,0,.42);
 }
 
 .product-hero-frame img {
   width: 100%;
   height: auto;
   display: block;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.product-hero-thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-thumb-button {
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.product-thumb-button:hover,
+.product-thumb-button.active {
+  transform: translateY(-2px);
+  border-color: rgba(255,193,7,.34);
+  box-shadow: 0 14px 30px rgba(0,0,0,.24);
+}
+
+.product-thumb-button img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-summary-card {
+  position: sticky;
+  top: 112px;
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at top right, rgba(229,9,20,.14), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+  box-shadow: 0 24px 70px rgba(0,0,0,.28);
+}
+
+.product-state {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9fe4b6;
 }
 
 .product-hero-content h1 {
   font-family:"Sora","Plus Jakarta Sans",sans-serif;
-  font-size: clamp(46px, 6vw, 78px);
-  margin: 0 0 12px;
+  font-size: clamp(38px, 5vw, 62px);
+  margin: 0;
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 1.04;
@@ -70,7 +131,8 @@ body[data-product] {
 }
 
 .product-badge {
-  display: inline-block;
+  display: inline-flex;
+  width: fit-content;
   padding: 10px 16px;
   background: rgba(255, 193, 7, 0.1);
   border: 1px solid rgba(255, 193, 7, 0.2);
@@ -84,18 +146,101 @@ body[data-product] {
 }
 
 .product-subtitle {
-  font-size: 19px;
+  font-size: 18px;
   color: #e6ebf2;
-  margin: 12px 0;
+  margin: 0;
   font-weight: 600;
 }
 
 .product-desc {
   font-size: 16px;
   color: #d5dbe4;
-  max-width: 700px;
-  margin: 16px 0 0;
+  max-width: none;
+  margin: 0;
   line-height: 1.8;
+}
+
+.product-highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.product-highlight-list li {
+  display: flex;
+  gap: 10px;
+  color: #e7edf5;
+  line-height: 1.65;
+}
+
+.product-highlight-list li::before {
+  content: "•";
+  color: #ffc24a;
+  font-weight: 900;
+}
+
+.product-summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-summary-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.025);
+  color: #dce4ef;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.product-buy-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.product-specs {
+  padding: 56px 0 28px;
+}
+
+.product-spec-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.product-spec-card {
+  display: grid;
+  gap: 10px;
+  min-height: 148px;
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.018));
+}
+
+.product-spec-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #ffd772;
+}
+
+.product-spec-value {
+  font-size: 20px;
+  font-family:"Sora","Plus Jakarta Sans",sans-serif;
+  line-height: 1.35;
+  color: #f4f7fb;
 }
 
 /* Product Reasons Section */
@@ -265,16 +410,23 @@ body[data-product] {
   box-shadow: var(--shadow);
 }
 
+.product-gallery-trigger {
+  padding: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
 .product-gallery-card img {
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
   object-fit: cover;
   display: block;
-  cursor: zoom-in;
 }
 
-.product-gallery-card img:focus-visible {
+.product-gallery-trigger:focus-visible {
   outline: 2px solid rgba(255, 193, 7, 0.92);
   outline-offset: -4px;
 }
@@ -345,6 +497,11 @@ body.lightbox-open {
 .lightbox-action:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.lightbox-action:focus-visible {
+  outline: 2px solid rgba(255, 193, 7, 0.92);
+  outline-offset: 3px;
 }
 
 .gallery-lightbox-viewport {
@@ -463,6 +620,11 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .product-summary-card {
+    position: static;
+    top: auto;
+  }
+
   .product-nexus-layout {
     grid-template-columns: 1fr;
   }
@@ -488,6 +650,14 @@ body.lightbox-open {
   }
 
   .product-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-hero-thumbs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-spec-grid {
     grid-template-columns: 1fr;
   }
 

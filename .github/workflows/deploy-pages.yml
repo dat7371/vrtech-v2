@@ -1,0 +1,58 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build static artifact
+        shell: pwsh
+        run: |
+          $dist = "dist"
+          if (Test-Path $dist) {
+            Remove-Item -Recurse -Force $dist
+          }
+
+          New-Item -ItemType Directory -Path $dist | Out-Null
+
+          Copy-Item index.html $dist
+          Copy-Item -Recurse css $dist
+          Copy-Item -Recurse js $dist
+          Copy-Item -Recurse images $dist
+          Copy-Item -Recurse pages $dist
+
+          New-Item -ItemType File -Path (Join-Path $dist ".nojekyll") | Out-Null
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
