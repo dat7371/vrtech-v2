@@ -1,30 +1,167 @@
 window.PRODUCTS = {
   s2a: {
-    name: "TBOX S2A V2",
+    name: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Android Box Ô Tô | Chip Qualcomm 6115 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto ",
+    short_name: "Carlinkit TBOX S2A V2 2026",
     badge: "Bản tiêu chuẩn",
-    subtitle: "Dễ tiếp cận – phù hợp xe phổ thông",
-    desc: "Phiên bản dễ tiếp cận để bước vào hệ Carlinkit V2 by VRTECH, phù hợp khách hàng cần giải pháp ổn định và dễ dùng.",
+    subtitle: "Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
+    desc: "Phiên bản Android Box Ô Tô tối ưu cho nhu cầu hằng ngày, giữ nguyên zin màn hình xe và đáp ứng tốt giải trí, dẫn đường, kết nối thông minh.",
     hero_image: "images/products12thv2/s2av2/TBOX S2A 01.jpg",
-    nexus_image: "images/products12th/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
     gallery: [
-      "images/products12th/s2av2/TBOX S2A V2-16.jpg",
-      "images/products12th/s2av2/TBOX S2A V2-17.jpg",
-      "images/products12th/s2av2/TBOX S2A V2-18.jpg",
-      "images/products12th/s2av2/TBOX S2A V2-19.jpg"
+      "images/products12thv2/s2av2/TBOX S2A 02.jpg",
+      "images/products12thv2/s2av2/TBOX S2A 03.jpg",
+      "images/products12thv2/s2av2/TBOX S2A 04.jpg",
+      "images/products12thv2/s2av2/TBOX S2A 05.jpg",
+      "images/products12thv2/s2av2/TBOX S2A 06.jpg"
+    ],
+    gallery_extra: [
+      {
+        image: "images/products12thv2/app/appvrtechnexus.jpg",
+        alt: "VRTECH Nexus - giao diện app quản lý cho TBOX S2A V2"
+      },
+      {
+        image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
+        alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX S2A V2"
+      }
+    ],
+    stock_status: "Còn hàng",
+    brand: "Carlinkit",
+    category: "Android Box Ô Tô chính hãng",
+    price: "3.849.000",
+    old_price: "",
+    vat_label: "(VAT 8%)",
+    condition: "Mới 100%, chưa active, fullbox",
+    warranty_label: "Bảo hành 12 tháng",
+    quantity_available: "Còn hàng",
+    primary_cta: "Mua ngay",
+    support_cta: "Gọi tư vấn",
+    support_phone: "0921515868",
+    promo: "",
+    assurances: [
+      {
+        title: "VRTECH Official Việt Nam",
+        desc: "Phân phối chính thức Carlinkit TBOX S2A V2 - VRTECH Edition tại thị trường Việt Nam."
+      },
+      {
+        title: "Cam kết sản phẩm",
+        desc: "Sản phẩm mới 100%, chưa active, fullbox, hỗ trợ chứng từ VAT 8% theo nhu cầu."
+      },
+      {
+        title: "Bảo hành điện tử 12 tháng",
+        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+      },
+      {
+        title: "Hỗ trợ kỹ thuật trọn đời",
+        desc: "Tư vấn theo dòng xe, hỗ trợ cài đặt và đồng hành trong suốt quá trình sử dụng."
+      },
+      {
+        title: "Giao hàng toàn quốc",
+        desc: "Hướng dẫn lắp đặt đơn giản, giao hàng nhanh và tư vấn trước khi mua hàng."
+      }
     ],
     highlights: [
-      "Bản dễ tiếp cận cho khách hàng phổ thông",
+      "Bản phù hợp với mọi người dùng phổ thông hằng ngày",
       "Giải trí, dẫn đường và kết nối cơ bản ổn định",
       "Tương thích nhiều dòng xe có CarPlay có dây",
       "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
     ],
     specs: [
       { label: "Phân khúc", value: "Tiêu chuẩn, dễ tiếp cận" },
-      { label: "Nhóm khách phù hợp", value: "Xe phổ thông, nhu cầu cơ bản" },
+      { label: "Nhóm khách phù hợp", value: "Mọi dòng xe với nhu cầu cơ bản" },
       { label: "Trải nghiệm chính", value: "YouTube, Maps, nghe nhạc, kết nối app" },
       { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, Bluetooth" },
       { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
-      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, lỗi 1 đổi 1" }
+    ],
+    spec_sections: [
+      {
+        title: "Model sản phẩm",
+        rows: [
+          { label: "Tên sản phẩm", value: "TBOX S2A V2 - VRTECH Edition 2026" },
+          { label: "Phiên bản", value: "Carlinkit CPC200-S2A" },
+          { label: "Phân phối", value: "VRTECH Official Việt Nam" }
+        ]
+      },
+      {
+        title: "Bộ vi xử lý (CPU)",
+        rows: [
+          { label: "Model", value: "Qualcomm 6115" },
+          { label: "Kiến trúc", value: "ARM Cortex" },
+          { label: "Xung nhịp", value: "tối đa ~1.8GHz" },
+          { label: "Số nhân", value: "8 Cores" },
+          { label: "Đồ họa (GPU)", value: "Adreno (tích hợp)" },
+          { label: "Tiến trình", value: "11nm" }
+        ]
+      },
+      {
+        title: "Bộ nhớ máy (RAM)",
+        rows: [
+          { label: "Dung lượng", value: "4GB / 8GB" },
+          { label: "Loại RAM", value: "LPDDR4" }
+        ]
+      },
+      {
+        title: "Bộ nhớ lưu trữ (ROM)",
+        rows: [
+          { label: "Dung lượng", value: "64GB / 128GB" },
+          { label: "Chuẩn", value: "eMMC" }
+        ]
+      },
+      {
+        title: "Hệ điều hành",
+        rows: [
+          { label: "Phiên bản", value: "Android 13" },
+          { label: "Kho ứng dụng", value: "Google Play Store" }
+        ]
+      },
+      {
+        title: "Kết nối",
+        rows: [
+          { label: "WiFi", value: "2.4GHz / 5GHz" },
+          { label: "Bluetooth", value: "5.1" },
+          { label: "SIM", value: "Hỗ trợ SIM 4G LTE" },
+          { label: "GPS", value: "GPS / GLONASS / Beidou" }
+        ]
+      },
+      {
+        title: "Tính năng",
+        rows: [
+          { label: "CarPlay", value: "Không dây" },
+          { label: "Android Auto", value: "Không dây" },
+          { label: "Giải trí", value: "YouTube, Netflix, Spotify" },
+          { label: "Chia màn hình", value: "Có" },
+          { label: "Trợ lý giọng nói", value: "Có" }
+        ]
+      },
+      {
+        title: "Cổng kết nối",
+        rows: [
+          { label: "Nguồn", value: "USB Type-C" },
+          { label: "USB", value: "2 x USB-A" },
+          { label: "Khe SIM", value: "Có" },
+          { label: "Reset", value: "Có" }
+        ]
+      },
+      {
+        title: "Thiết kế & nguồn",
+        rows: [
+          { label: "Chất liệu", value: "Nhôm nguyên khối" },
+          { label: "Tản nhiệt", value: "Thụ động" },
+          { label: "Điện áp", value: "5V / 1.5A" },
+          { label: "Kích thước", value: "Nhỏ gọn - phù hợp taplo xe" }
+        ]
+      },
+      {
+        title: "Phần mềm & hệ sinh thái",
+        rows: [
+          { label: "App quản lý", value: "VRTECH NEXUS" },
+          { label: "Bảo hành", value: "Điện tử qua App" },
+          { label: "Thời gian bảo hành", value: "12 tháng" },
+          { label: "Cập nhật OTA", value: "Có" },
+          { label: "Tặng kèm", value: "3 tháng VRTECH NEXUS Pro" }
+        ]
+      }
     ],
     reasons: [
       "Chi phí dễ tiếp cận cho khách hàng phổ thông.",
@@ -58,16 +195,39 @@ window.PRODUCTS = {
 
   s2p: {
     name: "TBOX S2P V2",
+    top_title: "Carlinkit TBOX S2P V2",
     badge: "Bán chạy nhất",
     subtitle: "Cấu hình ổn định – phù hợp đa số xe – dễ chốt đơn",
     desc: "TBOX S2P V2 by VRTECH là phiên bản bán chạy nhất trong hệ Carlinkit V2, dành cho khách hàng cần một lựa chọn cân bằng giữa hiệu năng, độ ổn định và chi phí đầu tư. Model này phù hợp với đa số dòng xe có Apple CarPlay có dây, dễ tư vấn, dễ sử dụng và đáp ứng tốt các nhu cầu giải trí, dẫn đường, kết nối cũng như quản lý thiết bị trên xe.",
     hero_image: "images/products12thv2/s2pv2/TBOX S2P 01.jpg",
-    nexus_image: "images/products12th/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
     gallery: [
-      "images/products12th/s2p/TBOX S2P-23.jpg",
-      "images/products12th/s2p/TBOX S2P-24.jpg",
-      "images/products12th/s2p/TBOX S2P-25.jpg",
-      "images/products12th/s2p/TBOX S2P-26.jpg"
+      "images/products12thv2/s2pv2/TBOX S2P 02.jpg",
+      "images/products12thv2/s2pv2/TBOX S2P 03.jpg",
+      "images/products12thv2/s2pv2/TBOX S2P 04.jpg",
+      "images/products12thv2/s2pv2/TBOX S2P 05.jpg",
+      "images/products12thv2/s2pv2/TBOX S2P 06.jpg"
+    ],
+    gallery_extra: [
+      {
+        image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
+        alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX S2P V2"
+      }
+    ],
+    stock_status: "Còn hàng",
+    brand: "Carlinkit",
+    category: "Android Box O To",
+    condition: "San pham chinh hang, fullbox",
+    warranty_label: "Bao hanh 12 thang",
+    quantity_available: "Còn hàng",
+    primary_cta: "Mua ngay",
+    support_cta: "Gọi tư vấn",
+    support_phone: "0921515868",
+    promo: "Liên hệ để nhận giá và cấu hình phù hợp theo dòng xe.",
+    assurances: [
+      { title: "Chính hãng VRTECH", desc: "Phân phối bởi VRTECH, nguồn gốc rõ ràng, dễ tư vấn cho đa số dòng xe." },
+      { title: "Bảo hành 12 thang", desc: "Bảo hành điện tử minh bạch, dễ kiểm tra và hỗ trợ khi cần." },
+      { title: "Hỗ trợ kỹ thuật", desc: "Đồng hành trong quá trình cài đặt và sử dụng thực tế." }
     ],
     highlights: [
       "Phiên bản bán chạy nhất trong hệ Carlinkit V2",
@@ -119,12 +279,34 @@ window.PRODUCTS = {
     subtitle: "Mượt hơn – thoải mái hơn cho dùng hằng ngày",
     desc: "Bản nâng cấp hợp lý cho khách hàng muốn trải nghiệm cao hơn nhóm phổ thông nhưng chưa cần lên Ultra.",
     hero_image: "images/products12thv2/plusv2/TBOX PLUS 01.jpg",
-    nexus_image: "images/products12th/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
     gallery: [
-      "images/products12th/plusv2/TBOX PLUS V2-08.jpg",
-      "images/products12th/plusv2/TBOX PLUS V2-09.jpg",
-      "images/products12th/plusv2/TBOX PLUS V2-11.jpg",
-      "images/products12th/plusv2/TBOX PLUS V2-12.jpg"
+      "images/products12thv2/plusv2/TBOX PLUS 02.jpg",
+      "images/products12thv2/plusv2/TBOX PLUS 03.jpg",
+      "images/products12thv2/plusv2/TBOX PLUS 04.jpg",
+      "images/products12thv2/plusv2/TBOX PLUS 05.jpg",
+      "images/products12thv2/plusv2/TBOX PLUS 06.jpg"
+    ],
+    gallery_extra: [
+      {
+        image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
+        alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX PLUS V2"
+      }
+    ],
+    stock_status: "Con hang",
+    brand: "Carlinkit",
+    category: "Android Box O To",
+    condition: "San pham chinh hang, fullbox",
+    warranty_label: "Bao hanh 12 thang",
+    quantity_available: "Con hang",
+    primary_cta: "Mua ngay",
+    support_cta: "Goi tu van",
+    support_phone: "0921515868",
+    promo: "Lien he de nhan cau hinh va uu dai phu hop dong xe.",
+    assurances: [
+      { title: "Phan phoi chinh hang", desc: "Model nang cap hop ly, duoc VRTECH phan phoi chinh thuc." },
+      { title: "Bao hanh 12 thang", desc: "Bao hanh dien tu ro rang, ho tro sau ban hang day du." },
+      { title: "Tu van theo xe", desc: "Goi y phien ban phu hop de dat trai nghiem tot hon hang ngay." }
     ],
     highlights: [
       "Bản nâng cấp hợp lý từ nhóm phổ thông",
@@ -176,12 +358,34 @@ window.PRODUCTS = {
     subtitle: "Thiết kế đẹp – LED ambient – trải nghiệm hiện đại",
     desc: "Phiên bản dành cho khách hàng đề cao thiết kế, ánh sáng ambient và cảm giác cao cấp trong khoang xe.",
     hero_image: "images/products12thv2/ambientv2/TBOX AMBIENT 01.jpg",
-    nexus_image: "images/products12th/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
     gallery: [
-      "images/products12th/ambientv2/TBOX AMBIENT v2-01.jpg",
-      "images/products12th/ambientv2/TBOX AMBIENT v2-02.jpg",
-      "images/products12th/ambientv2/TBOX AMBIENT v2-05.jpg",
-      "images/products12th/ambientv2/TBOX AMBIENT v2-06.jpg"
+      "images/products12thv2/ambientv2/TBOX AMBIENT 02.jpg",
+      "images/products12thv2/ambientv2/TBOX AMBIENT 03.jpg",
+      "images/products12thv2/ambientv2/TBOX AMBIENT 04.jpg",
+      "images/products12thv2/ambientv2/TBOX AMBIENT 05.jpg",
+      "images/products12thv2/ambientv2/TBOX AMBIENT 06.jpg"
+    ],
+    gallery_extra: [
+      {
+        image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
+        alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX AMBIENT V2"
+      }
+    ],
+    stock_status: "Con hang",
+    brand: "Carlinkit",
+    category: "Android Box O To",
+    condition: "San pham chinh hang, fullbox",
+    warranty_label: "Bao hanh 12 thang",
+    quantity_available: "Con hang",
+    primary_cta: "Mua ngay",
+    support_cta: "Goi tu van",
+    support_phone: "0921515868",
+    promo: "Lien he de nhan uu dai va phien ban thiet ke phu hop noi that xe.",
+    assurances: [
+      { title: "Thiet ke cao cap", desc: "LED ambient va ngoai hinh noi bat hon trong khoang lai." },
+      { title: "Chinh hang VRTECH", desc: "Nguon goc ro rang, de tu van cho nhom khach de cao tham my." },
+      { title: "Bao hanh 12 thang", desc: "Ho tro ky thuat va bao hanh dien tu minh bach." }
     ],
     highlights: [
       "Phiên bản thiên về thẩm mỹ và cảm giác cao cấp",
@@ -233,12 +437,34 @@ window.PRODUCTS = {
     subtitle: "Flagship – mượt tối đa – dành cho khách khó tính",
     desc: "Phiên bản mạnh nhất trong hệ Carlinkit V2 by VRTECH, dành cho nhóm khách hàng đòi hỏi hiệu năng cao cấp và độ mượt tối đa.",
     hero_image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 01.jpg",
-    nexus_image: "images/products12th/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
     gallery: [
-      "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-30.jpg",
-      "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-31.jpg",
-      "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-32.jpg",
-      "images/products12th/ultramaxv2/TBOX ULTRA MAX V2-33.jpg"
+      "images/products12thv2/ultrav2/TBOX ULTRA MAX 02.jpg",
+      "images/products12thv2/ultrav2/TBOX ULTRA MAX 03.jpg",
+      "images/products12thv2/ultrav2/TBOX ULTRA MAX 04.jpg",
+      "images/products12thv2/ultrav2/TBOX ULTRA MAX 05.jpg",
+      "images/products12thv2/ultrav2/TBOX ULTRA MAX 06.jpg"
+    ],
+    gallery_extra: [
+      {
+        image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
+        alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX ULTRA MAX V2"
+      }
+    ],
+    stock_status: "Con hang",
+    brand: "Carlinkit",
+    category: "Android Box O To",
+    condition: "San pham chinh hang, fullbox",
+    warranty_label: "Bao hanh 12 thang",
+    quantity_available: "Con hang",
+    primary_cta: "Mua ngay",
+    support_cta: "Goi tu van",
+    support_phone: "0921515868",
+    promo: "Lien he de duoc tu van ban cau hinh cao cap phu hop nhu cau thuc te.",
+    assurances: [
+      { title: "Flagship hieu nang", desc: "Danh cho khach uu tien toc do, da nhiem va trai nghiem cao cap." },
+      { title: "Phan phoi chinh hang", desc: "VRTECH ho tro cau hinh va cai dat cho nhom khach premium." },
+      { title: "Bao hanh 12 thang", desc: "Hau mai ro rang, ho tro trong suot qua trinh su dung." }
     ],
     highlights: [
       "Phiên bản mạnh nhất trong hệ Carlinkit V2",

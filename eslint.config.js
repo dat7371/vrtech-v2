@@ -27,8 +27,12 @@ export default [
         setTimeout: "readonly",
         clearTimeout: "readonly",
         Event: "readonly",
+        URL: "readonly",
         IntersectionObserver: "readonly",
         HTMLElement: "readonly",
+        HTMLInputElement: "readonly",
+        HTMLButtonElement: "readonly",
+        HTMLSelectElement: "readonly",
         Node: "readonly"
       },
     },

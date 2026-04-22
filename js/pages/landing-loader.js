@@ -23,6 +23,7 @@ function injectComponent(targetId, componentKey) {
   }
 
   container.innerHTML = template;
+  window.VRTECH_ASSETS?.applyAssetPaths?.(container);
 }
 
 function loadAllComponents() {

@@ -7,14 +7,10 @@ function injectAppHeader() {
   }
 
   container.innerHTML = template;
+  window.VRTECH_ASSETS?.applyAssetPaths?.(container);
 }
 
 function fixAppPageHeaderPaths() {
-  const headerImg = document.querySelector(".logo-image img");
-  if (headerImg) {
-    headerImg.src = "../images/logo/LOGO VRTECH-02.png";
-  }
-
   const logoLink = document.querySelector(".logo-image");
   if (logoLink) {
     logoLink.setAttribute("href", "../index.html");
