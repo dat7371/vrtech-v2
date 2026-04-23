@@ -322,11 +322,14 @@ window.PRODUCTS = {
   s2p: {
     name: "TBOX S2P V2",
     top_title: "Carlinkit TBOX S2P V2",
+    short_name: "TBOX S2P V2",
     badge: "Bán chạy nhất",
     subtitle: "Cấu hình ổn định – phù hợp đa số xe – dễ chốt đơn",
+    detail_title: "Giới thiệu và đánh giá TBOX S2P V2 - VRTECH Edition 2026",
+    detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "TBOX S2P V2 by VRTECH là phiên bản bán chạy nhất trong hệ Carlinkit V2, dành cho khách hàng cần một lựa chọn cân bằng giữa hiệu năng, độ ổn định và chi phí đầu tư. Model này phù hợp với đa số dòng xe có Apple CarPlay có dây, dễ tư vấn, dễ sử dụng và đáp ứng tốt các nhu cầu giải trí, dẫn đường, kết nối cũng như quản lý thiết bị trên xe.",
     hero_image: "images/products12thv2/s2pv2/TBOX S2P 01.jpg",
-    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
     gallery: [
       "images/products12thv2/s2pv2/TBOX S2P 02.jpg",
       "images/products12thv2/s2pv2/TBOX S2P 03.jpg",
@@ -336,16 +339,38 @@ window.PRODUCTS = {
     ],
     gallery_extra: [
       {
+        image: "images/products12thv2/s2pv2/TBOX S2P 07.png",
+        alt: "Sơ đồ bố cục tổng thể của TBOX S2P V2"
+      },
+      {
+        image: "images/products12thv2/s2pv2/TBOX S2P 08.png",
+        alt: "Mô tả cổng kết nối thực tế của TBOX S2P V2"
+      },
+      {
+        image: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
+        alt: "Giao diện ứng dụng VRTECH NEXUS trên TBOX S2P V2"
+      },
+      {
+        image: "images/products12thv2/s2pv2/TBOX S2P 10.png",
+        alt: "So sánh chip Qualcomm 6225 và 6115 trên TBOX S2P V2"
+      },
+      {
+        image: "images/products12thv2/s2pv2/TBOX S2P 11.png",
+        alt: "Minh họa bổ sung so sánh chip Qualcomm 6225 và 6115"
+      },
+      {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
         alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX S2P V2"
       }
     ],
     stock_status: "Còn hàng",
     brand: "Carlinkit",
-    category: "Android Box O To",
-    condition: "San pham chinh hang, fullbox",
-    warranty_label: "Bao hanh 12 thang",
+    category: "Android Box Ô Tô",
+    condition: "Sản phẩm chính hãng, fullbox",
+    warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
+    price: "4.349.000",
+    vat_label: "(VAT 8%)",
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
@@ -378,6 +403,149 @@ window.PRODUCTS = {
       "Dễ tư vấn, dễ lắp, phù hợp đa số dòng xe",
       "VRTECH Nexus, chính ngạch, VAT và bảo hành điện tử 12 tháng"
     ],
+    detail_sections: [
+      {
+        paragraphs: [
+          "Trong năm 2026, nhu cầu nâng cấp trải nghiệm giải trí và điều hướng trên xe ngày càng tăng cao. Các dòng Android Box ô tô trở thành giải pháp tối ưu giúp biến màn hình zin thành hệ thống thông minh.",
+          "Trong đó, TBOX S2P V2 - VRTECH Edition là một trong những phiên bản nổi bật nhất trong phân khúc nhờ sự cân bằng giữa hiệu năng, độ ổn định và giá thành.",
+          "Được trang bị chip Qualcomm 6225 tiến trình 6nm, sản phẩm mang lại khả năng xử lý mượt mà, ổn định lâu dài và phù hợp với đa số nhu cầu sử dụng thực tế hiện nay."
+        ]
+      },
+      {
+        title: "1. Thiết kế nhỏ gọn - tối ưu cho xe hơi",
+        paragraphs: [
+          "TBOX S2P V2 sở hữu thiết kế vuông bo góc hiện đại, nhỏ gọn, dễ dàng lắp đặt và giấu gọn trong xe.",
+          "Mặt trên nổi bật với logo Carlinkit và vòng LED hiển thị trạng thái hoạt động.",
+          "Mặt lưng được thiết kế dạng lưới giúp tản nhiệt thụ động hiệu quả, đảm bảo thiết bị hoạt động ổn định khi sử dụng lâu dài."
+        ],
+        note: "Kích thước nhỏ gọn giúp phù hợp với mọi không gian nội thất xe.",
+        image: {
+          src: "images/products12thv2/s2pv2/TBOX S2P 07.png",
+          alt: "Hình mô tả bố cục tổng thể của TBOX S2P V2"
+        }
+      },
+      {
+        title: "2. Hiệu năng mạnh mẽ với chip Qualcomm 6225 (6nm)",
+        paragraphs: [
+          "TBOX S2P V2 sử dụng chip Qualcomm 6225 (SM6225) cho khả năng xử lý mượt mà và ổn định hơn trong môi trường xe."
+        ],
+        bullets: [
+          "CPU 8 nhân (Octa-core)",
+          "4 x Cortex-A73 @ 2.4GHz",
+          "4 x Cortex-A53 @ 1.8GHz",
+          "GPU Adreno 610",
+          "Xử lý mượt các ứng dụng dẫn đường và giải trí",
+          "Chạy đa nhiệm ổn định, hỗ trợ chia đôi màn hình",
+          "Ít nóng, tiết kiệm điện hơn nhờ tiến trình 6nm",
+          "So với chip 6115: mượt hơn rõ rệt, ít giật lag khi dùng lâu, ổn định hơn trong môi trường xe"
+        ],
+        image: {
+          src: "images/products12thv2/s2pv2/TBOX S2P 10.png",
+          alt: "So sánh chip Qualcomm 6225 và 6115 trên TBOX S2P V2"
+        }
+      },
+      {
+        title: "3. Hệ điều hành Android 13 - dễ dùng, linh hoạt",
+        bullets: [
+          "Giao diện thân thiện, dễ sử dụng",
+          "Hỗ trợ cài ứng dụng từ CH Play",
+          "Tương thích YouTube, Netflix, Spotify",
+          "Tương thích Google Maps, Vietmap",
+          "Hỗ trợ nhiều ứng dụng giải trí và tiện ích khác"
+        ],
+        note: "Hoạt động như một chiếc tablet Android trên xe."
+      },
+      {
+        title: "4. Trải nghiệm giải trí và điều hướng toàn diện",
+        bullets: [
+          "Hỗ trợ CarPlay và Android Auto",
+          "Xem video, nghe nhạc trực tiếp",
+          "Chia đôi màn hình (đa nhiệm)",
+          "Trợ lý giọng nói"
+        ],
+        note: "Vừa dẫn đường, vừa giải trí cùng lúc."
+      },
+      {
+        title: "5. Cổng kết nối tối giản - dễ sử dụng",
+        paragraphs: [
+          "Thiết bị được trang bị đầy đủ các cổng cần thiết để người dùng cắm là chạy, không cần lắp đặt phức tạp."
+        ],
+        bullets: [
+          "Khe thẻ nhớ TF (microSD) - mở rộng dung lượng",
+          "Cổng USB Type-C - cấp nguồn và truyền dữ liệu",
+          "Khe SIM Nano - kết nối 4G",
+          "Bố trí thực tế: TF Card | Type-C | SIM"
+        ],
+        image: {
+          src: "images/products12thv2/s2pv2/TBOX S2P 08.png",
+          alt: "Hình mô tả cổng kết nối của TBOX S2P V2"
+        }
+      },
+      {
+        title: "6. Kết nối không dây hiện đại",
+        bullets: [
+          "SIM 4G LTE độc lập",
+          "WiFi 2.4GHz / 5GHz",
+          "Bluetooth 5.1",
+          "GPS đa hệ thống"
+        ],
+        note: "Không phụ thuộc điện thoại, sử dụng tiện lợi hơn."
+      },
+      {
+        title: "7. Tản nhiệt ổn định - hoạt động bền bỉ",
+        bullets: [
+          "Thiết kế tản nhiệt mặt lưng dạng lưới",
+          "Giúp thoát nhiệt nhanh khi sử dụng lâu",
+          "Hạn chế nóng máy, giảm lag"
+        ],
+        note: "Phù hợp chạy liên tục trên xe."
+      },
+      {
+        title: "8. Ứng dụng VRTECH NEXUS",
+        bullets: [
+          "Truyền địa chỉ từ điện thoại lên màn hình xe",
+          "Xem vị trí xe và lịch sử hành trình",
+          "Truyền file không dây",
+          "Bật/tắt thiết bị từ xa",
+          "Kích hoạt bảo hành điện tử"
+        ],
+        note: "Tặng kèm 3 tháng Pro.",
+        image: {
+          src: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
+          alt: "Hình ứng dụng VRTECH NEXUS trên TBOX S2P V2"
+        }
+      },
+      {
+        title: "9. Ưu điểm",
+        bullets: [
+          "Chip Qualcomm 6225 (6nm) mạnh mẽ",
+          "Hoạt động ổn định, ít nóng",
+          "Hỗ trợ SIM 4G độc lập",
+          "Android 13 đầy đủ tính năng",
+          "Dễ lắp đặt, tương thích nhiều dòng xe",
+          "Tích hợp hệ sinh thái VRTECH NEXUS"
+        ],
+        image: {
+          src: "images/products12thv2/s2pv2/TBOX S2P 11.png",
+          alt: "Hình so sánh chip Qualcomm 6225 và 6115 trên TBOX S2P V2"
+        }
+      },
+      {
+        title: "10. Nhược điểm",
+        bullets: [
+          "Không phù hợp với xe không có CarPlay",
+          "Hiệu năng không dành cho game nặng cao cấp",
+          "Cần mạng internet để dùng tối đa tính năng"
+        ]
+      },
+      {
+        title: "Kết luận về TBOX S2P V2",
+        paragraphs: [
+          "Dựa trên những đánh giá trên, có thể thấy rằng TBOX S2P V2 - VRTECH Edition là lựa chọn rất phù hợp cho người dùng cần một thiết bị mượt, ổn định, dễ sử dụng và giá hợp lý.",
+          "Đây là dòng Android Box cân bằng tốt nhất trong phân khúc hiện tại, đặc biệt phù hợp để triển khai cho số đông khách hàng."
+        ]
+      }
+    ],
     specs: [
       { label: "Phân khúc", value: "Bán chạy nhất, cân bằng nhất" },
       { label: "Chip xử lý", value: "Qualcomm 6225" },
@@ -385,6 +553,128 @@ window.PRODUCTS = {
       { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình" },
       { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, SIM 4G, Bluetooth" },
       { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ, VRTECH Nexus" }
+    ],
+    spec_sections: [
+      {
+        title: "Thông tin chung",
+        rows: [
+          { label: "Tên sản phẩm", value: "TBOX S2P V2 - VRTECH Edition 2026" },
+          { label: "Model gốc", value: "Carlinkit CPC200-S2P" },
+          { label: "Thương hiệu", value: "Carlinkit (VRTECH phân phối & tối ưu)" },
+          { label: "Bảo hành", value: "12 tháng (bảo hành điện tử qua App)" },
+          { label: "Xuất xứ", value: "Trung Quốc" }
+        ]
+      },
+      {
+        title: "Bộ vi xử lý (CPU)",
+        rows: [
+          { label: "Chip", value: "Qualcomm 6225 (Snapdragon Automotive)" },
+          { label: "Tiến trình", value: "6nm" },
+          { label: "Kiến trúc", value: "Kryo 260 (ARM)" },
+          { label: "Số nhân", value: "8 nhân (Octa-core)" },
+          { label: "4 nhân hiệu năng cao", value: "Cortex-A73 @ 2.4GHz" },
+          { label: "4 nhân tiết kiệm điện", value: "Cortex-A53 @ 1.8GHz" }
+        ]
+      },
+      {
+        title: "GPU (Đồ họa)",
+        rows: [
+          { label: "GPU", value: "Adreno 610" },
+          { label: "Khả năng", value: "Xử lý đồ họa, video và giao diện mượt mà" }
+        ]
+      },
+      {
+        title: "Bộ nhớ",
+        rows: [
+          { label: "RAM", value: "4GB / 8GB" },
+          { label: "Loại RAM", value: "LPDDR4X" },
+          { label: "ROM", value: "64GB / 128GB" },
+          { label: "Chuẩn lưu trữ", value: "UFS / eMMC (tùy lô sản xuất)" }
+        ]
+      },
+      {
+        title: "Hệ điều hành",
+        rows: [
+          { label: "OS", value: "Android 13" },
+          { label: "Hỗ trợ", value: "Google Play (CH Play)" }
+        ]
+      },
+      {
+        title: "Kết nối",
+        rows: [
+          { label: "SIM", value: "Nano SIM - hỗ trợ 4G LTE" },
+          { label: "Wi-Fi", value: "2.4GHz + 5GHz (Wi-Fi 5 - 802.11 a/b/g/n/ac)" },
+          { label: "Bluetooth", value: "5.1 (BLE)" },
+          { label: "GPS", value: "GPS / GLONASS / BeiDou / Galileo" }
+        ]
+      },
+      {
+        title: "Cổng kết nối",
+        rows: [
+          { label: "Thứ tự thực tế", value: "Khe TF Card | USB Type-C | Khe SIM" },
+          { label: "Khe thẻ nhớ TF (microSD)", value: "Hỗ trợ lên đến 128GB" },
+          { label: "USB Type-C", value: "Cấp nguồn + truyền dữ liệu" },
+          { label: "Input", value: "5V - 1A" },
+          { label: "Khe SIM 4G", value: "Nano SIM - kết nối internet độc lập" }
+        ]
+      },
+      {
+        title: "Tính năng chính",
+        rows: [
+          { label: "Wireless CarPlay", value: "Có" },
+          { label: "Android Auto", value: "Có" },
+          { label: "Chia đôi màn hình", value: "Split Screen" },
+          { label: "Trợ lý giọng nói", value: "Có" },
+          { label: "Giải trí", value: "YouTube, Netflix, Spotify..." },
+          { label: "Điều hướng", value: "GPS đa hệ thống" },
+          { label: "Cài ứng dụng", value: "Trực tiếp như tablet Android" },
+          { label: "OTA Update", value: "Cập nhật phần mềm online" }
+        ]
+      },
+      {
+        title: "Ứng dụng VRTECH NEXUS",
+        rows: [
+          { label: "Truyền địa chỉ", value: "Từ điện thoại lên màn hình xe" },
+          { label: "Theo dõi xe", value: "Xem vị trí xe và lịch sử hành trình" },
+          { label: "Truyền file", value: "Không dây" },
+          { label: "Điều khiển từ xa", value: "Bật/tắt thiết bị từ xa" },
+          { label: "Bảo hành", value: "Kích hoạt bảo hành điện tử" },
+          { label: "Tặng kèm", value: "3 tháng Pro" }
+        ]
+      },
+      {
+        title: "Nguồn điện",
+        rows: [
+          { label: "Input", value: "5V - 1A" },
+          { label: "Cấp nguồn", value: "Qua USB từ xe" }
+        ]
+      },
+      {
+        title: "Kích thước & thiết kế",
+        rows: [
+          { label: "Kích thước", value: "~80 x 80 x 13.5 mm" },
+          { label: "Thiết kế", value: "Vuông bo góc" },
+          { label: "Tản nhiệt", value: "Mặt lưng dạng lưới + tản nhiệt thụ động" },
+          { label: "LED", value: "Vòng LED đa màu hiển thị trạng thái" }
+        ]
+      },
+      {
+        title: "Ưu điểm nổi bật",
+        rows: [
+          { label: "Chip 6225", value: "Mượt và tiết kiệm điện" },
+          { label: "SIM 4G độc lập", value: "Không phụ thuộc điện thoại" },
+          { label: "Android full", value: "Dùng như tablet" },
+          { label: "Tối ưu VRTECH", value: "Ổn định hơn bản thường" }
+        ]
+      },
+      {
+        title: "Lưu ý quan trọng",
+        rows: [
+          { label: "Ngoại hình", value: "Giống bản chip 6115" },
+          { label: "Phiên bản VRTECH", value: "Dùng chip 6225 mạnh hơn" },
+          { label: "Khuyến nghị", value: "Khách cần kiểm tra kỹ trước khi mua" }
+        ]
+      }
     ],
     reasons: [
       "Là model bán chạy nhất vì dễ chốt với đa số khách hàng cần một bản ổn định và dễ dùng.",

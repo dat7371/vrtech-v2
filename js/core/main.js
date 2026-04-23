@@ -7,9 +7,7 @@ function updateHeaderOnScroll() {
   header.classList.toggle("scrolled", window.scrollY > 50);
 }
 
-document.addEventListener("componentsLoaded", () => {
-  console.log("VRTECH landing loaded");
-
+function handleInitialHashScroll() {
   if (window.location.hash) {
     const targetId = window.location.hash.substring(1);
     setTimeout(() => {
@@ -23,9 +21,18 @@ document.addEventListener("componentsLoaded", () => {
       }
     }, 100);
   }
+}
 
+function initializePageShell() {
   updateHeaderOnScroll();
-});
+}
 
-document.addEventListener("DOMContentLoaded", updateHeaderOnScroll);
+document.addEventListener("DOMContentLoaded", () => {
+  initializePageShell();
+  handleInitialHashScroll();
+});
+document.addEventListener("componentsLoaded", () => {
+  initializePageShell();
+  handleInitialHashScroll();
+});
 window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
