@@ -362,12 +362,6 @@ function initializeProductCompare(currentKey) {
   renderCompare(compareKeys[0]);
 
   const syncComparePanelState = () => {
-    if (isMobileViewport.matches) {
-      panel.hidden = false;
-      toggle.setAttribute("aria-expanded", "true");
-      return;
-    }
-
     if (!toggle.hasAttribute("data-user-toggled")) {
       panel.hidden = true;
       toggle.setAttribute("aria-expanded", "false");
@@ -377,17 +371,14 @@ function initializeProductCompare(currentKey) {
   syncComparePanelState();
 
   toggle.addEventListener("click", () => {
-    if (isMobileViewport.matches) {
-      panel.hidden = false;
-      toggle.setAttribute("aria-expanded", "true");
-      panel.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-
     const isHidden = panel.hidden;
     panel.hidden = !isHidden;
     toggle.setAttribute("aria-expanded", String(isHidden));
     toggle.setAttribute("data-user-toggled", "true");
+
+    if (isMobileViewport.matches && isHidden) {
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 
   select.addEventListener("change", () => {
@@ -395,9 +386,7 @@ function initializeProductCompare(currentKey) {
   });
 
   const handleViewportChange = () => {
-    if (isMobileViewport.matches) {
-      toggle.removeAttribute("data-user-toggled");
-    }
+    toggle.removeAttribute("data-user-toggled");
     syncComparePanelState();
   };
 
