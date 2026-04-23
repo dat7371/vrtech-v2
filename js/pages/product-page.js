@@ -695,6 +695,29 @@ function renderProductData() {
   document.querySelectorAll("[data-product-detail-copy]").forEach((el) => {
     el.innerHTML = buildProductDetailBlocks(product);
   });
+
+  const detailCopy = document.querySelector("[data-product-detail-copy]");
+  const detailCopyWrap = detailCopy?.closest(".product-detail-copy-wrap");
+  const detailToggle = document.querySelector("[data-product-detail-toggle]");
+
+  if (detailCopy instanceof HTMLElement && detailCopyWrap instanceof HTMLElement && detailToggle instanceof HTMLButtonElement) {
+    const fullDetailHeight = detailCopy.scrollHeight;
+    const collapsedDetailHeight = window.innerWidth <= 768 ? 300 : 420;
+    const shouldCollapseDetail = fullDetailHeight > collapsedDetailHeight + 80;
+
+    detailCopyWrap.style.setProperty("--product-detail-collapsed-height", `${collapsedDetailHeight}px`);
+    detailCopyWrap.classList.toggle("is-collapsed", shouldCollapseDetail);
+    detailToggle.hidden = !shouldCollapseDetail;
+    detailToggle.setAttribute("aria-expanded", shouldCollapseDetail ? "false" : "true");
+    detailToggle.textContent = shouldCollapseDetail ? "Xem thêm" : "Thu gọn";
+    detailToggle.onclick = shouldCollapseDetail
+      ? () => {
+          const isCollapsed = detailCopyWrap.classList.toggle("is-collapsed");
+          detailToggle.setAttribute("aria-expanded", String(!isCollapsed));
+          detailToggle.textContent = isCollapsed ? "Xem thêm" : "Thu gọn";
+        }
+      : null;
+  }
   document.querySelectorAll("[data-product-badge]").forEach(el => el.textContent = product.badge);
   document.querySelectorAll("[data-product-subtitle]").forEach(el => el.textContent = product.subtitle);
   document.querySelectorAll("[data-product-desc]").forEach(el => el.textContent = product.desc);
@@ -878,7 +901,16 @@ function renderProductData() {
     `).join("");
 
     if (specToggle instanceof HTMLButtonElement) {
-      const shouldCollapse = product.spec_sections.length > 2;
+      const fullSpecHeight = specWrap.scrollHeight;
+      const specHeightMin = window.innerWidth <= 768 ? 260 : 320;
+      const specHeightMax = window.innerWidth <= 768 ? 420 : 560;
+      const collapsedSpecHeight = Math.min(
+        Math.max(Math.round(fullSpecHeight / 3), specHeightMin),
+        specHeightMax
+      );
+      const shouldCollapse = fullSpecHeight > collapsedSpecHeight + 80;
+
+      specWrap.style.setProperty("--product-spec-collapsed-height", `${collapsedSpecHeight}px`);
       specWrap.classList.toggle("is-collapsed", shouldCollapse);
       specToggle.hidden = !shouldCollapse;
       specToggle.setAttribute("aria-expanded", shouldCollapse ? "false" : "true");
