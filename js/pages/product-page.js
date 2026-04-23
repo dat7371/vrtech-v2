@@ -306,11 +306,16 @@ function initializeProductCompare(currentKey) {
   const results = document.querySelector("[data-product-compare-results]");
   const products = window.PRODUCTS || {};
   const compareKeys = Object.keys(products).filter((key) => key !== currentKey);
-  const isMobileViewport = window.matchMedia("(max-width: 768px)");
 
   if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement) || !(select instanceof HTMLSelectElement) || !(results instanceof HTMLElement)) {
     return;
   }
+
+  if (toggle.dataset.compareReady === "true") {
+    return;
+  }
+
+  toggle.dataset.compareReady = "true";
 
   if (!compareKeys.length) {
     toggle.hidden = true;
@@ -360,41 +365,18 @@ function initializeProductCompare(currentKey) {
 
   select.innerHTML = compareKeys.map((key) => `<option value="${key}">${getCompactProductName(products[key])}</option>`).join("");
   renderCompare(compareKeys[0]);
-
-  const syncComparePanelState = () => {
-    if (!toggle.hasAttribute("data-user-toggled")) {
-      panel.hidden = true;
-      toggle.setAttribute("aria-expanded", "false");
-    }
-  };
-
-  syncComparePanelState();
+  panel.hidden = true;
+  toggle.setAttribute("aria-expanded", "false");
 
   toggle.addEventListener("click", () => {
     const isHidden = panel.hidden;
     panel.hidden = !isHidden;
     toggle.setAttribute("aria-expanded", String(isHidden));
-    toggle.setAttribute("data-user-toggled", "true");
-
-    if (isMobileViewport.matches && isHidden) {
-      panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   });
 
   select.addEventListener("change", () => {
     renderCompare(select.value);
   });
-
-  const handleViewportChange = () => {
-    toggle.removeAttribute("data-user-toggled");
-    syncComparePanelState();
-  };
-
-  if (typeof isMobileViewport.addEventListener === "function") {
-    isMobileViewport.addEventListener("change", handleViewportChange);
-  } else if (typeof isMobileViewport.addListener === "function") {
-    isMobileViewport.addListener(handleViewportChange);
-  }
 }
 
 function loadProductPage() {
