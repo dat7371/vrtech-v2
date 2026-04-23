@@ -196,9 +196,14 @@ function getCompareSummary(product) {
   const specs = Array.isArray(product?.specs) ? product.specs : [];
   const specSections = Array.isArray(product?.spec_sections) ? product.spec_sections : [];
   const getSpecValue = (label) => specs.find((item) => item.label === label)?.value || "";
-  const getSectionRowValue = (...labels) => {
-    for (const section of specSections) {
+  const getSectionRowValue = (sectionTitles, rowLabels) => {
+    const titles = Array.isArray(sectionTitles) ? sectionTitles : [sectionTitles];
+    const labels = Array.isArray(rowLabels) ? rowLabels : [rowLabels];
+
+    for (const title of titles) {
+      const section = specSections.find((item) => item?.title === title);
       const rows = Array.isArray(section?.rows) ? section.rows : [];
+
       for (const label of labels) {
         const matched = rows.find((row) => row.label === label);
         if (matched?.value) {
@@ -206,19 +211,47 @@ function getCompareSummary(product) {
         }
       }
     }
+
     return "";
   };
 
   const compareSpecs = [
-    { label: "Chip", value: getSpecValue("Chip xử lý") || getSectionRowValue("Chipset", "Model") || "Đang cập nhật" },
-    { label: "CPU", value: getSectionRowValue("Kiến trúc CPU", "Số nhân") || "Đang cập nhật" },
-    { label: "GPU", value: getSectionRowValue("GPU", "Đồ họa (GPU)") || "Đang cập nhật" },
-    { label: "RAM", value: getSectionRowValue("RAM tùy chọn", "Dung lượng") || "Đang cập nhật" },
-    { label: "ROM", value: getSectionRowValue("ROM tùy chọn", "Dung lượng") || "Đang cập nhật" },
-    { label: "Hệ điều hành", value: getSectionRowValue("Hệ điều hành", "Phiên bản") || "Đang cập nhật" },
-    { label: "SIM / Mạng", value: getSectionRowValue("Mạng di động", "SIM", "Khe SIM") || "Đang cập nhật" },
-    { label: "Wi-Fi", value: getSectionRowValue("Wi-Fi", "WiFi") || "Đang cập nhật" },
-    { label: "Bluetooth", value: getSectionRowValue("Bluetooth") || "Đang cập nhật" }
+    {
+      label: "Chip",
+      value: getSpecValue("Chip xử lý") || getSectionRowValue(["Bộ xử lý", "Bộ vi xử lý (CPU)"], ["Chipset", "Model"]) || "Đang cập nhật"
+    },
+    {
+      label: "CPU",
+      value: getSectionRowValue(["Bộ xử lý", "Bộ vi xử lý (CPU)"], ["Kiến trúc CPU", "Kiến trúc", "Số nhân"]) || "Đang cập nhật"
+    },
+    {
+      label: "GPU",
+      value: getSectionRowValue(["Bộ xử lý", "Bộ vi xử lý (CPU)"], ["GPU", "Đồ họa (GPU)"]) || "Đang cập nhật"
+    },
+    {
+      label: "RAM",
+      value: getSectionRowValue(["Bộ nhớ và lưu trữ", "Bộ nhớ máy (RAM)"], ["RAM tùy chọn", "Dung lượng"]) || "Đang cập nhật"
+    },
+    {
+      label: "ROM",
+      value: getSectionRowValue(["Bộ nhớ và lưu trữ", "Bộ nhớ lưu trữ (ROM)"], ["ROM tùy chọn", "Dung lượng"]) || "Đang cập nhật"
+    },
+    {
+      label: "Hệ điều hành",
+      value: getSectionRowValue(["Hệ điều hành và nền tảng", "Hệ điều hành"], ["Hệ điều hành", "Phiên bản"]) || "Đang cập nhật"
+    },
+    {
+      label: "SIM / Mạng",
+      value: getSectionRowValue(["Kết nối không dây", "Kết nối"], ["Mạng di động", "SIM", "Khe SIM"]) || "Đang cập nhật"
+    },
+    {
+      label: "Wi-Fi",
+      value: getSectionRowValue(["Kết nối không dây", "Kết nối"], ["Wi-Fi", "WiFi"]) || "Đang cập nhật"
+    },
+    {
+      label: "Bluetooth",
+      value: getSectionRowValue(["Kết nối không dây", "Kết nối"], ["Bluetooth"]) || "Đang cập nhật"
+    }
   ];
 
   return {
