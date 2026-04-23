@@ -2,13 +2,6 @@ const PRODUCT_PAGE_COMPONENTS = [
   ["header", "header"],
   ["product-hero", "product-hero"],
   ["product-specs", "product-specs"],
-  ["product-reasons", "product-reasons"],
-  ["product-nexus", "product-nexus"],
-  ["product-performance", "product-performance"],
-  ["product-features", "product-features"],
-  ["product-images", "product-images"],
-  ["product-compare", "product-compare"],
-  ["product-warranty", "product-warranty"],
   ["product-cta", "product-cta"],
   ["footer", "footer"],
 ];
@@ -201,7 +194,32 @@ function buildProductDetailBlocks(product) {
 
 function getCompareSummary(product) {
   const specs = Array.isArray(product?.specs) ? product.specs : [];
+  const specSections = Array.isArray(product?.spec_sections) ? product.spec_sections : [];
   const getSpecValue = (label) => specs.find((item) => item.label === label)?.value || "";
+  const getSectionRowValue = (...labels) => {
+    for (const section of specSections) {
+      const rows = Array.isArray(section?.rows) ? section.rows : [];
+      for (const label of labels) {
+        const matched = rows.find((row) => row.label === label);
+        if (matched?.value) {
+          return matched.value;
+        }
+      }
+    }
+    return "";
+  };
+
+  const compareSpecs = [
+    { label: "Chip", value: getSpecValue("Chip xử lý") || getSectionRowValue("Chipset", "Model") || "Đang cập nhật" },
+    { label: "CPU", value: getSectionRowValue("Kiến trúc CPU", "Số nhân") || "Đang cập nhật" },
+    { label: "GPU", value: getSectionRowValue("GPU", "Đồ họa (GPU)") || "Đang cập nhật" },
+    { label: "RAM", value: getSectionRowValue("RAM tùy chọn", "Dung lượng") || "Đang cập nhật" },
+    { label: "ROM", value: getSectionRowValue("ROM tùy chọn", "Dung lượng") || "Đang cập nhật" },
+    { label: "Hệ điều hành", value: getSectionRowValue("Hệ điều hành", "Phiên bản") || "Đang cập nhật" },
+    { label: "SIM / Mạng", value: getSectionRowValue("Mạng di động", "SIM", "Khe SIM") || "Đang cập nhật" },
+    { label: "Wi-Fi", value: getSectionRowValue("Wi-Fi", "WiFi") || "Đang cập nhật" },
+    { label: "Bluetooth", value: getSectionRowValue("Bluetooth") || "Đang cập nhật" }
+  ];
 
   return {
     compactName: getCompactProductName(product),
@@ -210,6 +228,7 @@ function getCompareSummary(product) {
     segment: getSpecValue("Phân khúc") || getSpecValue("Phan khuc") || product?.badge || "",
     connection: getSpecValue("Kết nối") || getSpecValue("Ket noi") || "Wi-Fi / Bluetooth",
     aftersales: getSpecValue("Hậu mãi") || getSpecValue("Hau mai") || product?.warranty_label || "",
+    compareSpecs,
     strengths: Array.isArray(product?.compare_good) ? product.compare_good.slice(0, 3) : [],
   };
 }
@@ -292,6 +311,9 @@ function initializeProductCompare(currentKey) {
             <div><span>Loại</span><strong>${summary.category}</strong></div>
             <div><span>Kết nối</span><strong>${summary.connection}</strong></div>
             <div><span>Hậu mãi</span><strong>${summary.aftersales}</strong></div>
+            ${summary.compareSpecs.map((item) => `
+              <div><span>${item.label}</span><strong>${item.value}</strong></div>
+            `).join("")}
           </div>
           <ul class="product-compare-mini-points">
             ${summary.strengths.map((item) => `<li>${item}</li>`).join("")}

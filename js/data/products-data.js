@@ -351,9 +351,26 @@ window.PRODUCTS = {
     support_phone: "0921515868",
     promo: "Liên hệ để nhận giá và cấu hình phù hợp theo dòng xe.",
     assurances: [
-      { title: "Chính hãng VRTECH", desc: "Phân phối bởi VRTECH, nguồn gốc rõ ràng, dễ tư vấn cho đa số dòng xe." },
-      { title: "Bảo hành 12 thang", desc: "Bảo hành điện tử minh bạch, dễ kiểm tra và hỗ trợ khi cần." },
-      { title: "Hỗ trợ kỹ thuật", desc: "Đồng hành trong quá trình cài đặt và sử dụng thực tế." }
+      {
+        title: "VRTECH Official Việt Nam",
+        desc: "Phân phối chính thức Carlinkit TBOX S2P V2 - VRTECH Edition tại thị trường Việt Nam."
+      },
+      {
+        title: "Cam kết sản phẩm",
+        desc: "Sản phẩm mới 100%, chưa active, fullbox, hỗ trợ chứng từ VAT 8% theo nhu cầu."
+      },
+      {
+        title: "Bảo hành điện tử 12 tháng",
+        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+      },
+      {
+        title: "Hỗ trợ kỹ thuật trọn đời",
+        desc: "Tư vấn theo dòng xe, hỗ trợ cài đặt và đồng hành trong suốt quá trình sử dụng."
+      },
+      {
+        title: "Giao hàng toàn quốc",
+        desc: "Hướng dẫn lắp đặt đơn giản, giao hàng nhanh và tư vấn trước khi mua hàng."
+      }
     ],
     highlights: [
       "Phiên bản bán chạy nhất trong hệ Carlinkit V2",
@@ -430,9 +447,26 @@ window.PRODUCTS = {
     support_phone: "0921515868",
     promo: "Lien he de nhan cau hinh va uu dai phu hop dong xe.",
     assurances: [
-      { title: "Phan phoi chinh hang", desc: "Model nang cap hop ly, duoc VRTECH phan phoi chinh thuc." },
-      { title: "Bao hanh 12 thang", desc: "Bao hanh dien tu ro rang, ho tro sau ban hang day du." },
-      { title: "Tu van theo xe", desc: "Goi y phien ban phu hop de dat trai nghiem tot hon hang ngay." }
+      {
+        title: "VRTECH Official Việt Nam",
+        desc: "Phân phối chính thức Carlinkit TBOX PLUS V2 - VRTECH Edition tại thị trường Việt Nam."
+      },
+      {
+        title: "Cam kết sản phẩm",
+        desc: "Sản phẩm mới 100%, chưa active, fullbox, hỗ trợ chứng từ VAT 8% theo nhu cầu."
+      },
+      {
+        title: "Bảo hành điện tử 12 tháng",
+        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+      },
+      {
+        title: "Hỗ trợ kỹ thuật trọn đời",
+        desc: "Tư vấn theo dòng xe, hỗ trợ cài đặt và đồng hành trong suốt quá trình sử dụng."
+      },
+      {
+        title: "Giao hàng toàn quốc",
+        desc: "Hướng dẫn lắp đặt đơn giản, giao hàng nhanh và tư vấn trước khi mua hàng."
+      }
     ],
     highlights: [
       "Bản nâng cấp hợp lý từ nhóm phổ thông",
@@ -479,12 +513,15 @@ window.PRODUCTS = {
   },
 
   ambient: {
-    name: "TBOX AMBIENT V2",
+    name: "TBOX AMBIENT V2 - VRTECH Edition 2026",
+    short_name: "TBOX AMBIENT V2 2026",
     badge: "Thẩm mỹ cao cấp",
-    subtitle: "Thiết kế đẹp – LED ambient – trải nghiệm hiện đại",
-    desc: "Phiên bản dành cho khách hàng đề cao thiết kế, ánh sáng ambient và cảm giác cao cấp trong khoang xe.",
+    subtitle: "Cân bằng giữa hiệu năng, thẩm mỹ và giá thành",
+    detail_title: "TBOX AMBIENT V2 - VRTECH Edition 2026",
+    detail_intro: "Android Box ô tô thế hệ mới - Tối ưu toàn diện cho trải nghiệm lái xe",
+    desc: "Phiên bản Android Box ô tô cân bằng tốt giữa hiệu năng, thẩm mỹ và giá thành, phù hợp người dùng cần box ổn định, có 4G, giải trí, dẫn đường và quản lý qua app.",
     hero_image: "images/products12thv2/ambientv2/TBOX AMBIENT 01.jpg",
-    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/ambientv2/TBOX AMBIENT 09.jpg",
     gallery: [
       "images/products12thv2/ambientv2/TBOX AMBIENT 02.jpg",
       "images/products12thv2/ambientv2/TBOX AMBIENT 03.jpg",
@@ -494,66 +531,319 @@ window.PRODUCTS = {
     ],
     gallery_extra: [
       {
+        image: "images/products12thv2/ambientv2/TBOX AMBIENT 09.jpg",
+        alt: "Giao diện app VRTECH Nexus trên TBOX AMBIENT V2"
+      },
+      {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
         alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX AMBIENT V2"
       }
     ],
-    stock_status: "Con hang",
+    stock_status: "Còn hàng",
     brand: "Carlinkit",
-    category: "Android Box O To",
-    condition: "San pham chinh hang, fullbox",
-    warranty_label: "Bao hanh 12 thang",
-    quantity_available: "Con hang",
+    category: "Android Box Ô Tô",
+    condition: "Mới 100%, chính hãng, fullbox",
+    warranty_label: "Bảo hành 12 tháng",
+    quantity_available: "Còn hàng",
+    price: "4.349.000",
     primary_cta: "Mua ngay",
     support_cta: "Goi tu van",
     support_phone: "0921515868",
-    promo: "Lien he de nhan uu dai va phien ban thiet ke phu hop noi that xe.",
+    promo: "Liên hệ để nhận cấu hình phù hợp và ưu đãi tốt theo dòng xe.",
     assurances: [
-      { title: "Thiet ke cao cap", desc: "LED ambient va ngoai hinh noi bat hon trong khoang lai." },
-      { title: "Chinh hang VRTECH", desc: "Nguon goc ro rang, de tu van cho nhom khach de cao tham my." },
-      { title: "Bao hanh 12 thang", desc: "Ho tro ky thuat va bao hanh dien tu minh bach." }
+      {
+        title: "VRTECH Official Việt Nam",
+        desc: "Phân phối chính thức Carlinkit TBOX AMBIENT V2 - VRTECH Edition tại thị trường Việt Nam."
+      },
+      {
+        title: "Cam kết sản phẩm",
+        desc: "Sản phẩm mới 100%, chưa active, fullbox, hỗ trợ chứng từ VAT 8% theo nhu cầu."
+      },
+      {
+        title: "Bảo hành điện tử 12 tháng",
+        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+      },
+      {
+        title: "Hỗ trợ kỹ thuật trọn đời",
+        desc: "Tư vấn theo dòng xe, hỗ trợ cài đặt và đồng hành trong suốt quá trình sử dụng."
+      },
+      {
+        title: "Giao hàng toàn quốc",
+        desc: "Hướng dẫn lắp đặt đơn giản, giao hàng nhanh và tư vấn trước khi mua hàng."
+      }
     ],
     highlights: [
-      "Phiên bản thiên về thẩm mỹ và cảm giác cao cấp",
-      "LED ambient tạo điểm nhấn rõ trong khoang xe",
-      "Vừa đẹp vừa đủ mạnh cho dùng hằng ngày",
+      "Chip Qualcomm 6225 tiến trình 6nm cho độ ổn định và tiết kiệm điện tốt",
+      "Có 4G LTE, Wi-Fi 5, Bluetooth 5.0 và GPS đa hệ thống",
+      "Giải trí, dẫn đường, chia đôi màn hình và quản lý qua VRTECH Nexus",
       "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
     ],
+    detail_sections: [
+      {
+        title: "Tổng quan sản phẩm",
+        paragraphs: [
+          "TBOX AMBIENT V2 là phiên bản nâng cấp được VRTECH tối ưu riêng cho người dùng Việt, mang đến sự cân bằng hoàn hảo giữa hiệu năng, độ ổn định và giá thành.",
+          "Sở hữu chip Qualcomm 6225 tiến trình 6nm, thiết bị đảm bảo khả năng xử lý mượt mà, tiết kiệm điện năng và vận hành bền bỉ trong thời gian dài, đặc biệt phù hợp với môi trường ô tô."
+        ],
+        image: {
+          src: "images/products12thv2/ambientv2/TBOX AMBIENT 07.png",
+          alt: "Hình mở đầu giới thiệu TBOX AMBIENT V2"
+        }
+      },
+      {
+        title: "Hiệu năng mạnh mẽ - hoạt động ổn định",
+        bullets: [
+          "CPU 8 nhân (Octa-core)",
+          "4 nhân hiệu năng cao Kryo 265 Gold (Cortex-A73) - lên đến 2.4GHz",
+          "4 nhân tiết kiệm điện Kryo 265 Silver (Cortex-A53) - lên đến 1.8GHz",
+          "GPU Adreno 610",
+          "Tiến trình 6nm"
+        ],
+        paragraphs: [
+          "Thiết bị xử lý đồ họa mượt mà, đáp ứng tốt nhu cầu giải trí, video và bản đồ. Tiến trình 6nm giúp tối ưu điện năng, giảm nhiệt và tăng độ ổn định."
+        ],
+        note: "Mang lại trải nghiệm mượt khi đa nhiệm, không giật lag khi dùng lâu và hoạt động ổn định trong môi trường nhiệt cao."
+      },
+      {
+        title: "Hệ thống tản nhiệt thông minh",
+        paragraphs: [
+          "TBOX AMBIENT V2 được trang bị tản nhiệt kim loại trung tâm kết hợp cơ chế tản nhiệt thụ động để giữ hiệu suất bền bỉ khi chạy liên tục."
+        ],
+        bullets: [
+          "Đĩa tản nhiệt kim loại dẫn nhiệt nhanh",
+          "Truyền nhiệt trực tiếp từ chip xuống bề mặt",
+          "Không dùng quạt, không ồn và ít hỏng vặt",
+          "Giữ hiệu năng ổn định khi chạy liên tục"
+        ],
+        note: "Giảm hiện tượng quá nhiệt, giảm xung (throttling) và lag khi sử dụng lâu.",
+        image: {
+          src: "images/products12thv2/ambientv2/TBOX AMBIENT 08.png",
+          alt: "Mô tả hệ thống tản nhiệt của TBOX AMBIENT V2"
+        }
+      },
+      {
+        title: "Kết nối toàn diện - không phụ thuộc điện thoại",
+        bullets: [
+          "SIM 4G LTE (Snapdragon X11) - Internet mọi lúc",
+          "Wi-Fi 5 băng tần kép (2.4GHz / 5GHz)",
+          "Bluetooth 5.0 kết nối ổn định"
+        ],
+        note: "Dùng độc lập để xem YouTube, Netflix, dẫn đường Vietmap / Google Maps và nghe nhạc trực tiếp."
+      },
+      {
+        title: "Trải nghiệm Android trên xe",
+        bullets: [
+          "Android 13 - giao diện thân thiện",
+          "Hỗ trợ CH Play - cài app thoải mái",
+          "Chia đôi màn hình - đa nhiệm tiện lợi",
+          "Trợ lý giọng nói - điều khiển an toàn khi lái xe"
+        ]
+      },
+      {
+        title: "Tương thích hoàn hảo",
+        bullets: [
+          "CarPlay không dây",
+          "Android Auto không dây",
+          "Plug and Play - cắm là sử dụng"
+        ],
+        note: "Không cần tháo màn, không cần can thiệp hệ thống xe."
+      },
+      {
+        title: "Cấu hình linh hoạt",
+        bullets: [
+          "RAM: 4GB / 8GB",
+          "ROM: 64GB / 128GB",
+          "Hỗ trợ thẻ nhớ microSD"
+        ],
+        note: "Đáp ứng từ nhu cầu cơ bản đến nâng cao."
+      },
+      {
+        title: "Thiết kế kết nối tiện lợi",
+        bullets: [
+          "Khe thẻ nhớ TF",
+          "Cổng Type-C cấp nguồn",
+          "Khe SIM 4G"
+        ],
+        note: "Thiết kế gọn gàng, dễ sử dụng và tối ưu cho xe."
+      },
+      {
+        title: "App VRTECH NEXUS - khác biệt độc quyền",
+        paragraphs: [
+          "TBOX AMBIENT V2 tích hợp hệ sinh thái VRTECH NEXUS để tăng khả năng quản lý thiết bị và hỗ trợ sử dụng hằng ngày."
+        ],
+        bullets: [
+          "Truyền địa chỉ từ điện thoại lên xe",
+          "Xem vị trí xe và lịch sử hành trình",
+          "Truyền file không dây",
+          "Bật/tắt WiFi box từ xa",
+          "Kích hoạt bảo hành điện tử tự động"
+        ],
+        note: "Tặng kèm 3 tháng VRTECH NEXUS Pro.",
+        image: {
+          src: "images/products12thv2/ambientv2/TBOX AMBIENT 09.jpg",
+          alt: "Giao diện app VRTECH Nexus của TBOX AMBIENT V2"
+        }
+      },
+      {
+        title: "Gói tùy chọn cao cấp",
+        bullets: [
+          "Video không quảng cáo trọn đời",
+          "Vietmap S2 Free hoặc Vietmap Live bản quyền",
+          "Gói độc quyền VRTECH lên đến 3 năm"
+        ]
+      },
+      {
+        title: "Cam kết từ VRTECH",
+        bullets: [
+          "Hàng chính ngạch 100% - có VAT",
+          "Bảo hành điện tử 12 tháng",
+          "Hỗ trợ kỹ thuật lâu dài",
+          "Kiểm tra kỹ trước khi giao"
+        ]
+      },
+      {
+        title: "Kết luận",
+        paragraphs: [
+          "TBOX AMBIENT V2 là lựa chọn lý tưởng cho người dùng cần hiệu năng ổn định lâu dài, kết nối độc lập không phụ thuộc điện thoại, trải nghiệm Android đầy đủ trên xe và hệ sinh thái quản lý thông minh.",
+          "Một thiết bị nhỏ gọn nhưng nâng cấp toàn bộ trải nghiệm lái xe."
+        ]
+      }
+    ],
     specs: [
-      { label: "Phân khúc", value: "Thẩm mỹ cao cấp" },
-      { label: "Nhóm khách phù hợp", value: "Ưu tiên trải nghiệm đẹp và khác biệt" },
-      { label: "Điểm nổi bật", value: "LED ambient, giao diện hiện đại" },
-      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, nội thất nổi bật hơn" },
-      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
-      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+      { label: "Phân khúc", value: "Cân bằng hiệu năng, thẩm mỹ và giá thành" },
+      { label: "Chip xử lý", value: "Qualcomm 6225" },
+      { label: "Nhóm khách phù hợp", value: "Người cần box Android ô tô ổn định, có 4G và dùng lâu dài" },
+      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình, truyền file" },
+      { label: "Hệ sinh thái", value: "VRTECH NEXUS + bảo hành điện tử" },
+      { label: "Hậu mãi", value: "Bảo hành 12 tháng, hỗ trợ kỹ thuật, VAT đầy đủ" }
+    ],
+    spec_sections: [
+      {
+        title: "Model sản phẩm",
+        rows: [
+          { label: "Tên sản phẩm", value: "TBOX AMBIENT V2 - VRTECH Edition 2026" },
+          { label: "Thương hiệu", value: "Carlinkit" },
+          { label: "Đơn vị phân phối", value: "VRTECH" },
+          { label: "Tình trạng", value: "Còn hàng" },
+          { label: "Bảo hành", value: "12 tháng" },
+          { label: "Nguồn gốc gửi hàng", value: "Hà Nội" }
+        ]
+      },
+      {
+        title: "Bộ xử lý",
+        rows: [
+          { label: "Chipset", value: "Qualcomm 6225" },
+          { label: "Tiến trình", value: "6nm" },
+          { label: "Kiến trúc CPU", value: "Octa-core (8 nhân)" },
+          { label: "Cụm nhân hiệu năng cao", value: "4 × Kryo 265 Gold (dựa trên Cortex-A73)" },
+          { label: "Xung nhịp nhân hiệu năng cao", value: "Lên đến 2.4 GHz" },
+          { label: "Cụm nhân tiết kiệm điện", value: "4 × Kryo 265 Silver (dựa trên Cortex-A53)" },
+          { label: "Xung nhịp nhân tiết kiệm điện", value: "Lên đến 1.8 GHz" },
+          { label: "GPU", value: "Adreno 610" },
+          { label: "Ưu điểm", value: "Cân bằng giữa hiệu năng, độ ổn định và tiết kiệm điện" }
+        ]
+      },
+      {
+        title: "Bộ nhớ và lưu trữ",
+        rows: [
+          { label: "RAM tùy chọn", value: "4GB / 8GB" },
+          { label: "Chuẩn RAM", value: "LPDDR4" },
+          { label: "ROM tùy chọn", value: "64GB / 128GB" },
+          { label: "Chuẩn lưu trữ", value: "UFS 2.1 / tùy phiên bản cấu hình công bố" },
+          { label: "Hỗ trợ thẻ nhớ", value: "Có, khe thẻ nhớ TF / microSD" }
+        ]
+      },
+      {
+        title: "Kết nối không dây",
+        rows: [
+          { label: "Mạng di động", value: "4G LTE" },
+          { label: "Modem", value: "Snapdragon X11 LTE" },
+          { label: "Wi-Fi", value: "Wi-Fi 5" },
+          { label: "Bluetooth", value: "Bluetooth 5.0" },
+          { label: "Định vị", value: "GPS đa hệ thống" }
+        ]
+      },
+      {
+        title: "Cổng kết nối vật lý",
+        rows: [
+          { label: "Khe thẻ nhớ", value: "TF / microSD" },
+          { label: "Cổng nguồn / dữ liệu", value: "USB Type-C" },
+          { label: "Khe SIM", value: "Nano SIM 4G" }
+        ]
+      },
+      {
+        title: "Hệ điều hành và nền tảng",
+        rows: [
+          { label: "Hệ điều hành", value: "Android 13" },
+          { label: "Kho ứng dụng", value: "Hỗ trợ CH Play" },
+          { label: "Tương thích", value: "CarPlay và Android Auto" }
+        ]
+      },
+      {
+        title: "Tính năng sử dụng",
+        rows: [
+          { label: "Giải trí đa phương tiện", value: "Xem video, nghe nhạc trực tiếp trên xe" },
+          { label: "Dẫn đường", value: "Hỗ trợ bản đồ, định vị GPS" },
+          { label: "Chia đôi màn hình", value: "Có" },
+          { label: "Trợ lý giọng nói", value: "Có" },
+          { label: "Truyền file không dây", value: "Có" },
+          { label: "Cắm là dùng", value: "Có" }
+        ]
+      },
+      {
+        title: "Hệ sinh thái VRTECH",
+        rows: [
+          { label: "Ứng dụng quản lý", value: "VRTECH NEXUS" },
+          { label: "Tính năng app", value: "Truyền địa chỉ dẫn đường, xem vị trí xe, lịch sử hành trình, truyền file, bật/tắt Wi-Fi box" },
+          { label: "Bảo hành điện tử", value: "Kích hoạt trực tiếp qua ứng dụng" },
+          { label: "Ưu đãi kèm theo", value: "Tặng 3 tháng VRTECH NEXUS Pro" }
+        ]
+      },
+      {
+        title: "Chính sách và cam kết",
+        rows: [
+          { label: "Bảo hành điện tử", value: "12 tháng" },
+          { label: "VAT", value: "Có hóa đơn VAT đầy đủ" },
+          { label: "Hỗ trợ kỹ thuật", value: "Hỗ trợ lâu dài" },
+          { label: "Kiểm tra trước khi giao", value: "Có" },
+          { label: "Tối ưu phần mềm", value: "Phiên bản VRTECH tối ưu riêng cho người dùng Việt" }
+        ]
+      },
+      {
+        title: "Mô tả ngắn chuẩn catalog",
+        rows: [
+          { label: "Định vị sản phẩm", value: "Phiên bản cân bằng tốt giữa hiệu năng, thẩm mỹ và giá thành" },
+          { label: "Nhóm người dùng phù hợp", value: "Người cần box Android ô tô ổn định, dùng lâu dài, có 4G, giải trí, dẫn đường và quản lý qua app" }
+        ]
+      }
     ],
     reasons: [
-      "Ngoại hình đẹp và nổi bật hơn.",
-      "Tạo cảm giác cao cấp khi đặt trong nội thất.",
-      "Rất phù hợp khách hàng thích sự hiện đại và thẩm mỹ."
+      "Cân bằng tốt giữa hiệu năng, thẩm mỹ và chi phí đầu tư.",
+      "Có kết nối 4G độc lập, phục vụ tốt cho dẫn đường và giải trí hằng ngày.",
+      "Phù hợp người dùng cần một thiết bị ổn định, dùng lâu dài và quản lý qua app."
     ],
     performance: [
-      "Đáp ứng tốt nhu cầu sử dụng hằng ngày.",
-      "Trải nghiệm giao diện và cảm giác dùng cao cấp hơn.",
-      "Phù hợp khách muốn vừa đẹp vừa đủ mạnh."
+      "Chip Qualcomm 6225 cho hiệu năng ổn định, mượt với nhu cầu sử dụng hằng ngày.",
+      "Tiến trình 6nm giúp cân bằng tốt giữa hiệu năng và mức tiêu thụ điện.",
+      "Đủ khả năng xử lý giải trí, dẫn đường và đa nhiệm cơ bản trên màn hình xe."
     ],
     features: [
-      "LED ambient nổi bật",
-      "Giao diện hiện đại",
-      "Giải trí online",
-      "Google Maps / Vietmap",
-      "Tích hợp VRTECH Nexus"
+      "Xem video và nghe nhạc trực tiếp trên xe",
+      "Google Maps, Vietmap và định vị GPS",
+      "Chia đôi màn hình và trợ lý giọng nói",
+      "Truyền file không dây",
+      "Quản lý qua ứng dụng VRTECH NEXUS"
     ],
     compare_good: [
-      "Thiết kế đẹp",
-      "Phù hợp khách thích thẩm mỹ",
-      "Tạo khác biệt dễ thấy",
-      "Cảm giác cao cấp hơn"
+      "Cân bằng giữa hiệu năng và giá thành",
+      "Có 4G, GPS và hệ sinh thái app riêng",
+      "Ổn định cho nhu cầu dùng lâu dài",
+      "Dễ tư vấn cho nhóm khách thực dụng"
     ],
     compare_bad: [
-      "Không thiên hoàn toàn về hiệu năng",
-      "Không phải lựa chọn kinh tế nhất",
-      "Không phải flagship sức mạnh"
+      "Không phải bản hiệu năng flagship",
+      "Không dành cho nhu cầu gaming nặng",
+      "Thông số lưu trữ tùy phiên bản công bố"
     ]
   },
 
@@ -588,9 +878,26 @@ window.PRODUCTS = {
     support_phone: "0921515868",
     promo: "Lien he de duoc tu van ban cau hinh cao cap phu hop nhu cau thuc te.",
     assurances: [
-      { title: "Flagship hieu nang", desc: "Danh cho khach uu tien toc do, da nhiem va trai nghiem cao cap." },
-      { title: "Phan phoi chinh hang", desc: "VRTECH ho tro cau hinh va cai dat cho nhom khach premium." },
-      { title: "Bao hanh 12 thang", desc: "Hau mai ro rang, ho tro trong suot qua trinh su dung." }
+      {
+        title: "VRTECH Official Việt Nam",
+        desc: "Phân phối chính thức Carlinkit TBOX ULTRA / ULTRA MAX V2 - VRTECH Edition tại thị trường Việt Nam."
+      },
+      {
+        title: "Cam kết sản phẩm",
+        desc: "Sản phẩm mới 100%, chưa active, fullbox, hỗ trợ chứng từ VAT 8% theo nhu cầu."
+      },
+      {
+        title: "Bảo hành điện tử 12 tháng",
+        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+      },
+      {
+        title: "Hỗ trợ kỹ thuật trọn đời",
+        desc: "Tư vấn theo dòng xe, hỗ trợ cài đặt và đồng hành trong suốt quá trình sử dụng."
+      },
+      {
+        title: "Giao hàng toàn quốc",
+        desc: "Hướng dẫn lắp đặt đơn giản, giao hàng nhanh và tư vấn trước khi mua hàng."
+      }
     ],
     highlights: [
       "Phiên bản mạnh nhất trong hệ Carlinkit V2",
