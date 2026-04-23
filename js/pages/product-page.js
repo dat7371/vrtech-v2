@@ -306,6 +306,7 @@ function initializeProductCompare(currentKey) {
   const results = document.querySelector("[data-product-compare-results]");
   const products = window.PRODUCTS || {};
   const compareKeys = Object.keys(products).filter((key) => key !== currentKey);
+  const isMobileViewport = window.matchMedia("(max-width: 768px)");
 
   if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement) || !(select instanceof HTMLSelectElement) || !(results instanceof HTMLElement)) {
     return;
@@ -360,15 +361,51 @@ function initializeProductCompare(currentKey) {
   select.innerHTML = compareKeys.map((key) => `<option value="${key}">${getCompactProductName(products[key])}</option>`).join("");
   renderCompare(compareKeys[0]);
 
+  const syncComparePanelState = () => {
+    if (isMobileViewport.matches) {
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      return;
+    }
+
+    if (!toggle.hasAttribute("data-user-toggled")) {
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  };
+
+  syncComparePanelState();
+
   toggle.addEventListener("click", () => {
+    if (isMobileViewport.matches) {
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     const isHidden = panel.hidden;
     panel.hidden = !isHidden;
     toggle.setAttribute("aria-expanded", String(isHidden));
+    toggle.setAttribute("data-user-toggled", "true");
   });
 
   select.addEventListener("change", () => {
     renderCompare(select.value);
   });
+
+  const handleViewportChange = () => {
+    if (isMobileViewport.matches) {
+      toggle.removeAttribute("data-user-toggled");
+    }
+    syncComparePanelState();
+  };
+
+  if (typeof isMobileViewport.addEventListener === "function") {
+    isMobileViewport.addEventListener("change", handleViewportChange);
+  } else if (typeof isMobileViewport.addListener === "function") {
+    isMobileViewport.addListener(handleViewportChange);
+  }
 }
 
 function loadProductPage() {
