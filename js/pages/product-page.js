@@ -76,6 +76,15 @@ function getProductDetailTitle(product) {
   return product?.detail_title || `Giới thiệu và đánh giá ${getCompactProductName(product)}`;
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function getAssuranceIconType(title) {
   const normalizedTitle = String(title || "").toLowerCase();
 
@@ -115,6 +124,46 @@ function getAssuranceIconSvg(iconType) {
 }
 
 function buildProductDetailBlocks(product) {
+  if (Array.isArray(product?.detail_sections) && product.detail_sections.length) {
+    return product.detail_sections.map((section) => {
+      const title = section?.title ? `<h3>${escapeHtml(section.title)}</h3>` : "";
+      const paragraphs = Array.isArray(section?.paragraphs)
+        ? section.paragraphs.map((item) => `<p>${escapeHtml(item)}</p>`).join("")
+        : "";
+      const bullets = Array.isArray(section?.bullets) && section.bullets.length
+        ? `
+        <ul class="product-detail-bullets">
+          ${section.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      `
+        : "";
+      const note = section?.note ? `<p class="product-detail-note">${escapeHtml(section.note)}</p>` : "";
+      const image = section?.image?.src
+        ? `
+        <figure class="product-detail-figure">
+          <img
+            src="${escapeHtml(window.VRTECH_ASSETS?.asset?.(section.image.src) || section.image.src)}"
+            alt="${escapeHtml(section.image.alt || section.title || "Hình minh họa sản phẩm")}"
+            width="${escapeHtml(section.image.width || 1600)}"
+            height="${escapeHtml(section.image.height || 1600)}"
+            loading="lazy"
+          >
+        </figure>
+      `
+        : "";
+
+      return `
+        <div class="product-detail-block">
+          ${title}
+          ${paragraphs}
+          ${bullets}
+          ${note}
+          ${image}
+        </div>
+      `;
+    }).join("");
+  }
+
   const blocks = [];
 
   if (product?.desc) {
@@ -578,7 +627,7 @@ function renderProductData() {
   document.querySelectorAll("[data-product-name-compact]").forEach(el => el.textContent = getCompactProductName(product));
   document.querySelectorAll("[data-product-detail-title]").forEach(el => el.textContent = getProductDetailTitle(product));
   document.querySelectorAll("[data-product-detail-intro]").forEach((el) => {
-    el.textContent = product.subtitle || "Nội dung mô tả chi tiết sản phẩm và các điểm cần biết trước khi chọn.";
+    el.textContent = product.detail_intro || product.subtitle || "Nội dung mô tả chi tiết sản phẩm và các điểm cần biết trước khi chọn.";
   });
   document.querySelectorAll("[data-product-detail-copy]").forEach((el) => {
     el.innerHTML = buildProductDetailBlocks(product);

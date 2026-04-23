@@ -737,6 +737,11 @@ body[data-product] {
   font-size: 18px;
 }
 
+.product-detail-note {
+  color: #ffd772;
+  font-weight: 700;
+}
+
 .product-detail-bullets {
   margin: 0;
   padding-left: 22px;
@@ -745,6 +750,21 @@ body[data-product] {
   color: #edf1f7;
   line-height: 1.8;
   font-size: 17px;
+}
+
+.product-detail-figure {
+  margin: 8px 0 0;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.product-detail-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .product-detail-side {

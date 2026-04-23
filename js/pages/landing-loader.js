@@ -1,10 +1,10 @@
 const LANDING_COMPONENTS = [
   ["header", "header"],
   ["hero", "hero"],
+  ["products", "products"],
   ["problem", "problem"],
   ["solution", "solution"],
   ["nexus", "nexus"],
-  ["products", "products"],
   ["compare", "compare"],
   ["experience", "experience"],
   ["official", "official"],

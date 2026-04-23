@@ -25,7 +25,7 @@ body{
     linear-gradient(180deg,#040404 0%, #090b0f 48%, #0f141b 100%);
   color:var(--text);
   line-height:1.6;
-  padding-top: 135px;
+  padding-top: 92px;
   overflow-x:hidden;
 }
 a{text-decoration:none;color:inherit}

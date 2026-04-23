@@ -5,9 +5,11 @@ window.PRODUCTS = {
     short_name: "Carlinkit TBOX S2A V2 2026",
     badge: "Bản tiêu chuẩn",
     subtitle: "Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
+    detail_title: "Giới thiệu và đánh giá TBOX S2A V2 - VRTECH Edition 2026",
+    detail_intro: "(Nội dung mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "Phiên bản Android Box Ô Tô tối ưu cho nhu cầu hằng ngày, giữ nguyên zin màn hình xe và đáp ứng tốt giải trí, dẫn đường, kết nối thông minh.",
     hero_image: "images/products12thv2/s2av2/TBOX S2A 01.jpg",
-    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/s2av2/TBOX S2A 09.jpg",
     gallery: [
       "images/products12thv2/s2av2/TBOX S2A 02.jpg",
       "images/products12thv2/s2av2/TBOX S2A 03.jpg",
@@ -17,8 +19,8 @@ window.PRODUCTS = {
     ],
     gallery_extra: [
       {
-        image: "images/products12thv2/app/appvrtechnexus.jpg",
-        alt: "VRTECH Nexus - giao diện app quản lý cho TBOX S2A V2"
+        image: "images/products12thv2/s2av2/TBOX S2A 09.jpg",
+        alt: "VRTECH Nexus trên TBOX S2A V2"
       },
       {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
@@ -65,6 +67,130 @@ window.PRODUCTS = {
       "Giải trí, dẫn đường và kết nối cơ bản ổn định",
       "Tương thích nhiều dòng xe có CarPlay có dây",
       "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+    ],
+    detail_sections: [
+      {
+        paragraphs: [
+          "Trong năm 2026, xu hướng nâng cấp xe hơi thông minh đang trở nên phổ biến hơn bao giờ hết. Trong đó, dòng Android Box CarPlay đang là lựa chọn tối ưu giúp biến màn hình zin thành hệ điều hành Android đầy đủ.",
+          "Nổi bật trong phân khúc phải kể đến TBOX S2A V2 - phiên bản được VRTECH tối ưu riêng cho người dùng Việt, mang lại trải nghiệm ổn định, dễ sử dụng và chi phí hợp lý.",
+          "Để hiểu rõ hơn về sản phẩm, hãy cùng khám phá chi tiết bên dưới."
+        ]
+      },
+      {
+        title: "1. Thiết kế tối giản - hiện đại - đậm chất công nghệ",
+        paragraphs: [
+          "TBOX S2A V2 sở hữu thiết kế vuông bo góc mềm mại, phù hợp nội thất xe hơi hiện đại. Mặt trên kính đen bóng kết hợp vòng LED RGB tạo điểm nhấn công nghệ cao.",
+          "Khung nhôm nguyên khối (Aluminum Unibody) giúp tản nhiệt tốt, tăng độ bền, chống nhiễu điện và giữ kích thước nhỏ gọn để dễ dàng giấu kín trong taplo."
+        ],
+        note: "Tổng thể thiết kế hướng đến: gọn - đẹp - cao cấp - thực dụng."
+      },
+      {
+        title: "2. Hiệu năng ổn định từ chip 6115",
+        paragraphs: [
+          "Trang bị chip Qualcomm 6115 (8 nhân), xung nhịp tối ưu cho tác vụ ô tô khoảng 1.8GHz cùng GPU Adreno tích hợp, thiết bị đáp ứng tốt các nhu cầu sử dụng hằng ngày trên xe."
+        ],
+        bullets: [
+          "CarPlay / Android Auto không dây",
+          "Google Maps, Vietmap",
+          "YouTube, Netflix",
+          "Đa nhiệm cơ bản",
+          "RAM: 4GB / 8GB",
+          "ROM: 64GB / 128GB",
+          "Android 13"
+        ],
+        note: "Mang lại trải nghiệm mượt trong tầm giá, ít lỗi vặt và ổn định lâu dài.",
+        image: {
+          src: "images/products12thv2/s2av2/TBOX S2A 07.png",
+          alt: "Sơ đồ cấu trúc chip Qualcomm 6115 trên TBOX S2A V2"
+        }
+      },
+      {
+        title: "3. Trải nghiệm giải trí và sử dụng",
+        bullets: [
+          "Xem video trực tiếp trên màn hình xe",
+          "Nghe nhạc online hoặc offline",
+          "Chia đôi màn hình đa nhiệm",
+          "Trợ lý giọng nói tiện lợi"
+        ],
+        note: "Biến xe zin thành một hệ thống Android hoàn chỉnh."
+      },
+      {
+        title: "4. Thiết kế cổng kết nối tối ưu",
+        paragraphs: [
+          "TBOX S2A V2 được thiết kế theo hướng tối giản nhưng đầy đủ, thuận tiện khi lắp đặt và sử dụng thực tế."
+        ],
+        bullets: [
+          "Cạnh trước: khe thẻ nhớ TF / MicroSD",
+          "Cạnh trước: cổng USB Type-C (nguồn và dữ liệu)",
+          "Cạnh trước: khe SIM 4G LTE",
+          "Cạnh sau: lỗ Reset nhỏ gọn"
+        ],
+        note: "Ưu điểm là dễ thao tác, gọn dây và không cần tháo thiết bị khi sử dụng.",
+        image: {
+          src: "images/products12thv2/s2av2/TBOX S2A 08.png",
+          alt: "Mô tả cổng kết nối của TBOX S2A V2"
+        }
+      },
+      {
+        title: "5. Kết nối không dây hiện đại",
+        bullets: [
+          "WiFi băng tần kép 2.4GHz / 5GHz",
+          "Bluetooth 5.1",
+          "Hỗ trợ SIM 4G độc lập"
+        ],
+        note: "Đảm bảo kết nối nhanh, ít giật lag và ổn định khi di chuyển."
+      },
+      {
+        title: "6. Hệ sinh thái VRTECH NEXUS",
+        paragraphs: [
+          "Điểm khác biệt lớn nhất của phiên bản VRTECH là hệ sinh thái quản lý thiết bị và xe đồng bộ hơn với nhu cầu người dùng Việt."
+        ],
+        bullets: [
+          "Truyền địa chỉ từ điện thoại lên xe",
+          "Theo dõi vị trí và hành trình",
+          "Truyền file không dây",
+          "Điều khiển thiết bị từ xa",
+          "Kích hoạt bảo hành điện tử"
+        ],
+        note: "Tặng kèm 3 tháng VRTECH NEXUS PRO.",
+        image: {
+          src: "images/products12thv2/s2av2/TBOX S2A 09.jpg",
+          alt: "Giao diện hệ sinh thái VRTECH Nexus trên TBOX S2A V2"
+        }
+      },
+      {
+        title: "7. Tản nhiệt và độ ổn định",
+        bullets: [
+          "Vỏ nhôm nguyên khối giúp tản nhiệt thụ động",
+          "Không cần quạt, hoạt động êm ái",
+          "Tối ưu cho môi trường xe hơi có nhiệt độ cao"
+        ],
+        note: "Đảm bảo hoạt động bền bỉ, không quá nhiệt và không giảm hiệu năng."
+      },
+      {
+        title: "8. Ưu điểm",
+        bullets: [
+          "Thiết kế nhỏ gọn, cao cấp",
+          "Hiệu năng ổn định trong tầm giá",
+          "Có hệ sinh thái VRTECH riêng",
+          "Hỗ trợ SIM 4G độc lập",
+          "Plug and Play, dễ sử dụng"
+        ]
+      },
+      {
+        title: "9. Nhược điểm",
+        bullets: [
+          "Không phù hợp nhu cầu gaming nặng",
+          "Hiệu năng ở mức trung bình, không phải flagship"
+        ]
+      },
+      {
+        title: "Kết luận",
+        paragraphs: [
+          "TBOX S2A V2 là lựa chọn lý tưởng cho người dùng cần sự ổn định, dễ dùng, ít lỗi, không cần cấu hình quá cao nhưng vẫn muốn trải nghiệm Android trên xe với chi phí hợp lý.",
+          "Đặc biệt phù hợp với người dùng Việt nhờ tối ưu từ VRTECH."
+        ]
+      }
     ],
     specs: [
       { label: "Phân khúc", value: "Tiêu chuẩn, dễ tiếp cận" },
@@ -137,10 +263,10 @@ window.PRODUCTS = {
       {
         title: "Cổng kết nối",
         rows: [
-          { label: "Nguồn", value: "USB Type-C" },
-          { label: "USB", value: "2 x USB-A" },
-          { label: "Khe SIM", value: "Có" },
-          { label: "Reset", value: "Có" }
+          { label: "TF / MicroSD", value: "Có" },
+          { label: "USB Type-C", value: "Nguồn và dữ liệu" },
+          { label: "Khe SIM", value: "SIM 4G LTE" },
+          { label: "Reset", value: "Lỗ reset phía sau" }
         ]
       },
       {
