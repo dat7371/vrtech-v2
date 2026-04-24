@@ -548,11 +548,11 @@ window.PRODUCTS = {
     ],
     specs: [
       { label: "Phân khúc", value: "Bán chạy nhất, cân bằng nhất" },
-      { label: "Chip xử lý", value: "Qualcomm 6225" },
+      { label: "Chip xử lý", value: "Qualcomm 6225 (SM6225)" },
       { label: "Nhóm khách phù hợp", value: "Đa số xe và nhu cầu sử dụng thực tế" },
-      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình" },
-      { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, SIM 4G, Bluetooth" },
-      { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ, VRTECH Nexus" }
+      { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình, SIM 4G" },
+      { label: "Kết nối", value: "Nano SIM 4G, Wi-Fi 2.4/5GHz, Bluetooth 5.1, GPS" },
+      { label: "Hậu mãi", value: "Bảo hành điện tử 12 tháng, VAT đầy đủ, VRTECH Nexus" }
     ],
     spec_sections: [
       {
@@ -568,19 +568,19 @@ window.PRODUCTS = {
       {
         title: "Bộ vi xử lý (CPU)",
         rows: [
-          { label: "Chip", value: "Qualcomm 6225 (Snapdragon Automotive)" },
+          { label: "Chip", value: "Qualcomm 6225 (SM6225)" },
           { label: "Tiến trình", value: "6nm" },
           { label: "Kiến trúc", value: "Kryo 260 (ARM)" },
           { label: "Số nhân", value: "8 nhân (Octa-core)" },
-          { label: "4 nhân hiệu năng cao", value: "Cortex-A73 @ 2.4GHz" },
-          { label: "4 nhân tiết kiệm điện", value: "Cortex-A53 @ 1.8GHz" }
+          { label: "4 x nhân hiệu năng", value: "Cortex-A73 @ 2.4GHz" },
+          { label: "4 x nhân tiết kiệm điện", value: "Cortex-A53 @ 1.8GHz" }
         ]
       },
       {
         title: "GPU (Đồ họa)",
         rows: [
           { label: "GPU", value: "Adreno 610" },
-          { label: "Khả năng", value: "Xử lý đồ họa, video và giao diện mượt mà" }
+          { label: "Hiệu năng", value: "Xử lý đồ họa, video mượt mà" }
         ]
       },
       {
@@ -589,7 +589,7 @@ window.PRODUCTS = {
           { label: "RAM", value: "4GB / 8GB" },
           { label: "Loại RAM", value: "LPDDR4X" },
           { label: "ROM", value: "64GB / 128GB" },
-          { label: "Chuẩn lưu trữ", value: "UFS / eMMC (tùy lô sản xuất)" }
+          { label: "Chuẩn lưu trữ", value: "eMMC / UFS (tùy phiên bản)" }
         ]
       },
       {
@@ -602,8 +602,8 @@ window.PRODUCTS = {
       {
         title: "Kết nối",
         rows: [
-          { label: "SIM", value: "Nano SIM - hỗ trợ 4G LTE" },
-          { label: "Wi-Fi", value: "2.4GHz + 5GHz (Wi-Fi 5 - 802.11 a/b/g/n/ac)" },
+          { label: "SIM", value: "Nano SIM - 4G LTE" },
+          { label: "WiFi", value: "2.4GHz / 5GHz (802.11 a/b/g/n/ac)" },
           { label: "Bluetooth", value: "5.1 (BLE)" },
           { label: "GPS", value: "GPS / GLONASS / BeiDou / Galileo" }
         ]
@@ -611,42 +611,17 @@ window.PRODUCTS = {
       {
         title: "Cổng kết nối",
         rows: [
-          { label: "Thứ tự thực tế", value: "Khe TF Card | USB Type-C | Khe SIM" },
-          { label: "Khe thẻ nhớ TF (microSD)", value: "Hỗ trợ lên đến 128GB" },
+          { label: "Bố trí cổng", value: "Khe thẻ nhớ | Type-C | Khe SIM" },
+          { label: "Khe TF Card", value: "Hỗ trợ tối đa 128GB" },
           { label: "USB Type-C", value: "Cấp nguồn + truyền dữ liệu" },
-          { label: "Input", value: "5V - 1A" },
-          { label: "Khe SIM 4G", value: "Nano SIM - kết nối internet độc lập" }
-        ]
-      },
-      {
-        title: "Tính năng chính",
-        rows: [
-          { label: "Wireless CarPlay", value: "Có" },
-          { label: "Android Auto", value: "Có" },
-          { label: "Chia đôi màn hình", value: "Split Screen" },
-          { label: "Trợ lý giọng nói", value: "Có" },
-          { label: "Giải trí", value: "YouTube, Netflix, Spotify..." },
-          { label: "Điều hướng", value: "GPS đa hệ thống" },
-          { label: "Cài ứng dụng", value: "Trực tiếp như tablet Android" },
-          { label: "OTA Update", value: "Cập nhật phần mềm online" }
-        ]
-      },
-      {
-        title: "Ứng dụng VRTECH NEXUS",
-        rows: [
-          { label: "Truyền địa chỉ", value: "Từ điện thoại lên màn hình xe" },
-          { label: "Theo dõi xe", value: "Xem vị trí xe và lịch sử hành trình" },
-          { label: "Truyền file", value: "Không dây" },
-          { label: "Điều khiển từ xa", value: "Bật/tắt thiết bị từ xa" },
-          { label: "Bảo hành", value: "Kích hoạt bảo hành điện tử" },
-          { label: "Tặng kèm", value: "3 tháng Pro" }
+          { label: "Khe SIM", value: "Nano SIM 4G" }
         ]
       },
       {
         title: "Nguồn điện",
         rows: [
           { label: "Input", value: "5V - 1A" },
-          { label: "Cấp nguồn", value: "Qua USB từ xe" }
+          { label: "Cấp nguồn", value: "Qua cổng USB từ xe" }
         ]
       },
       {
@@ -654,25 +629,30 @@ window.PRODUCTS = {
         rows: [
           { label: "Kích thước", value: "~80 x 80 x 13.5 mm" },
           { label: "Thiết kế", value: "Vuông bo góc" },
-          { label: "Tản nhiệt", value: "Mặt lưng dạng lưới + tản nhiệt thụ động" },
-          { label: "LED", value: "Vòng LED đa màu hiển thị trạng thái" }
+          { label: "Tản nhiệt", value: "Mặt lưng dạng lưới" },
+          { label: "LED", value: "Vòng LED đa màu" }
         ]
       },
       {
-        title: "Ưu điểm nổi bật",
+        title: "Tính năng chính",
         rows: [
-          { label: "Chip 6225", value: "Mượt và tiết kiệm điện" },
-          { label: "SIM 4G độc lập", value: "Không phụ thuộc điện thoại" },
-          { label: "Android full", value: "Dùng như tablet" },
-          { label: "Tối ưu VRTECH", value: "Ổn định hơn bản thường" }
+          { label: "CarPlay & Android Auto", value: "Có" },
+          { label: "Chia đôi màn hình", value: "Đa nhiệm" },
+          { label: "Trợ lý giọng nói", value: "Có" },
+          { label: "Giải trí", value: "Xem video, nghe nhạc trực tiếp" },
+          { label: "GPS", value: "Đa hệ thống" },
+          { label: "OTA Update", value: "Có" }
         ]
       },
       {
-        title: "Lưu ý quan trọng",
+        title: "Ứng dụng VRTECH NEXUS",
         rows: [
-          { label: "Ngoại hình", value: "Giống bản chip 6115" },
-          { label: "Phiên bản VRTECH", value: "Dùng chip 6225 mạnh hơn" },
-          { label: "Khuyến nghị", value: "Khách cần kiểm tra kỹ trước khi mua" }
+          { label: "Truyền địa chỉ", value: "Từ điện thoại" },
+          { label: "Xem vị trí xe", value: "Có" },
+          { label: "Lịch sử hành trình", value: "Có" },
+          { label: "Truyền file", value: "Không dây" },
+          { label: "Điều khiển từ xa", value: "Có" },
+          { label: "Bảo hành điện tử", value: "Kích hoạt qua App" }
         ]
       }
     ],
@@ -707,12 +687,15 @@ window.PRODUCTS = {
   },
 
   plus: {
-    name: "TBOX PLUS V2",
+    name: "TBOX PLUS V2 - VRTECH Edition 2026",
+    short_name: "TBOX PLUS V2 2026",
     badge: "Nâng cấp hợp lý",
-    subtitle: "Mượt hơn – thoải mái hơn cho dùng hằng ngày",
-    desc: "Bản nâng cấp hợp lý cho khách hàng muốn trải nghiệm cao hơn nhóm phổ thông nhưng chưa cần lên Ultra.",
+    subtitle: "Chip Qualcomm 6125 | Android 13 | SIM 4G LTE | VRTECH Nexus",
+    detail_title: "Giới thiệu và đánh giá TBOX PLUS V2 - VRTECH Edition 2026",
+    detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
+    desc: "TBOX PLUS V2 - VRTECH Edition là giải pháp nâng cấp toàn diện giúp biến màn hình zin của xe thành một hệ điều hành Android hoàn chỉnh, ổn định và dễ sử dụng trong nhu cầu hằng ngày.",
     hero_image: "images/products12thv2/plusv2/TBOX PLUS 01.jpg",
-    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/plusv2/TBOX PLUS 10.jpg",
     gallery: [
       "images/products12thv2/plusv2/TBOX PLUS 02.jpg",
       "images/products12thv2/plusv2/TBOX PLUS 03.jpg",
@@ -722,20 +705,36 @@ window.PRODUCTS = {
     ],
     gallery_extra: [
       {
+        image: "images/products12thv2/plusv2/TBOX PLUS 07.png",
+        alt: "Hình tổng quan mở đầu cho TBOX PLUS V2"
+      },
+      {
+        image: "images/products12thv2/plusv2/TBOX PLUS 08.png",
+        alt: "Mô tả cổng kết nối của TBOX PLUS V2"
+      },
+      {
+        image: "images/products12thv2/plusv2/TBOX PLUS 09.png",
+        alt: "Cấu tạo chip Qualcomm 6125 và so sánh trên TBOX PLUS V2"
+      },
+      {
+        image: "images/products12thv2/plusv2/TBOX PLUS 10.jpg",
+        alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX PLUS V2"
+      },
+      {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
         alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX PLUS V2"
       }
     ],
-    stock_status: "Con hang",
+    stock_status: "Còn hàng",
     brand: "Carlinkit",
-    category: "Android Box O To",
-    condition: "San pham chinh hang, fullbox",
-    warranty_label: "Bao hanh 12 thang",
-    quantity_available: "Con hang",
+    category: "Android Box Ô Tô",
+    condition: "Sản phẩm chính hãng, fullbox",
+    warranty_label: "Bảo hành 12 tháng",
+    quantity_available: "Còn hàng",
     primary_cta: "Mua ngay",
-    support_cta: "Goi tu van",
+    support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "Lien he de nhan cau hinh va uu dai phu hop dong xe.",
+    promo: "Liên hệ để nhận cấu hình phù hợp theo dòng xe và ưu đãi tốt nhất.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -759,46 +758,269 @@ window.PRODUCTS = {
       }
     ],
     highlights: [
-      "Bản nâng cấp hợp lý từ nhóm phổ thông",
-      "Đa nhiệm tốt hơn, chuyển app mượt hơn",
-      "Phù hợp khách muốn dùng thoải mái mỗi ngày",
+      "Chip Qualcomm 6125 ổn định trong tầm giá",
+      "Android 13 hiện đại, giao diện thân thiện",
+      "Hỗ trợ SIM 4G độc lập, Wi-Fi kép và Bluetooth 5.0",
+      "Tích hợp hệ sinh thái VRTECH NEXUS",
       "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
     ],
+    detail_sections: [
+      {
+        paragraphs: [
+          "Trong năm 2026, nhu cầu nâng cấp hệ thống giải trí trên ô tô ngày càng trở nên phổ biến. Người dùng không còn hài lòng với màn hình zin truyền thống mà mong muốn một trải nghiệm thông minh, mượt mà như smartphone.",
+          "TBOX PLUS V2 - VRTECH Edition ra đời như một giải pháp toàn diện, giúp biến màn hình nguyên bản của xe thành một hệ điều hành Android hoàn chỉnh.",
+          "Với việc được trang bị chip Qualcomm 6125, sản phẩm mang lại hiệu năng ổn định, khả năng xử lý mượt mà và đáp ứng tốt hầu hết nhu cầu sử dụng thực tế."
+        ],
+        image: {
+          src: "images/products12thv2/plusv2/TBOX PLUS 07.png",
+          alt: "Hình tổng quan mở đầu của TBOX PLUS V2"
+        }
+      },
+      {
+        title: "1. Thiết kế nhỏ gọn - tinh tế & hiện đại",
+        paragraphs: [
+          "TBOX PLUS V2 sở hữu thiết kế vuông bo góc mềm mại, tối giản nhưng mang đậm phong cách công nghệ."
+        ],
+        bullets: [
+          "Kích thước nhỏ gọn, dễ dàng lắp đặt trong xe",
+          "Mặt trên với họa tiết tinh tế và logo Carlinkit",
+          "Cạnh sau là dải LED hiển thị trạng thái",
+          "Mặt đáy thiết kế lỗ tản nhiệt giúp tối ưu luồng khí"
+        ],
+        note: "Phù hợp với mọi không gian nội thất xe, gọn gàng và có tính thẩm mỹ cao."
+      },
+      {
+        title: "2. Hiệu năng ổn định với chip Qualcomm 6125",
+        paragraphs: [
+          "TBOX PLUS V2 sử dụng vi xử lý Qualcomm 6125 - dòng chip phổ biến và tối ưu cho Android Box ô tô."
+        ],
+        bullets: [
+          "CPU 8 nhân (Octa-core)",
+          "Hiệu năng ổn định trong tầm giá",
+          "GPU Adreno tích hợp",
+          "Chạy mượt các ứng dụng cơ bản",
+          "Đáp ứng tốt nhu cầu giải trí và điều hướng",
+          "Hoạt động ổn định trong môi trường xe",
+          "Tối ưu tốt hơn về độ ổn định so với chip 6115",
+          "Hạn chế giật lag khi sử dụng lâu",
+          "Cải thiện trải nghiệm tổng thể"
+        ],
+        image: {
+          src: "images/products12thv2/plusv2/TBOX PLUS 09.png",
+          alt: "Mô tả cấu tạo chip Qualcomm 6125 và so sánh với chip khác trên TBOX PLUS V2"
+        }
+      },
+      {
+        title: "3. Android 13 - giao diện hiện đại, dễ sử dụng",
+        paragraphs: [
+          "TBOX PLUS V2 chạy hệ điều hành Android 13 mới nhất, mang lại trải nghiệm thân thiện và linh hoạt."
+        ],
+        bullets: [
+          "Giao diện trực quan",
+          "Dễ dàng thao tác như smartphone",
+          "Hỗ trợ đầy đủ CH Play",
+          "YouTube, Netflix, Spotify",
+          "Google Maps, Vietmap",
+          "Các ứng dụng giải trí và tiện ích khác"
+        ],
+        note: "Biến màn hình xe thành tablet Android thực thụ."
+      },
+      {
+        title: "4. Trải nghiệm giải trí & điều hướng toàn diện",
+        paragraphs: [
+          "Thiết bị hỗ trợ đầy đủ các nhu cầu sử dụng trên xe."
+        ],
+        bullets: [
+          "CarPlay và Android Auto",
+          "Xem video, nghe nhạc online",
+          "Chia đôi màn hình (đa nhiệm)",
+          "Trợ lý giọng nói"
+        ],
+        note: "Vừa dẫn đường vừa giải trí mượt mà."
+      },
+      {
+        title: "5. Cổng kết nối tối giản - thực tế & dễ dùng",
+        paragraphs: [
+          "TBOX PLUS V2 được thiết kế các cổng kết nối tối ưu cho người dùng."
+        ],
+        bullets: [
+          "Khe SIM Nano - hỗ trợ 4G LTE",
+          "Cổng USB Type-C - cấp nguồn và truyền dữ liệu",
+          "Khe thẻ nhớ TF (microSD) - mở rộng dung lượng",
+          "Bố trí thực tế: SIM | Type-C | TF Card"
+        ],
+        note: "Chỉ cần cắm là sử dụng, không cần lắp đặt phức tạp.",
+        image: {
+          src: "images/products12thv2/plusv2/TBOX PLUS 08.png",
+          alt: "Mô tả cổng kết nối của TBOX PLUS V2"
+        }
+      },
+      {
+        title: "6. Kết nối không dây ổn định",
+        paragraphs: [
+          "Thiết bị hỗ trợ đầy đủ các chuẩn kết nối hiện đại."
+        ],
+        bullets: [
+          "SIM 4G LTE độc lập",
+          "WiFi 2.4GHz / 5GHz",
+          "Bluetooth 5.0",
+          "GPS tích hợp"
+        ],
+        note: "Không phụ thuộc điện thoại, chủ động hoàn toàn khi sử dụng."
+      },
+      {
+        title: "7. Tản nhiệt hiệu quả - hoạt động bền bỉ",
+        paragraphs: [
+          "TBOX PLUS V2 được tối ưu cho môi trường xe."
+        ],
+        bullets: [
+          "Mặt đáy thiết kế tản nhiệt",
+          "Hỗ trợ thoát nhiệt tốt khi sử dụng lâu",
+          "Giảm hiện tượng nóng máy"
+        ],
+        note: "Đảm bảo hoạt động ổn định liên tục."
+      },
+      {
+        title: "8. Hệ sinh thái VRTECH NEXUS",
+        paragraphs: [
+          "TBOX PLUS V2 tích hợp hệ sinh thái VRTECH NEXUS để tăng khả năng quản lý thiết bị, bảo hành điện tử và đồng bộ trải nghiệm sử dụng hằng ngày."
+        ],
+        bullets: [
+          "Quản lý thiết bị qua ứng dụng",
+          "Hỗ trợ bảo hành điện tử",
+          "Tăng tính đồng bộ trong hệ sinh thái VRTECH"
+        ],
+        image: {
+          src: "images/products12thv2/plusv2/TBOX PLUS 10.jpg",
+          alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX PLUS V2"
+        }
+      },
+      {
+        title: "9. Ưu điểm nổi bật",
+        bullets: [
+          "Chip Qualcomm 6125 ổn định",
+          "Android 13 hiện đại",
+          "Hỗ trợ SIM 4G độc lập",
+          "Thiết kế nhỏ gọn, dễ lắp",
+          "Đa nhiệm mượt trong tầm giá",
+          "Tích hợp hệ sinh thái VRTECH NEXUS"
+        ]
+      },
+      {
+        title: "10. Nhược điểm",
+        bullets: [
+          "Không phù hợp với xe không có CarPlay",
+          "Không tối ưu cho game nặng",
+          "Phụ thuộc internet để khai thác tối đa"
+        ]
+      },
+      {
+        title: "Kết luận về TBOX PLUS V2",
+        paragraphs: [
+          "TBOX PLUS V2 - VRTECH Edition là lựa chọn hợp lý cho người dùng cần một thiết bị ổn định, dễ sử dụng, giá tốt và đáp ứng đầy đủ nhu cầu cơ bản.",
+          "Đây là dòng Android Box cân bằng tốt trong phân khúc phổ thông, phù hợp cho đại đa số khách hàng sử dụng hằng ngày."
+        ]
+      }
+    ],
     specs: [
-      { label: "Phân khúc", value: "Trung cấp, nâng cấp hợp lý" },
-      { label: "Nhóm khách phù hợp", value: "Muốn mượt hơn nhưng chưa cần flagship" },
-      { label: "Trải nghiệm chính", value: "Đa nhiệm tốt, app phản hồi nhanh hơn" },
-      { label: "Kết nối", value: "CarPlay wired, Wi‑Fi, Bluetooth" },
-      { label: "Hệ sinh thái", value: "VRTECH Nexus + hậu mãi điện tử" },
+      { label: "Phân khúc", value: "Phổ thông nâng cao, cân bằng tốt" },
+      { label: "Nhóm khách phù hợp", value: "Người dùng cần box ổn định, dễ dùng, giá hợp lý" },
+      { label: "Trải nghiệm chính", value: "Giải trí, điều hướng, đa nhiệm cơ bản và kết nối 4G" },
+      { label: "Kết nối", value: "CarPlay, Android Auto, Wi-Fi, Bluetooth, GPS" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
       { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
     ],
+    spec_sections: [
+      {
+        title: "Model sản phẩm",
+        rows: [
+          { label: "Tên sản phẩm", value: "TBOX PLUS V2 - VRTECH Edition 2026" },
+          { label: "Thương hiệu", value: "Carlinkit" },
+          { label: "Đơn vị phân phối", value: "VRTECH Official Việt Nam" },
+          { label: "Tình trạng", value: "Còn hàng" }
+        ]
+      },
+      {
+        title: "Bộ vi xử lý (CPU)",
+        rows: [
+          { label: "Model", value: "Qualcomm 6125" },
+          { label: "Kiến trúc", value: "Octa-core (8 nhân)" },
+          { label: "GPU", value: "Adreno (tích hợp)" },
+          { label: "Định hướng", value: "Tối ưu cho Android Box ô tô, ổn định trong tầm giá" }
+        ]
+      },
+      {
+        title: "Hệ điều hành",
+        rows: [
+          { label: "Phiên bản", value: "Android 13" },
+          { label: "Kho ứng dụng", value: "CH Play" }
+        ]
+      },
+      {
+        title: "Kết nối không dây",
+        rows: [
+          { label: "SIM", value: "SIM 4G LTE độc lập" },
+          { label: "WiFi", value: "2.4GHz / 5GHz" },
+          { label: "Bluetooth", value: "5.0" },
+          { label: "GPS", value: "Tích hợp" }
+        ]
+      },
+      {
+        title: "Cổng kết nối",
+        rows: [
+          { label: "Khe SIM", value: "Nano SIM" },
+          { label: "USB Type-C", value: "Cấp nguồn và truyền dữ liệu" },
+          { label: "TF / microSD", value: "Mở rộng dung lượng" }
+        ]
+      },
+      {
+        title: "Tính năng sử dụng",
+        rows: [
+          { label: "CarPlay", value: "Hỗ trợ" },
+          { label: "Android Auto", value: "Hỗ trợ" },
+          { label: "Giải trí", value: "YouTube, Netflix, Spotify" },
+          { label: "Dẫn đường", value: "Google Maps, Vietmap" },
+          { label: "Đa nhiệm", value: "Chia đôi màn hình" },
+          { label: "Giọng nói", value: "Trợ lý giọng nói" }
+        ]
+      },
+      {
+        title: "Hệ sinh thái VRTECH",
+        rows: [
+          { label: "Ứng dụng quản lý", value: "VRTECH NEXUS" },
+          { label: "Bảo hành", value: "Điện tử qua hệ thống" },
+          { label: "Hỗ trợ", value: "Kỹ thuật trọn đời" },
+          { label: "VAT", value: "Có hỗ trợ đầy đủ" }
+        ]
+      }
+    ],
     reasons: [
-      "Trải nghiệm mượt hơn bản phổ thông.",
-      "Cân bằng giữa nâng cấp và chi phí đầu tư.",
-      "Phù hợp khách muốn dùng thoải mái hơn mỗi ngày."
+      "Thiết bị cân bằng tốt giữa hiệu năng, độ ổn định và chi phí đầu tư.",
+      "Dễ sử dụng cho nhu cầu giải trí và điều hướng hằng ngày.",
+      "Phù hợp đa số khách hàng muốn nâng cấp màn hình zin thành Android."
     ],
     performance: [
-      "Đa nhiệm tốt hơn nhóm cơ bản.",
-      "Chuyển ứng dụng nhanh và ổn định hơn.",
-      "Thoải mái hơn với nhu cầu sử dụng thường xuyên."
+      "Chạy mượt các ứng dụng cơ bản và phổ biến trên xe.",
+      "Đáp ứng tốt nhu cầu giải trí, điều hướng và kết nối thông minh.",
+      "Hoạt động ổn định trong môi trường sử dụng thực tế trên ô tô."
     ],
     features: [
-      "Giải trí online mượt hơn",
-      "Maps và Vietmap ổn định",
-      "Chia đôi màn hình tốt",
-      "Kết nối app qua VRTECH Nexus",
-      "Tối ưu trải nghiệm sử dụng hằng ngày"
+      "Android 13 hiện đại",
+      "SIM 4G LTE độc lập",
+      "WiFi kép và Bluetooth 5.0",
+      "Google Maps, Vietmap, YouTube, Netflix",
+      "Tích hợp ứng dụng VRTECH Nexus"
     ],
     compare_good: [
-      "Nâng cấp rõ rệt",
-      "Mượt hơn bản cơ bản",
-      "Hợp lý về chi phí",
-      "Dễ tư vấn cho nhóm trung cấp"
+      "Chip 6125 ổn định",
+      "Thiết kế nhỏ gọn, dễ lắp",
+      "Đa nhiệm mượt trong tầm giá",
+      "Có hệ sinh thái VRTECH Nexus"
     ],
     compare_bad: [
-      "Không phải bản đầu bảng",
-      "Không thiên về ambient",
-      "Không tối đa hiệu năng như Ultra"
+      "Không phù hợp với xe không có CarPlay",
+      "Không tối ưu cho game nặng",
+      "Phụ thuộc internet để khai thác tối đa"
     ]
   },
 
@@ -1138,12 +1360,15 @@ window.PRODUCTS = {
   },
 
   ultra: {
-    name: "TBOX ULTRA / ULTRA MAX V2",
+    name: "TBOX ULTRA MAX V2 - VRTECH Edition 2026",
+    short_name: "TBOX ULTRA MAX V2 2026",
     badge: "Hiệu năng mạnh nhất",
     subtitle: "Flagship – mượt tối đa – dành cho khách khó tính",
+    detail_title: "Giới thiệu và đánh giá TBOX ULTRA MAX V2 - VRTECH Edition 2026",
+    detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "Phiên bản mạnh nhất trong hệ Carlinkit V2 by VRTECH, dành cho nhóm khách hàng đòi hỏi hiệu năng cao cấp và độ mượt tối đa.",
     hero_image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 01.jpg",
-    nexus_image: "images/products12thv2/app/appvrtechnexus.jpg",
+    nexus_image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 11.jpg",
     gallery: [
       "images/products12thv2/ultrav2/TBOX ULTRA MAX 02.jpg",
       "images/products12thv2/ultrav2/TBOX ULTRA MAX 03.jpg",
@@ -1153,20 +1378,40 @@ window.PRODUCTS = {
     ],
     gallery_extra: [
       {
+        image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 07.png",
+        alt: "Hình tổng quan cấu tạo bên trong TBOX ULTRA MAX V2"
+      },
+      {
+        image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 08.png",
+        alt: "Mô tả cấu tạo chip Qualcomm SM6350 trên TBOX ULTRA MAX V2"
+      },
+      {
+        image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 09.png",
+        alt: "So sánh sức mạnh chip Qualcomm SM6350 với các chip khác trên TBOX ULTRA MAX V2"
+      },
+      {
+        image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 10.png",
+        alt: "Lợi thế WiFi 6 trên TBOX ULTRA MAX V2"
+      },
+      {
+        image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 11.jpg",
+        alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX ULTRA MAX V2"
+      },
+      {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
         alt: "Giấy phép và chứng nhận phân phối cho Carlinkit TBOX ULTRA MAX V2"
       }
     ],
-    stock_status: "Con hang",
+    stock_status: "Còn hàng",
     brand: "Carlinkit",
-    category: "Android Box O To",
-    condition: "San pham chinh hang, fullbox",
-    warranty_label: "Bao hanh 12 thang",
-    quantity_available: "Con hang",
+    category: "Android Box Ô Tô",
+    condition: "Sản phẩm chính hãng, fullbox",
+    warranty_label: "Bảo hành 12 tháng",
+    quantity_available: "Còn hàng",
     primary_cta: "Mua ngay",
-    support_cta: "Goi tu van",
+    support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "Lien he de duoc tu van ban cau hinh cao cap phu hop nhu cau thuc te.",
+    promo: "Liên hệ để được tư vấn cấu hình cao cấp phù hợp nhu cầu thực tế.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -1190,18 +1435,290 @@ window.PRODUCTS = {
       }
     ],
     highlights: [
-      "Phiên bản mạnh nhất trong hệ Carlinkit V2",
-      "Tối ưu cho đa nhiệm nặng và khách hàng khó tính",
-      "Trải nghiệm nhanh, mượt và cao cấp nhất",
-      "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
+      "Chip Qualcomm SM6350 6nm mạnh nhất dòng V2",
+      "RAM 8GB cho đa nhiệm mượt mà",
+      "Android 15 mới nhất",
+      "WiFi 6 + 4G cho kết nối toàn diện",
+      "Bộ nhớ UFS 2.2 tốc độ cao"
+    ],
+    detail_sections: [
+      {
+        paragraphs: [
+          "Trong năm 2026, nhu cầu nâng cấp hệ thống giải trí trên ô tô không chỉ dừng lại ở mức đủ dùng mà đã chuyển sang trải nghiệm cao cấp, mượt mà và ổn định lâu dài.",
+          "Người dùng ngày càng đòi hỏi một thiết bị có thể hoạt động như một chiếc smartphone thực thụ ngay trên màn hình xe.",
+          "TBOX ULTRA MAX V2 - VRTECH Edition chính là phiên bản cao cấp nhất trong dòng TBOX V2 Series, được tối ưu toàn diện từ phần cứng đến phần mềm, mang lại trải nghiệm vượt trội so với các phiên bản phổ thông.",
+          "Với việc được trang bị chip Qualcomm SM6350 (tiến trình 6nm), thiết bị mang lại hiệu năng mạnh mẽ, khả năng xử lý nhanh, đa nhiệm mượt và hoạt động ổn định trong thời gian dài."
+        ],
+        image: {
+          src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 07.png",
+          alt: "Hình tổng quan cấu tạo bên trong TBOX ULTRA MAX V2"
+        }
+      },
+      {
+        title: "1. Thiết kế cao cấp - tối giản & tinh tế",
+        paragraphs: [
+          "TBOX ULTRA MAX V2 sở hữu thiết kế dạng tròn đặc trưng, mang phong cách hiện đại và cao cấp."
+        ],
+        bullets: [
+          "Thiết kế bo cong mềm mại, tối ưu thẩm mỹ nội thất xe",
+          "Kích thước nhỏ gọn, dễ dàng lắp đặt và giấu gọn",
+          "Mặt trên tối giản với logo Carlinkit sang trọng",
+          "Mặt đáy tích hợp hệ thống tản nhiệt tối ưu"
+        ],
+        note: "Tổng thể thiết kế hướng đến sự gọn gàng, tinh tế và chuẩn công nghệ cao cấp."
+      },
+      {
+        title: "2. Hiệu năng vượt trội với chip Qualcomm SM6350",
+        paragraphs: [
+          "TBOX ULTRA MAX V2 sử dụng vi xử lý Qualcomm SM6350 (Snapdragon 690) - dòng chip cao cấp hơn hẳn các phiên bản 6115, 6125 và 6225."
+        ],
+        bullets: [
+          "CPU 8 nhân (Octa-core)",
+          "Kryo 560 với kiến trúc mới hơn",
+          "Tiến trình 6nm tiết kiệm điện",
+          "GPU Adreno 619 xử lý đồ họa mạnh mẽ",
+          "Mở app nhanh, gần như không delay",
+          "Chạy đa nhiệm mượt với chia đôi màn hình",
+          "Xử lý bản đồ và video cùng lúc ổn định",
+          "Hạn chế nóng máy khi sử dụng lâu",
+          "Mạnh hơn rõ rệt so với 6115 / 6125 / 6225",
+          "Tối ưu đa nhiệm tốt hơn",
+          "Trải nghiệm mượt mà lâu dài, ít giật lag"
+        ],
+        image: {
+          src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 08.png",
+          alt: "Mô tả cấu tạo chip Qualcomm SM6350 trên TBOX ULTRA MAX V2"
+        }
+      },
+      {
+        title: "3. Android 15 - trải nghiệm hiện đại nhất",
+        paragraphs: [
+          "Thiết bị được cài sẵn Android 15, mang lại trải nghiệm sử dụng tối ưu."
+        ],
+        bullets: [
+          "Giao diện hiện đại, dễ sử dụng",
+          "Tương thích tốt với ứng dụng mới",
+          "Hỗ trợ đầy đủ CH Play",
+          "YouTube, Netflix, Spotify",
+          "Google Maps, Vietmap Live",
+          "Các ứng dụng giải trí và tiện ích khác"
+        ],
+        note: "Biến màn hình xe thành tablet Android cao cấp thực thụ."
+      },
+      {
+        title: "4. Trải nghiệm giải trí & điều hướng cao cấp",
+        paragraphs: [
+          "TBOX ULTRA MAX V2 đáp ứng đầy đủ nhu cầu sử dụng trên xe."
+        ],
+        bullets: [
+          "CarPlay và Android Auto",
+          "Xem video 4K mượt mà",
+          "Chia đôi màn hình (đa nhiệm)",
+          "Trợ lý giọng nói thông minh"
+        ],
+        note: "Vừa dẫn đường, vừa giải trí, vẫn mượt."
+      },
+      {
+        title: "5. Cổng kết nối tối ưu - thực tế",
+        paragraphs: [
+          "Thiết bị được bố trí cổng hợp lý và dễ sử dụng."
+        ],
+        bullets: [
+          "Khe SIM Nano - hỗ trợ 4G LTE",
+          "Cổng USB Type-C - nguồn và dữ liệu",
+          "Khe thẻ nhớ TF (microSD)",
+          "Bố trí thực tế: SIM | Type-C | TF Card"
+        ],
+        note: "Cắm là chạy, không cần lắp đặt phức tạp."
+      },
+      {
+        title: "6. Kết nối không dây toàn diện",
+        paragraphs: [
+          "TBOX ULTRA MAX V2 hỗ trợ đầy đủ các chuẩn kết nối hiện đại."
+        ],
+        bullets: [
+          "SIM 4G LTE độc lập",
+          "WiFi 6 (2.4GHz + 5GHz)",
+          "Bluetooth 5.1",
+          "GPS đa hệ thống",
+          "Kết nối nhanh và ổn định hơn WiFi cũ",
+          "Không phụ thuộc điện thoại",
+          "Hoạt động tốt ngay cả khi xe di chuyển"
+        ],
+        image: {
+          src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 10.png",
+          alt: "Lợi thế WiFi 6 trên TBOX ULTRA MAX V2"
+        }
+      },
+      {
+        title: "7. Tản nhiệt cao cấp - hoạt động ổn định",
+        paragraphs: [
+          "Thiết bị được tối ưu cho môi trường xe."
+        ],
+        bullets: [
+          "Thiết kế tản nhiệt hợp kim bên trong",
+          "Mặt đáy thoát nhiệt tốt",
+          "Giảm tình trạng nóng khi sử dụng lâu"
+        ],
+        note: "Đảm bảo hiệu năng ổn định trong thời gian dài."
+      },
+      {
+        title: "8. Giá trị khác biệt VRTECH",
+        paragraphs: [
+          "Phiên bản VRTECH Edition mang lại nhiều giá trị vượt trội hơn bản quốc tế."
+        ],
+        bullets: [
+          "Tích hợp App VRTECH NEXUS",
+          "Bảo hành điện tử trực tiếp trên app",
+          "Hỗ trợ kỹ thuật lâu dài",
+          "Tối ưu phần mềm riêng cho người Việt"
+        ],
+        note: "Trải nghiệm ổn định hơn bản quốc tế.",
+        image: {
+          src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 11.jpg",
+          alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX ULTRA MAX V2"
+        }
+      },
+      {
+        title: "9. Ưu điểm nổi bật",
+        bullets: [
+          "Chip SM6350 mạnh nhất dòng TBOX V2",
+          "Android 15 mới nhất",
+          "RAM 8GB đa nhiệm mượt",
+          "WiFi 6 + 4G kết nối toàn diện",
+          "Tối ưu VRTECH, ít lỗi và ổn định"
+        ],
+        image: {
+          src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 09.png",
+          alt: "Sự vượt trội của chip Qualcomm SM6350 so với các chip khác"
+        }
+      },
+      {
+        title: "10. Nhược điểm",
+        bullets: [
+          "Không dùng được với xe không có CarPlay",
+          "Không tối ưu cho game nặng",
+          "Cần internet để khai thác tối đa"
+        ]
+      },
+      {
+        title: "Kết luận",
+        paragraphs: [
+          "TBOX ULTRA MAX V2 - VRTECH Edition 2026 là lựa chọn dành cho người dùng cần hiệu năng cao, muốn trải nghiệm mượt lâu dài và ưu tiên sự ổn định, cao cấp.",
+          "Đây là phiên bản mạnh nhất và đáng nâng cấp nhất trong dòng TBOX V2, phù hợp cho người dùng muốn một trải nghiệm Android Box hoàn thiện và bền vững trên ô tô."
+        ]
+      }
     ],
     specs: [
       { label: "Phân khúc", value: "Flagship hiệu năng" },
+      { label: "Chip xử lý", value: "Qualcomm SM6350 (Snapdragon 690)" },
       { label: "Nhóm khách phù hợp", value: "Yêu cầu trải nghiệm mạnh và cao cấp" },
       { label: "Trải nghiệm chính", value: "Đa nhiệm nặng, phản hồi nhanh, mượt tối đa" },
-      { label: "Điểm nổi bật", value: "Bản đầu bảng, dễ chốt nhóm khách premium" },
+      { label: "Kết nối", value: "WiFi 6, Nano SIM 4G, Bluetooth 5.1, GPS" },
       { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
       { label: "Hậu mãi", value: "Bảo hành 12 tháng, VAT đầy đủ" }
+    ],
+    spec_sections: [
+      {
+        title: "Thông tin chung",
+        rows: [
+          { label: "Tên sản phẩm", value: "TBOX ULTRA MAX V2 - VRTECH Edition 2026" },
+          { label: "Phiên bản", value: "Carlinkit TBOX Ultra Max V2" },
+          { label: "Phân phối", value: "VRTECH Official Việt Nam" },
+          { label: "Bảo hành", value: "12 tháng (điện tử qua App VRTECH Nexus)" }
+        ]
+      },
+      {
+        title: "Bộ vi xử lý (CPU)",
+        rows: [
+          { label: "Chipset", value: "Qualcomm SM6350 (Snapdragon 690)" },
+          { label: "Tiến trình", value: "6nm FinFET" },
+          { label: "Kiến trúc CPU", value: "Kryo 560" },
+          { label: "Số nhân", value: "8 nhân (Octa-core)" },
+          { label: "Cấu trúc", value: "2x Kryo 560 Gold (~2.0GHz) + 6x Kryo 560 Silver (~1.7GHz)" },
+          { label: "Nền tảng", value: "64-bit" }
+        ]
+      },
+      {
+        title: "Đồ họa & AI",
+        rows: [
+          { label: "GPU", value: "Adreno 619" },
+          { label: "AI Engine", value: "Hexagon 685" },
+          { label: "DSP", value: "Hexagon 685" },
+          { label: "ISP", value: "Spectra 250L" }
+        ]
+      },
+      {
+        title: "Bộ nhớ",
+        rows: [
+          { label: "RAM", value: "8GB" },
+          { label: "Loại RAM", value: "LPDDR4X" },
+          { label: "ROM", value: "128GB" },
+          { label: "Chuẩn lưu trữ", value: "UFS 2.2" },
+          { label: "Hỗ trợ mở rộng", value: "microSD (TF Card)" }
+        ]
+      },
+      {
+        title: "Kết nối",
+        rows: [
+          { label: "SIM", value: "Nano SIM (4G LTE)" },
+          { label: "Modem", value: "Snapdragon X15 LTE (Cat 13)" },
+          { label: "WiFi", value: "WiFi 6 (2.4GHz + 5GHz)" },
+          { label: "Bluetooth", value: "5.1" },
+          { label: "GPS", value: "GPS / GLONASS / BeiDou" }
+        ]
+      },
+      {
+        title: "Cổng kết nối",
+        rows: [
+          { label: "USB", value: "1 x USB Type-C (Nguồn + Dữ liệu)" },
+          { label: "SIM", value: "1 x Nano SIM" },
+          { label: "Thẻ nhớ", value: "1 x microSD (TF Card)" },
+          { label: "Bố trí thực tế", value: "SIM | Type-C | TF Card" }
+        ]
+      },
+      {
+        title: "Hệ điều hành",
+        rows: [
+          { label: "Hệ điều hành", value: "Android 15" },
+          { label: "CH Play", value: "Có hỗ trợ" },
+          { label: "Ngôn ngữ", value: "Đa ngôn ngữ (tối ưu tiếng Việt VRTECH)" }
+        ]
+      },
+      {
+        title: "Tính năng",
+        rows: [
+          { label: "CarPlay", value: "Có" },
+          { label: "Android Auto", value: "Có" },
+          { label: "Đa nhiệm", value: "Chia đôi màn hình" },
+          { label: "Giải trí", value: "Video, nhạc, ứng dụng" },
+          { label: "Trợ lý", value: "Giọng nói thông minh" }
+        ]
+      },
+      {
+        title: "Thiết kế & phần cứng",
+        rows: [
+          { label: "Chất liệu", value: "Nhựa ABS cao cấp" },
+          { label: "Tản nhiệt", value: "Hợp kim + khe thoát nhiệt" },
+          { label: "Thiết kế", value: "Dạng tròn, nhỏ gọn" },
+          { label: "Lắp đặt", value: "Plug & Play" }
+        ]
+      },
+      {
+        title: "Nguồn điện",
+        rows: [
+          { label: "Nguồn vào", value: "5V - 2A" },
+          { label: "Cổng cấp nguồn", value: "USB Type-C" }
+        ]
+      },
+      {
+        title: "Phụ kiện đi kèm",
+        rows: [
+          { label: "Thiết bị", value: "TBOX ULTRA MAX V2" },
+          { label: "Cáp", value: "USB Type-C" },
+          { label: "Tài liệu", value: "Hướng dẫn sử dụng" }
+        ]
+      }
     ],
     reasons: [
       "Chip mạnh, xử lý đa nhiệm tốt hơn.",
