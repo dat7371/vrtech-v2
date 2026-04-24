@@ -14,28 +14,14 @@ const LANDING_COMPONENTS = [
   ["footer", "footer"],
 ];
 
-function injectComponent(targetId, componentKey) {
-  const container = document.getElementById(targetId);
-  const template = window.COMPONENT_REGISTRY?.[componentKey];
-
-  if (!container || !template) {
-    return;
-  }
-
-  container.innerHTML = template;
-  window.VRTECH_ASSETS?.applyAssetPaths?.(container);
-}
-
 function loadAllComponents() {
-  LANDING_COMPONENTS.forEach(([targetId, componentKey]) => {
-    injectComponent(targetId, componentKey);
-  });
+  window.VRTECH_COMPONENTS?.injectComponents?.(LANDING_COMPONENTS);
 
   setTimeout(() => {
     document.dispatchEvent(new Event("componentsLoaded"));
   }, 0);
 }
 
-if (document.getElementById("hero")) {
+if (document.body.dataset.page === "landing") {
   loadAllComponents();
 }

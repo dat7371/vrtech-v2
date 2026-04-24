@@ -18,18 +18,6 @@ const LIGHTBOX_FOCUSABLE_SELECTORS = [
   "[tabindex]:not([tabindex='-1'])",
 ].join(", ");
 
-function injectProductComponent(targetId, componentKey) {
-  const container = document.getElementById(targetId);
-  const template = window.COMPONENT_REGISTRY?.[componentKey];
-
-  if (!container || !template) {
-    return;
-  }
-
-  container.innerHTML = template;
-  window.VRTECH_ASSETS?.applyAssetPaths?.(container);
-}
-
 function isImageElement(element) {
   return !!element && element instanceof HTMLElement && element.tagName === "IMG";
 }
@@ -98,6 +86,32 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function getArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function getProductVariant(product, variantIndex = 0) {
+  const variants = getArray(product?.variants);
+  return variants[variantIndex] || variants[0] || null;
+}
+
+function getProductPrice(product, variant = null) {
+  return variant?.price || product?.price || "";
+}
+
+function getProductCondition(product, variant = null) {
+  return variant?.condition || product?.condition || "";
+}
+
+function parsePriceValue(price) {
+  const numericValue = Number.parseInt(String(price || "").replace(/[^\d]/g, ""), 10);
+  return Number.isNaN(numericValue) ? 0 : numericValue;
+}
+
+function formatPriceValue(value) {
+  return new Intl.NumberFormat("vi-VN").format(value);
 }
 
 function getAssuranceIconType(title) {
@@ -402,9 +416,7 @@ function initializeProductCompare(currentKey) {
 }
 
 function loadProductPage() {
-  PRODUCT_PAGE_COMPONENTS.forEach(([targetId, componentKey]) => {
-    injectProductComponent(targetId, componentKey);
-  });
+  window.VRTECH_COMPONENTS?.injectComponents?.(PRODUCT_PAGE_COMPONENTS);
 
   renderProductData();
   initializeProductGalleryLightbox();
@@ -419,12 +431,11 @@ function initializeProductGalleryLightbox() {
     return;
   }
 
-  const gallery = document.getElementById("product-gallery-list");
   const heroTrigger = document.querySelector("[data-product-hero-trigger]");
   const heroImage = document.querySelector("[data-product-hero-image]");
   const heroThumbs = document.getElementById("product-hero-thumbs");
 
-  if (!gallery && !heroTrigger) {
+  if (!heroTrigger) {
     return;
   }
 
@@ -567,27 +578,6 @@ function initializeProductGalleryLightbox() {
     closeButtons[closeButtons.length - 1]?.focus();
   };
 
-  gallery?.addEventListener("click", (event) => {
-    const clickedButton = event.target instanceof HTMLElement ? event.target.closest(".product-gallery-trigger") : null;
-    const galleryButtons = Array.from(gallery.querySelectorAll(".product-gallery-trigger"));
-    const clickedIndex = galleryButtons.findIndex((button) => button === clickedButton);
-    const items = galleryButtons.map((button, index) => {
-      const image = button.querySelector("img");
-      return isImageElement(image)
-        ? {
-            src: image.currentSrc || image.src,
-            alt: image.alt || `Ảnh sản phẩm ${index + 1}`,
-          }
-        : null;
-    }).filter(Boolean);
-
-    if (clickedIndex < 0 || !items.length) {
-      return;
-    }
-
-    openLightbox(items, clickedIndex);
-  });
-
   heroTrigger?.addEventListener("click", () => {
     const items = collectHeroItems();
     const activeHeroIndex = items.findIndex((item) => item.src === heroImage?.getAttribute("src"));
@@ -708,6 +698,15 @@ function renderProductData() {
   if (!product) return;
 
   updateProductSeo(product);
+  let selectedVariant = getProductVariant(product);
+  let selectedQuantity = 1;
+  const updateDisplayedPrice = () => {
+    const unitPrice = getProductPrice(product, selectedVariant);
+    const unitPriceValue = parsePriceValue(unitPrice);
+    const totalPrice = unitPriceValue > 0 ? formatPriceValue(unitPriceValue * selectedQuantity) : unitPrice;
+
+    document.querySelectorAll("[data-product-price]").forEach(el => el.textContent = totalPrice);
+  };
 
   document.querySelectorAll("[data-product-name]").forEach(el => el.textContent = product.name);
   document.querySelectorAll("[data-product-name-full]").forEach(el => el.textContent = getTopBarTitle(product));
@@ -748,9 +747,9 @@ function renderProductData() {
   document.querySelectorAll("[data-product-stock]").forEach(el => el.textContent = product.stock_status || "Con hang");
   document.querySelectorAll("[data-product-brand]").forEach(el => el.textContent = product.brand || "Carlinkit");
   document.querySelectorAll("[data-product-category]").forEach(el => el.textContent = product.category || "Android Box O To");
-  document.querySelectorAll("[data-product-condition]").forEach(el => el.textContent = product.condition || "");
+  document.querySelectorAll("[data-product-condition]").forEach(el => el.textContent = getProductCondition(product, selectedVariant));
   document.querySelectorAll("[data-product-warranty]").forEach(el => el.textContent = product.warranty_label || "Bao hanh 12 thang");
-  document.querySelectorAll("[data-product-price]").forEach(el => el.textContent = product.price || "");
+  updateDisplayedPrice();
   document.querySelectorAll("[data-product-vat]").forEach(el => el.textContent = product.vat_label || "");
   document.querySelectorAll("[data-product-primary-cta]").forEach(el => el.textContent = product.primary_cta || "Mua ngay");
   document.querySelectorAll("[data-product-support-cta]").forEach(el => el.textContent = product.support_cta || "Goi tu van");
@@ -774,6 +773,46 @@ function renderProductData() {
     el.hidden = !product.promo;
   });
 
+  const variantBlock = document.querySelector("[data-product-variant-block]");
+  const variantOptions = document.querySelector("[data-product-variant-options]");
+  const variants = getArray(product.variants);
+
+  if (variantBlock instanceof HTMLElement && variantOptions instanceof HTMLElement) {
+    variantBlock.hidden = variants.length < 2;
+    variantOptions.innerHTML = variants.map((variant, index) => `
+      <button
+        type="button"
+        class="product-variant-option${index === 0 ? " active" : ""}"
+        data-product-variant-index="${index}"
+        aria-pressed="${index === 0 ? "true" : "false"}"
+      >
+        <span>${escapeHtml(variant.label || `Cấu hình ${index + 1}`)}</span>
+        <strong>${escapeHtml(variant.price || product.price || "")}</strong>
+        ${variant.badge ? `<em>${escapeHtml(variant.badge)}</em>` : ""}
+      </button>
+    `).join("");
+
+    variantOptions.addEventListener("click", (event) => {
+      const option = event.target instanceof HTMLElement ? event.target.closest("[data-product-variant-index]") : null;
+
+      if (!(option instanceof HTMLElement)) {
+        return;
+      }
+
+      const variantIndex = Number.parseInt(option.getAttribute("data-product-variant-index") || "0", 10);
+      selectedVariant = getProductVariant(product, Number.isNaN(variantIndex) ? 0 : variantIndex);
+
+      variantOptions.querySelectorAll("[data-product-variant-index]").forEach((item) => {
+        const isActive = item === option;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+
+      updateDisplayedPrice();
+      document.querySelectorAll("[data-product-condition]").forEach(el => el.textContent = getProductCondition(product, selectedVariant));
+    });
+  }
+
   const quantityInput = document.querySelector("[data-quantity-input]");
   const decreaseButton = document.querySelector("[data-quantity-decrease]");
   const increaseButton = document.querySelector("[data-quantity-increase]");
@@ -781,7 +820,9 @@ function renderProductData() {
   if (quantityInput instanceof HTMLInputElement && decreaseButton instanceof HTMLElement && increaseButton instanceof HTMLElement) {
     const syncQuantity = (nextValue) => {
       const parsed = Number.parseInt(String(nextValue), 10);
-      quantityInput.value = String(Math.max(Number.isNaN(parsed) ? 1 : parsed, 1));
+      selectedQuantity = Math.max(Number.isNaN(parsed) ? 1 : parsed, 1);
+      quantityInput.value = String(selectedQuantity);
+      updateDisplayedPrice();
     };
 
     decreaseButton.addEventListener("click", () => {
@@ -818,73 +859,6 @@ function renderProductData() {
         <img src="${window.VRTECH_ASSETS?.asset?.(image) || image}" alt="${product.name} - thumbnail ${index + 1}" width="800" height="800" loading="lazy">
       </button>
     `).join("");
-  }
-
-  const nexusImage = document.querySelector("[data-product-nexus-image]");
-  if (nexusImage && nexusImage.tagName === "IMG") {
-    const nexusImagePath = product.nexus_image || "images/products12thv2/app/appvrtechnexus.jpg";
-    nexusImage.src = window.VRTECH_ASSETS?.asset?.(nexusImagePath) || nexusImagePath;
-    nexusImage.alt = `VRTECH Nexus trên ${product.name}`;
-  }
-
-  const reasonsWrap = document.getElementById("product-reasons-list");
-  if (reasonsWrap) {
-    reasonsWrap.innerHTML = product.reasons.map(item => `
-      <div class="feature-card reveal">
-        <h3>${item}</h3>
-        <p>Điểm mạnh giúp model này dễ chốt đơn hơn trong đúng nhóm khách hàng mục tiêu.</p>
-      </div>
-    `).join("");
-  }
-
-  const performanceWrap = document.getElementById("product-performance-list");
-  if (performanceWrap) {
-    performanceWrap.innerHTML = product.performance.map(item => `
-      <div class="exp-card reveal">${item}</div>
-    `).join("");
-  }
-
-  const featuresWrap = document.getElementById("product-features-list");
-  if (featuresWrap) {
-    featuresWrap.innerHTML = product.features.map(item => `
-      <div class="exp-card reveal">${item}</div>
-    `).join("");
-  }
-
-  const galleryWrap = document.getElementById("product-gallery-list");
-  if (galleryWrap && Array.isArray(product.gallery)) {
-    galleryWrap.innerHTML = product.gallery.map((image, index) => `
-      <figure class="product-gallery-card reveal">
-        <button
-          type="button"
-          class="product-gallery-trigger"
-          aria-label="Xem toàn màn hình ảnh ${index + 1} của ${product.name}"
-        >
-          <img
-            src="${window.VRTECH_ASSETS?.asset?.(image) || image}"
-            alt="${product.name} - hình thực tế ${index + 1}"
-            width="2000"
-            height="2000"
-            loading="lazy"
-          >
-        </button>
-      </figure>
-    `).join("");
-  }
-
-  const goodWrap = document.getElementById("product-compare-good");
-  if (goodWrap) {
-    goodWrap.innerHTML = product.compare_good.map(item => `<li>${item}</li>`).join("");
-  }
-
-  const badWrap = document.getElementById("product-compare-bad");
-  if (badWrap) {
-    badWrap.innerHTML = product.compare_bad.map(item => `<li>${item}</li>`).join("");
-  }
-
-  const highlightWrap = document.getElementById("product-highlight-list");
-  if (highlightWrap && Array.isArray(product.highlights)) {
-    highlightWrap.innerHTML = product.highlights.map(item => `<li>${item}</li>`).join("");
   }
 
   const assuranceMarkup = Array.isArray(product.assurances) ? product.assurances.map((item) => `

@@ -31,22 +31,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build static artifact
-        shell: pwsh
-        run: |
-          $dist = "dist"
-          if (Test-Path $dist) {
-            Remove-Item -Recurse -Force $dist
-          }
-
-          New-Item -ItemType Directory -Path $dist | Out-Null
-
-          Copy-Item index.html $dist
-          Copy-Item -Recurse css $dist
-          Copy-Item -Recurse js $dist
-          Copy-Item -Recurse images $dist
-          Copy-Item -Recurse pages $dist
-
-          New-Item -ItemType File -Path (Join-Path $dist ".nojekyll") | Out-Null
+        run: npm run dist
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

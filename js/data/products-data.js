@@ -33,6 +33,20 @@ window.PRODUCTS = {
     price: "3.849.000",
     old_price: "",
     vat_label: "(VAT 8%)",
+    variants: [
+      {
+        label: "RAM 4GB / ROM 64GB",
+        price: "3.849.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bản tiêu chuẩn"
+      },
+      {
+        label: "RAM 8GB / ROM 128GB",
+        price: "4.849.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bộ nhớ cao hơn"
+      }
+    ],
     condition: "Mới 100%, chưa active, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",

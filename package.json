@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-component-registry.mjs",
+    "build:static": "node scripts/build-static-site.mjs",
+    "dist": "npm run check && npm run build:static",
+    "check": "npm run build && npm run lint",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "audit": "npm audit"

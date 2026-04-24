@@ -60,3 +60,29 @@ window.VRTECH_ASSETS = {
   asset,
   applyAssetPaths,
 };
+
+function injectComponent(targetId, componentKey) {
+  const target = document.getElementById(targetId);
+  const template = window.COMPONENT_REGISTRY?.[componentKey];
+
+  if (!target || !template) {
+    return false;
+  }
+
+  const fragment = document.createRange().createContextualFragment(template.trim());
+  applyAssetPaths(fragment);
+  target.replaceWith(fragment);
+
+  return true;
+}
+
+function injectComponents(componentList) {
+  componentList.forEach(([targetId, componentKey]) => {
+    injectComponent(targetId, componentKey);
+  });
+}
+
+window.VRTECH_COMPONENTS = {
+  injectComponent,
+  injectComponents,
+};

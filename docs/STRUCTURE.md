@@ -2,11 +2,16 @@
 
 ## Root
 
-- `index.html`: landing page
+- `index.html`: landing page shell, chỉ chứa placeholder để inject component
 - `pages/app-vrtech.html`: page giới thiệu VRTECH Nexus
+- `pages/app-carlinkit.html`: redirect cũ sang `pages/app-vrtech.html`
 - `pages/products/*.html`: các trang sản phẩm riêng
+- `scripts/build-component-registry.mjs`: build registry từ các file trong `components/`
+- `scripts/build-static-site.mjs`: đóng gói file runtime vào `dist/` để upload host
 
 ## Components
+
+`components/` là nguồn chính cho HTML component. Không sửa trực tiếp `js/data/component-registry.js`.
 
 - `components/shared/`
   - `header.html`
@@ -17,8 +22,8 @@
   - `hero.html`, `problem.html`, `solution.html`, `nexus.html`, `products.html`, `compare.html`, `experience.html`, `official.html`, `vietmap.html`, `warranty.html`, `cta.html`
 
 - `components/product/`
-  - toàn bộ section dùng cho product page:
-  - `hero.html`, `reasons.html`, `nexus.html`, `performance.html`, `features.html`, `images.html`, `compare.html`, `warranty.html`, `cta.html`
+  - section đang inject trên product page:
+  - `hero.html`, `specs.html`, `cta.html`
 
 ## CSS
 
@@ -53,21 +58,48 @@
   - `product-page.js`
 
 - `js/data/`
-  - `component-registry.js`
+  - `site-config.js`: cấu hình asset/CDN và helper inject component
+  - `component-registry.js`: file generated từ `components/`
   - `products-data.js`
+
+## Page Flow
+
+- Landing: `index.html` khai báo placeholder, `js/pages/landing-loader.js` inject theo thứ tự trong `LANDING_COMPONENTS`.
+- Product: `pages/products/*.html` khai báo placeholder, `js/pages/product-page.js` inject theo thứ tự trong `PRODUCT_PAGE_COMPONENTS`, sau đó render data theo `body[data-product]`.
+- App page: `pages/app-vrtech.html` tự chứa nội dung riêng, chỉ inject shared header.
+
+## Build Rule
+
+Sau khi sửa file trong `components/`, chạy:
+
+```bash
+npm run build
+```
+
+Lệnh này sinh lại `js/data/component-registry.js`. Trước khi bàn giao hoặc deploy, chạy:
+
+```bash
+npm run check
+```
+
+Khi cần tạo bản upload host/shared hosting, chạy:
+
+```bash
+npm run dist
+```
+
+Thư mục `dist/` chỉ chứa file runtime cần deploy: `index.html`, `pages/`, `css/`, `js/`, `images/` và `.nojekyll`.
 
 ## Images
 
 - `images/logo/`: logo và biến thể logo
-- `images/products/`: bộ ảnh cũ
-- `images/products12th/`: bộ ảnh 12 tháng đang dùng cho gallery/product data cũ
-- `images/products12thv2/`: bộ ảnh 12 tháng đã sắp xếp lại tên `01` -> `07`, đang dùng cho cover/hero ngoài landing và hero sản phẩm
+- `images/products12th/`: bộ ảnh cũ, giữ lại để tham chiếu hoặc rollback khi cần
+- `images/products12thv2/`: bộ ảnh đang dùng chính cho landing, product hero, product gallery và ảnh minh họa chi tiết
 
 ## Current Asset Rule
 
 - Cover landing hero: `images/products12thv2/all/`
 - Card 5 sản phẩm ngoài landing: `images/products12thv2/<model>/...01.jpg`
 - Hero đầu trang sản phẩm: `images/products12thv2/<model>/...01.jpg`
-- Gallery sản phẩm: hiện vẫn dùng `images/products12th/` cho một số model
-
-Nếu sau này muốn đồng bộ toàn bộ sang một bộ ảnh duy nhất, nên chuyển hết product gallery sang `images/products12thv2/` theo quy ước `01` -> `07`.
+- Gallery và ảnh chi tiết sản phẩm: `images/products12thv2/<model>/...02` trở đi, cộng thêm ảnh app/permit khi có
+- Không tham chiếu trực tiếp ảnh bằng `../images/...` trong component; giữ path logic dạng `images/...` để `window.VRTECH_ASSETS.asset()` xử lý theo page depth hoặc CDN.

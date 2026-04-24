@@ -1,13 +1,5 @@
 function injectAppHeader() {
-  const container = document.getElementById("header");
-  const template = window.COMPONENT_REGISTRY?.header;
-
-  if (!container || !template) {
-    return;
-  }
-
-  container.innerHTML = template;
-  window.VRTECH_ASSETS?.applyAssetPaths?.(container);
+  window.VRTECH_COMPONENTS?.injectComponent?.("header", "header");
 }
 
 function fixAppPageHeaderPaths() {
