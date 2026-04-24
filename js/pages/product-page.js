@@ -69,6 +69,28 @@ function getProductDetailTitle(product) {
   return product?.detail_title || `Giới thiệu và đánh giá ${getCompactProductName(product)}`;
 }
 
+function updateProductSeo(product) {
+  if (!product) {
+    return;
+  }
+
+  const pageTitle = product.page_title || `${getCompactProductName(product)} | VRTECH`;
+  const metaDescription = product.meta_description || product.desc || "";
+  const canonicalHref = window.location.href;
+
+  document.title = pageTitle;
+
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta instanceof HTMLMetaElement) {
+    descriptionMeta.setAttribute("content", metaDescription);
+  }
+
+  const canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (canonicalLink instanceof HTMLLinkElement) {
+    canonicalLink.setAttribute("href", canonicalHref);
+  }
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -684,6 +706,8 @@ function renderProductData() {
   const key = document.body.dataset.product;
   const product = window.PRODUCTS?.[key];
   if (!product) return;
+
+  updateProductSeo(product);
 
   document.querySelectorAll("[data-product-name]").forEach(el => el.textContent = product.name);
   document.querySelectorAll("[data-product-name-full]").forEach(el => el.textContent = getTopBarTitle(product));

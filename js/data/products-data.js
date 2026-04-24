@@ -1362,6 +1362,8 @@ window.PRODUCTS = {
   ultra: {
     name: "TBOX ULTRA MAX V2 - VRTECH Edition 2026",
     short_name: "TBOX ULTRA MAX V2 2026",
+    page_title: "TBOX ULTRA MAX V2 - VRTECH Edition 2026 | VRTECH",
+    meta_description: "TBOX ULTRA MAX V2 - VRTECH Edition 2026: bản flagship mạnh nhất dòng V2 với chip Snapdragon 690, Android 15, WiFi 6, VRTECH Nexus và bảo hành điện tử 12 tháng.",
     badge: "Hiệu năng mạnh nhất",
     subtitle: "Flagship – mượt tối đa – dành cho khách khó tính",
     detail_title: "Giới thiệu và đánh giá TBOX ULTRA MAX V2 - VRTECH Edition 2026",

@@ -33,6 +33,8 @@ export default [
         HTMLInputElement: "readonly",
         HTMLButtonElement: "readonly",
         HTMLSelectElement: "readonly",
+        HTMLMetaElement: "readonly",
+        HTMLLinkElement: "readonly",
         Node: "readonly"
       },
     },
