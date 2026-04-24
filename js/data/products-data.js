@@ -1,7 +1,7 @@
 window.PRODUCTS = {
   s2a: {
     name: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Android Box Ô Tô | Chip Qualcomm 6115 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto ",
+    top_title: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX S2A V2 2026",
     badge: "Bản tiêu chuẩn",
     subtitle: "Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
@@ -334,11 +334,11 @@ window.PRODUCTS = {
   },
 
   s2p: {
-    name: "TBOX S2P V2",
-    top_title: "Carlinkit TBOX S2P V2",
-    short_name: "TBOX S2P V2",
+    name: "Vrtech Edition | Carlinkit TBOX S2P V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "Vrtech Edition | Carlinkit TBOX S2P V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
+    short_name: "Carlinkit TBOX S2P V2 2026",
     badge: "Bán chạy nhất",
-    subtitle: "Cấu hình ổn định – phù hợp đa số xe – dễ chốt đơn",
+    subtitle: "Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
     detail_title: "Giới thiệu và đánh giá TBOX S2P V2 - VRTECH Edition 2026",
     detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "TBOX S2P V2 by VRTECH là phiên bản bán chạy nhất trong hệ Carlinkit V2, dành cho khách hàng cần một lựa chọn cân bằng giữa hiệu năng, độ ổn định và chi phí đầu tư. Model này phù hợp với đa số dòng xe có Apple CarPlay có dây, dễ tư vấn, dễ sử dụng và đáp ứng tốt các nhu cầu giải trí, dẫn đường, kết nối cũng như quản lý thiết bị trên xe.",
@@ -385,6 +385,20 @@ window.PRODUCTS = {
     quantity_available: "Còn hàng",
     price: "4.349.000",
     vat_label: "(VAT 8%)",
+    variants: [
+      {
+        label: "RAM 4GB / ROM 64GB",
+        price: "4.349.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bản tiêu chuẩn"
+      },
+      {
+        label: "RAM 8GB / ROM 128GB",
+        price: "5.349.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bộ nhớ cao hơn"
+      }
+    ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
@@ -701,10 +715,11 @@ window.PRODUCTS = {
   },
 
   plus: {
-    name: "TBOX PLUS V2 - VRTECH Edition 2026",
-    short_name: "TBOX PLUS V2 2026",
+    name: "Vrtech Edition | Carlinkit TBOX PLUS V2 2026 | Android Box Ô Tô | Chip Qualcomm 6125 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "Vrtech Edition | Carlinkit TBOX PLUS V2 2026 | Chip Qualcomm 6125 | Apple CarPlay & Android Auto",
+    short_name: "Carlinkit TBOX PLUS V2 2026",
     badge: "Nâng cấp hợp lý",
-    subtitle: "Chip Qualcomm 6125 | Android 13 | SIM 4G LTE | VRTECH Nexus",
+    subtitle: "Chip Qualcomm 6125 | Apple CarPlay & Android Auto",
     detail_title: "Giới thiệu và đánh giá TBOX PLUS V2 - VRTECH Edition 2026",
     detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "TBOX PLUS V2 - VRTECH Edition là giải pháp nâng cấp toàn diện giúp biến màn hình zin của xe thành một hệ điều hành Android hoàn chỉnh, ổn định và dễ sử dụng trong nhu cầu hằng ngày.",
@@ -745,6 +760,22 @@ window.PRODUCTS = {
     condition: "Sản phẩm chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
+    price: "4.299.000",
+    vat_label: "(VAT 8%)",
+    variants: [
+      {
+        label: "RAM 6GB / ROM 64GB",
+        price: "4.299.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bản tiêu chuẩn"
+      },
+      {
+        label: "RAM 8GB / ROM 128GB",
+        price: "5.299.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bộ nhớ cao hơn"
+      }
+    ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
@@ -1039,10 +1070,11 @@ window.PRODUCTS = {
   },
 
   ambient: {
-    name: "TBOX AMBIENT V2 - VRTECH Edition 2026",
-    short_name: "TBOX AMBIENT V2 2026",
+    name: "Vrtech Edition | Carlinkit TBOX AMBIENT V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "Vrtech Edition | Carlinkit TBOX AMBIENT V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
+    short_name: "Carlinkit TBOX AMBIENT V2 2026",
     badge: "Thẩm mỹ cao cấp",
-    subtitle: "Cân bằng giữa hiệu năng, thẩm mỹ và giá thành",
+    subtitle: "Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
     detail_title: "TBOX AMBIENT V2 - VRTECH Edition 2026",
     detail_intro: "Android Box ô tô thế hệ mới - Tối ưu toàn diện cho trải nghiệm lái xe",
     desc: "Phiên bản Android Box ô tô cân bằng tốt giữa hiệu năng, thẩm mỹ và giá thành, phù hợp người dùng cần box ổn định, có 4G, giải trí, dẫn đường và quản lý qua app.",
@@ -1072,6 +1104,21 @@ window.PRODUCTS = {
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
     price: "4.349.000",
+    vat_label: "(VAT 8%)",
+    variants: [
+      {
+        label: "RAM 4GB / ROM 64GB",
+        price: "4.349.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bản tiêu chuẩn"
+      },
+      {
+        label: "RAM 8GB / ROM 128GB",
+        price: "5.349.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Bộ nhớ cao hơn"
+      }
+    ],
     primary_cta: "Mua ngay",
     support_cta: "Goi tu van",
     support_phone: "0921515868",
@@ -1374,12 +1421,13 @@ window.PRODUCTS = {
   },
 
   ultra: {
-    name: "TBOX ULTRA MAX V2 - VRTECH Edition 2026",
-    short_name: "TBOX ULTRA MAX V2 2026",
+    name: "Vrtech Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Android Box Ô Tô | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "Vrtech Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto",
+    short_name: "Carlinkit TBOX ULTRA MAX V2 2026",
     page_title: "TBOX ULTRA MAX V2 - VRTECH Edition 2026 | VRTECH",
     meta_description: "TBOX ULTRA MAX V2 - VRTECH Edition 2026: bản flagship mạnh nhất dòng V2 với chip Snapdragon 690, Android 15, WiFi 6, VRTECH Nexus và bảo hành điện tử 12 tháng.",
     badge: "Hiệu năng mạnh nhất",
-    subtitle: "Flagship – mượt tối đa – dành cho khách khó tính",
+    subtitle: "Chip Qualcomm SM6350 | Apple CarPlay & Android Auto",
     detail_title: "Giới thiệu và đánh giá TBOX ULTRA MAX V2 - VRTECH Edition 2026",
     detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
     desc: "Phiên bản mạnh nhất trong hệ Carlinkit V2 by VRTECH, dành cho nhóm khách hàng đòi hỏi hiệu năng cao cấp và độ mượt tối đa.",
@@ -1424,6 +1472,16 @@ window.PRODUCTS = {
     condition: "Sản phẩm chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
+    price: "6.199.000",
+    vat_label: "(VAT 8%)",
+    variants: [
+      {
+        label: "RAM 8GB / ROM 128GB",
+        price: "6.199.000",
+        condition: "Mới 100%, chưa active, fullbox",
+        badge: "Cấu hình duy nhất"
+      }
+    ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
