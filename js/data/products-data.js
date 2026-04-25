@@ -1,4 +1,208 @@
 window.PRODUCTS = {
+  vietmap: {
+    name: "Thẻ Vietmap Live Pro Chính Hãng 2026 | Cảnh Báo Tốc Độ | Camera Phạt Nguội | Dùng Trên Điện Thoại, Android Box, Màn Hình Ô Tô",
+    top_title: "Vietmap Live Pro Chính Hãng 2026 | Cảnh Báo Tốc Độ | Camera Phạt Nguội",
+    short_name: "Vietmap Live Pro 2026",
+    page_title: "Vietmap Live Pro 2026 chính hãng | VRTECH",
+    meta_description: "Vietmap Live Pro chính hãng 2026: trợ lý giao thông cho tài xế Việt, cảnh báo tốc độ, camera phạt nguội, đường cấm, trạm thu phí và dữ liệu giao thông.",
+    badge: "Trợ lý giao thông",
+    subtitle: "Cảnh báo tốc độ | Camera phạt nguội | Dữ liệu giao thông Việt Nam",
+    detail_title: "Vietmap Live Pro chính hãng 2026",
+    detail_intro: "Ứng dụng trợ lý giao thông cho ô tô dành riêng cho tài xế Việt, dùng trên điện thoại, Android Box và màn hình ô tô.",
+    desc: "Vietmap Live Pro hỗ trợ dẫn đường thông minh, cảnh báo tốc độ, camera phạt nguội, đường cấm và dữ liệu giao thông cập nhật thường xuyên.",
+    hero_image: "images/vietmap/vietmap 01.webp",
+    gallery: [
+      "images/vietmap/vietmap 02.webp",
+      "images/vietmap/vietmap 03.webp",
+      "images/vietmap/vietmap 04.webp",
+      "images/vietmap/vietmap 05.webp",
+      "images/vietmap/vietmap 06.webp",
+      "images/vietmap/vietmap 07.webp"
+    ],
+    stock_status: "Còn hàng",
+    brand: "Vietmap",
+    category: "Thẻ / ứng dụng dẫn đường",
+    condition: "Sản phẩm chính hãng Vietmap",
+    warranty_label: "Bảo hành và hỗ trợ từ hãng Vietmap",
+    quantity_available: "Còn hàng",
+    price: "480.000",
+    vat_label: "",
+    variants: [
+      {
+        label: "Vietmap Live Pro 1 năm",
+        price: "480.000",
+        condition: "Thẻ Vietmap Live Pro chính hãng",
+        badge: "Gói 1 năm"
+      },
+      {
+        label: "Vietmap Live Pro 2 năm",
+        price: "760.000",
+        condition: "Thẻ Vietmap Live Pro chính hãng",
+        badge: "Gói 2 năm"
+      }
+    ],
+    primary_cta: "Mua ngay",
+    support_cta: "Gọi tư vấn",
+    support_phone: "0921515868",
+    promo: "Trợ giá khi mua kèm Carlinkit V2.",
+    compare_group: "vietmap",
+    assurances: [
+      {
+        title: "VRTECH Official Store",
+        desc: "Đại lý ủy quyền chính thức của Vietmap tại Việt Nam, cam kết sản phẩm chính hãng."
+      },
+      {
+        title: "Hỗ trợ từ hãng Vietmap",
+        desc: "Được hỗ trợ bảo hành, cập nhật phiên bản và tra cứu thông tin bảo hành sản phẩm chính hãng Vietmap."
+      },
+      {
+        title: "Tư vấn miễn phí",
+        desc: "Đội ngũ VRTECH tư vấn, chăm sóc và giải đáp thắc mắc trong quá trình sử dụng."
+      },
+      {
+        title: "Trợ giá khi mua kèm Carlinkit V2",
+        desc: "Ưu đãi tốt hơn khi kết hợp Vietmap Live Pro với Android Box Carlinkit V2."
+      }
+    ],
+    highlights: [
+      "Dẫn đường thông minh",
+      "Cảnh báo vượt quá tốc độ",
+      "Cảnh báo camera phạt nguội",
+      "Cảnh báo đường cấm, cấm dừng/đỗ",
+      "Cập nhật dữ liệu giao thông thường xuyên"
+    ],
+    detail_sections: [
+      {
+        title: "VRTECH Official Store",
+        paragraphs: [
+          "VRTECH Official Store là đại lý ủy quyền chính thức của Carlinkit, VRTECH, Vietmap và Zestech tại Việt Nam.",
+          "Sản phẩm Vietmap Live Pro được cam kết chính hãng và hưởng chính sách hỗ trợ từ hãng Vietmap."
+        ]
+      },
+      {
+        title: "Thông tin sản phẩm",
+        paragraphs: [
+          "Vietmap Live Pro chính hãng là ứng dụng trợ lý giao thông cho ô tô dành riêng cho tài xế Việt. Ứng dụng dùng được trên các hệ điều hành phổ biến, Android Box và màn hình ô tô.",
+          "Sản phẩm tích hợp nhiều tính năng tối ưu, cập nhật thông tin nhanh chóng và hỗ trợ trải nghiệm lái xe an toàn hơn."
+        ],
+        image: {
+          src: "images/vietmap/vietmap 02.webp",
+          alt: "Vietmap Live Pro chính hãng 2026"
+        }
+      },
+      {
+        title: "Tính năng nổi bật",
+        bullets: [
+          "Dẫn đường thông minh",
+          "Cảnh báo vượt quá tốc độ",
+          "Cảnh báo camera phạt nguội",
+          "Cảnh báo đường cấm, cấm dừng/đỗ",
+          "Cảnh báo đoạn đường cấm vượt",
+          "Thông báo phí qua trạm cao tốc",
+          "Cập nhật dữ liệu giao thông",
+          "Hiển thị hình ảnh camera giao thông và tình trạng giao thông theo thời gian thực",
+          "Xem lại lịch sử di chuyển trong vòng 7 ngày",
+          "Tìm kiếm và ra lệnh bằng giọng nói"
+        ],
+        image: {
+          src: "images/vietmap/vietmap 03.webp",
+          alt: "Tính năng cảnh báo giao thông của Vietmap Live Pro"
+        }
+      },
+      {
+        title: "Dữ liệu giao thông cho tài xế Việt",
+        paragraphs: [
+          "Vietmap Live cập nhật dữ liệu định kỳ, hỗ trợ dữ liệu gần khu vực di chuyển ngay cả khi mất kết nối internet trong phạm vi nhất định.",
+          "Người dùng có thể tìm kiếm địa điểm xung quanh, chia sẻ vị trí và đi theo nhóm thuận tiện hơn."
+        ],
+        image: {
+          src: "images/vietmap/vietmap 04.webp",
+          alt: "Bản đồ và dữ liệu giao thông Vietmap Live"
+        }
+      },
+      {
+        title: "Chính sách của VRTECH Official Store",
+        bullets: [
+          "Sản phẩm được kiểm tra kỹ trước khi giao",
+          "Tư vấn và hỗ trợ miễn phí",
+          "Hỗ trợ bảo hành tận tình",
+          "Khách hàng nên quay video khi mở sản phẩm để đảm bảo quyền lợi đổi trả nếu có lỗi vận chuyển hoặc lỗi sản phẩm"
+        ]
+      }
+    ],
+    specs: [
+      { label: "Phân khúc", value: "Trợ lý giao thông / dẫn đường" },
+      { label: "Nhóm khách phù hợp", value: "Tài xế cần cảnh báo tốc độ, camera phạt nguội và dữ liệu giao thông" },
+      { label: "Trải nghiệm chính", value: "Dẫn đường, cảnh báo giao thông, camera phạt nguội" },
+      { label: "Kết nối", value: "iOS, Android, Android Box, màn hình ô tô" },
+      { label: "Hậu mãi", value: "Hỗ trợ bảo hành và cập nhật từ Vietmap" }
+    ],
+    spec_sections: [
+      {
+        title: "Model sản phẩm",
+        rows: [
+          { label: "Tên sản phẩm", value: "Vietmap Live Pro chính hãng 2026" },
+          { label: "Thương hiệu", value: "Vietmap" },
+          { label: "Phân phối", value: "VRTECH Official Store" },
+          { label: "Tình trạng", value: "Chính hãng" }
+        ]
+      },
+      {
+        title: "Tương thích",
+        rows: [
+          { label: "Thiết bị", value: "Điện thoại, Android Box, màn hình ô tô" },
+          { label: "Hệ điều hành", value: "iOS, Android" }
+        ]
+      },
+      {
+        title: "Tính năng",
+        rows: [
+          { label: "Dẫn đường", value: "Thông minh" },
+          { label: "Cảnh báo tốc độ", value: "Có" },
+          { label: "Camera phạt nguội", value: "Có" },
+          { label: "Đường cấm / cấm dừng đỗ", value: "Có" },
+          { label: "Trạm thu phí", value: "Thông báo phí qua trạm" },
+          { label: "Lịch sử di chuyển", value: "Xem lại trong vòng 7 ngày" },
+          { label: "Ra lệnh giọng nói", value: "Có" }
+        ]
+      },
+      {
+        title: "Chính sách",
+        rows: [
+          { label: "Bảo hành", value: "Hỗ trợ từ hãng Vietmap" },
+          { label: "Cập nhật", value: "Hỗ trợ cập nhật phiên bản thường xuyên" },
+          { label: "Ưu đãi", value: "Trợ giá khi mua kèm Carlinkit V2" }
+        ]
+      }
+    ],
+    reasons: [
+      "Bổ sung cảnh báo giao thông cho màn hình ô tô và Android Box.",
+      "Phù hợp khách hàng cần dẫn đường và cảnh báo phạt nguội.",
+      "Tối ưu khi bán kèm Carlinkit V2."
+    ],
+    performance: [
+      "Cập nhật dữ liệu giao thông thường xuyên.",
+      "Hỗ trợ cảnh báo theo hành trình.",
+      "Dùng được trên nhiều nền tảng phổ biến."
+    ],
+    features: [
+      "Dẫn đường thông minh",
+      "Cảnh báo tốc độ",
+      "Camera phạt nguội",
+      "Cảnh báo trạm thu phí",
+      "Hỗ trợ iOS / Android"
+    ],
+    compare_good: [
+      "Chính hãng Vietmap",
+      "Trợ giá khi mua kèm Carlinkit V2",
+      "Phù hợp tài xế Việt"
+    ],
+    compare_bad: [
+      "Cần thiết bị tương thích để khai thác tốt nhất",
+      "Một số dữ liệu phụ thuộc cập nhật từ Vietmap"
+    ]
+  },
+
   s2a: {
     name: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Android Box Ô Tô | Chip Qualcomm 6115 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
     top_title: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto",

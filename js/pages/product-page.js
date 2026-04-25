@@ -2,6 +2,7 @@ const PRODUCT_PAGE_COMPONENTS = [
   ["header", "header"],
   ["product-hero", "product-hero"],
   ["product-specs", "product-specs"],
+  ["product-related", "product-related"],
   ["product-cta", "product-cta"],
   ["footer", "footer"],
 ];
@@ -339,7 +340,7 @@ function getCompareRowValue(summary, sectionTitle, rowLabel) {
   );
   const matchedRow = getArray(matchedSection?.rows).find((row) => row.label === rowLabel);
 
-  return matchedRow?.value || "Đang cập nhật";
+  return matchedRow?.value || "";
 }
 
 function buildCompareTableSections(currentSummary, targetSummary) {
@@ -366,7 +367,7 @@ function buildCompareTableSections(currentSummary, targetSummary) {
       label,
       current: getCompareRowValue(currentSummary, title, label),
       target: getCompareRowValue(targetSummary, title, label),
-    })),
+    })).filter((row) => row.current && row.target),
   })).filter((section) => section.rows.length);
 }
 
@@ -470,6 +471,107 @@ function getProductPagePath(productKey) {
   return `../../pages/products/${productKey}.html`;
 }
 
+function getRelatedProductKeys(currentKey, products) {
+  const currentProduct = products?.[currentKey];
+  const currentGroup = currentProduct?.compare_group || "carlinkit-v2";
+  const keys = Object.keys(products || {}).filter((key) => key !== currentKey);
+  const sameGroupKeys = keys.filter((key) => (products[key]?.compare_group || "carlinkit-v2") === currentGroup);
+  const otherGroupKeys = keys.filter((key) => !sameGroupKeys.includes(key));
+
+  return [...sameGroupKeys, ...otherGroupKeys];
+}
+
+function updateRelatedCarouselState(grid, prevButton, nextButton) {
+  if (!(grid instanceof HTMLElement)) {
+    return;
+  }
+
+  const maxScrollLeft = Math.max(0, grid.scrollWidth - grid.clientWidth - 1);
+  const hasOverflow = maxScrollLeft > 0;
+
+  if (prevButton instanceof HTMLButtonElement) {
+    prevButton.disabled = !hasOverflow || grid.scrollLeft <= 1;
+  }
+
+  if (nextButton instanceof HTMLButtonElement) {
+    nextButton.disabled = !hasOverflow || grid.scrollLeft >= maxScrollLeft;
+  }
+}
+
+function setupRelatedCarousel() {
+  const grid = document.querySelector("[data-product-related-grid]");
+  const prevButton = document.querySelector("[data-product-related-prev]");
+  const nextButton = document.querySelector("[data-product-related-next]");
+
+  if (!(grid instanceof HTMLElement)) {
+    return;
+  }
+
+  const getScrollAmount = () => {
+    const firstCard = grid.querySelector(".product-related-card");
+    return firstCard instanceof HTMLElement
+      ? firstCard.getBoundingClientRect().width + 14
+      : Math.round(grid.clientWidth * 0.8);
+  };
+
+  const scrollRelated = (direction) => {
+    grid.scrollBy({
+      left: direction * getScrollAmount(),
+      behavior: "smooth",
+    });
+  };
+
+  if (prevButton instanceof HTMLButtonElement) {
+    prevButton.onclick = () => scrollRelated(-1);
+  }
+
+  if (nextButton instanceof HTMLButtonElement) {
+    nextButton.onclick = () => scrollRelated(1);
+  }
+
+  grid.onscroll = () => updateRelatedCarouselState(grid, prevButton, nextButton);
+  window.addEventListener("resize", () => updateRelatedCarouselState(grid, prevButton, nextButton));
+  window.requestAnimationFrame(() => updateRelatedCarouselState(grid, prevButton, nextButton));
+}
+
+function renderRelatedProducts(currentKey) {
+  const section = document.querySelector("[data-product-related-section]");
+  const grid = document.querySelector("[data-product-related-grid]");
+  const products = window.PRODUCTS || {};
+  const relatedKeys = getRelatedProductKeys(currentKey, products);
+
+  if (!(section instanceof HTMLElement) || !(grid instanceof HTMLElement) || !relatedKeys.length) {
+    return;
+  }
+
+  grid.innerHTML = relatedKeys.map((key) => {
+    const product = products[key];
+    const variant = getProductVariant(product);
+    const image = window.VRTECH_ASSETS?.asset?.(product?.hero_image) || product?.hero_image || "";
+    const price = getProductPrice(product, variant) || "Liên hệ";
+    const oldPrice = product?.old_price ? `<span>${escapeHtml(product.old_price)}</span>` : "";
+
+    return `
+      <a class="product-related-card" href="${escapeHtml(getProductPagePath(key))}">
+        <span class="product-related-media">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(getCompactProductName(product))}" width="800" height="800" loading="lazy">
+        </span>
+        <span class="product-related-copy">
+          <span class="product-related-badge">${escapeHtml(product?.badge || product?.brand || "Sản phẩm liên quan")}</span>
+          <strong>${escapeHtml(getCompactProductName(product))}</strong>
+          <span class="product-related-price">
+            <em>${escapeHtml(price)}</em>
+            ${oldPrice}
+          </span>
+        </span>
+      </a>
+    `;
+  }).join("");
+
+  section.hidden = false;
+  setupRelatedCarousel();
+}
+
 function fixProductPagePaths() {
   const logoLink = document.querySelector(".logo-image");
   if (logoLink) {
@@ -509,7 +611,14 @@ function initializeProductCompare(currentKey) {
   const targetVariantWrap = document.querySelector("[data-product-compare-target-variant-wrap]");
   const results = document.querySelector("[data-product-compare-results]");
   const products = window.PRODUCTS || {};
-  const compareKeys = Object.keys(products).filter((key) => key !== currentKey);
+  const currentProduct = products[currentKey];
+  const currentCompareGroup = currentProduct?.compare_group || "carlinkit-v2";
+  const compareKeys = Object.keys(products).filter((key) => {
+    const compareProduct = products[key];
+    const compareGroup = compareProduct?.compare_group || "carlinkit-v2";
+
+    return key !== currentKey && compareGroup === currentCompareGroup;
+  });
 
   if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement) || !(modelSelect instanceof HTMLSelectElement) || !(results instanceof HTMLElement)) {
     return;
@@ -1106,7 +1215,7 @@ function renderProductData() {
   const specToggle = document.querySelector("[data-product-spec-toggle]");
   if (specWrap && Array.isArray(product.spec_sections) && product.spec_sections.length) {
     specWrap.innerHTML = product.spec_sections.map((section) => `
-      <section class="product-spec-section reveal">
+      <section class="product-spec-section">
         <div class="product-spec-section-head">
           <span class="product-spec-dot" aria-hidden="true"></span>
           <h3>${section.title}</h3>
@@ -1149,7 +1258,7 @@ function renderProductData() {
     specWrap.innerHTML = `
       <div class="product-spec-grid">
         ${product.specs.map(item => `
-          <article class="product-spec-card reveal">
+          <article class="product-spec-card">
             <span class="product-spec-label">${item.label}</span>
             <strong class="product-spec-value">${item.value}</strong>
           </article>
@@ -1164,6 +1273,7 @@ function renderProductData() {
 
   initializeHeroGallery();
   initializeProductCompare(key);
+  renderRelatedProducts(key);
 }
 
 function initializeHeroGallery() {

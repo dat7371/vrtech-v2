@@ -25,12 +25,12 @@
   position:relative;
 }
 .hero-content h1{
-  margin:22px 0 12px;
+  margin:0 0 12px;
   font-family:"Sora","Plus Jakarta Sans",sans-serif;
-  font-size:clamp(52px,8vw,104px);
-  line-height:.88;
+  font-size:clamp(44px,6.2vw,78px);
+  line-height:.94;
   font-weight:800;
-  letter-spacing:-.07em;
+  letter-spacing:-.05em;
   text-wrap:balance;
 }
 .hero-content h2{
