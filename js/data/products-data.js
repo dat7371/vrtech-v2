@@ -341,7 +341,7 @@ window.PRODUCTS = {
     subtitle: "Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
     detail_title: "Giới thiệu và đánh giá TBOX S2P V2 - VRTECH Edition 2026",
     detail_intro: "(Nội dung mô tả mang tính tham khảo, chi tiết xem phần thông số kỹ thuật)",
-    desc: "TBOX S2P V2 by VRTECH là phiên bản bán chạy nhất trong hệ Carlinkit V2, dành cho khách hàng cần một lựa chọn cân bằng giữa hiệu năng, độ ổn định và chi phí đầu tư. Model này phù hợp với đa số dòng xe có Apple CarPlay có dây, dễ tư vấn, dễ sử dụng và đáp ứng tốt các nhu cầu giải trí, dẫn đường, kết nối cũng như quản lý thiết bị trên xe.",
+    desc: "Bản bán chạy nhất trong hệ Carlinkit V2, cân bằng giữa hiệu năng Qualcomm 6225, độ ổn định và chi phí; phù hợp giải trí, dẫn đường và kết nối hằng ngày.",
     hero_image: "images/products12thv2/s2pv2/TBOX S2P 01.jpg",
     nexus_image: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
     gallery: [

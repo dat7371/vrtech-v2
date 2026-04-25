@@ -36,7 +36,7 @@ function asset(path) {
     return `${cdnBaseUrl}/${normalizedPath}`;
   }
 
-  return new URL(normalizedPath, `${getSiteBaseUrl()}/`).toString();
+  return new URL(normalizedPath, getSiteBaseUrl()).toString();
 }
 
 function applyAssetPaths(root = document) {

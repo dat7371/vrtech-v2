@@ -97,12 +97,54 @@ function getProductVariant(product, variantIndex = 0) {
   return variants[variantIndex] || variants[0] || null;
 }
 
+function normalizeVariantIndex(product, variantIndex = 0) {
+  const variants = getArray(product?.variants);
+  const parsedIndex = Number.parseInt(String(variantIndex), 10);
+  const safeIndex = Number.isNaN(parsedIndex) ? 0 : parsedIndex;
+
+  if (!variants.length) {
+    return 0;
+  }
+
+  return Math.min(Math.max(safeIndex, 0), variants.length - 1);
+}
+
 function getProductPrice(product, variant = null) {
   return variant?.price || product?.price || "";
 }
 
 function getProductCondition(product, variant = null) {
   return variant?.condition || product?.condition || "";
+}
+
+function getVariantLabel(product, variant = null, variantIndex = 0) {
+  if (variant?.label) {
+    return variant.label;
+  }
+
+  if (getArray(product?.variants).length) {
+    return `Cấu hình ${variantIndex + 1}`;
+  }
+
+  return product?.badge || "Cấu hình tiêu chuẩn";
+}
+
+function getVariantOptionLabel(product, variant = null, variantIndex = 0) {
+  const label = getVariantLabel(product, variant, variantIndex);
+  const price = getProductPrice(product, variant);
+
+  return price ? `${label} - ${price}` : label;
+}
+
+function getVariantSpecValue(variant = null, specName = "") {
+  const directValue = variant?.[String(specName).toLowerCase()];
+
+  if (directValue) {
+    return directValue;
+  }
+
+  const match = String(variant?.label || "").match(new RegExp(`${specName}\\s*([^/]+)`, "i"));
+  return match?.[1]?.trim() || "";
 }
 
 function parsePriceValue(price) {
@@ -228,9 +270,114 @@ function buildProductDetailBlocks(product) {
   return blocks.join("");
 }
 
-function getCompareSummary(product) {
+function getCompareDetailSections(product, summary) {
+  const specSections = getArray(product?.spec_sections);
+  const topRows = [
+    { label: "Cấu hình", value: summary.variantLabel || "Cấu hình tiêu chuẩn" },
+    { label: "Giá", value: summary.price },
+    { label: "Tình trạng", value: summary.condition },
+    { label: "Phân khúc", value: summary.segment },
+    { label: "Loại", value: summary.category },
+    { label: "Kết nối", value: summary.connection },
+    { label: "Hậu mãi", value: summary.aftersales },
+  ].filter((row) => row.value);
+
+  const detailSections = [
+    {
+      title: "Cấu hình đang chọn",
+      rows: topRows,
+    },
+  ];
+
+  if (specSections.length) {
+    specSections.forEach((section) => {
+      const rows = getArray(section?.rows).filter((row) => row?.label && row?.value);
+
+      if (section?.title && rows.length) {
+        detailSections.push({
+          title: section.title,
+          rows,
+        });
+      }
+    });
+
+    return detailSections;
+  }
+
+  const fallbackRows = getArray(product?.specs).filter((row) => row?.label && row?.value);
+  if (fallbackRows.length) {
+    detailSections.push({
+      title: "Thông số chính",
+      rows: fallbackRows,
+    });
+  }
+
+  return detailSections;
+}
+
+function getCompareSectionTitle(title) {
+  const normalizedTitle = String(title || "").toLowerCase();
+
+  if (normalizedTitle.includes("cấu hình")) return "Cấu hình đang chọn";
+  if (normalizedTitle.includes("model") || normalizedTitle.includes("thông tin chung")) return "Model sản phẩm";
+  if (normalizedTitle.includes("vi xử lý") || normalizedTitle.includes("bộ xử lý")) return "Bộ vi xử lý (CPU)";
+  if (normalizedTitle.includes("gpu") || normalizedTitle.includes("đồ họa")) return "Chip xử lý đồ họa";
+  if (normalizedTitle.includes("bộ nhớ") || normalizedTitle.includes("lưu trữ")) return "Bộ nhớ và lưu trữ";
+  if (normalizedTitle.includes("hệ điều hành")) return "Hệ điều hành";
+  if (normalizedTitle.includes("cổng")) return "Cổng kết nối";
+  if (normalizedTitle.includes("kết nối")) return "Chuẩn kết nối";
+  if (normalizedTitle.includes("thiết kế") || normalizedTitle.includes("nguồn")) return "Thiết kế và nguồn";
+  if (normalizedTitle.includes("tính năng")) return "Tính năng";
+  if (normalizedTitle.includes("vrtech") || normalizedTitle.includes("phần mềm") || normalizedTitle.includes("chính sách")) return "VRTECH và chính sách";
+
+  return title || "Thông tin khác";
+}
+
+function getCompareRowValue(summary, sectionTitle, rowLabel) {
+  const matchedSection = getArray(summary?.detailSections).find(
+    (section) => getCompareSectionTitle(section.title) === sectionTitle
+  );
+  const matchedRow = getArray(matchedSection?.rows).find((row) => row.label === rowLabel);
+
+  return matchedRow?.value || "Đang cập nhật";
+}
+
+function buildCompareTableSections(currentSummary, targetSummary) {
+  const sectionMap = new Map();
+
+  [currentSummary, targetSummary].forEach((summary) => {
+    getArray(summary?.detailSections).forEach((section) => {
+      const sectionTitle = getCompareSectionTitle(section.title);
+      const existing = sectionMap.get(sectionTitle) || new Set();
+
+      getArray(section.rows).forEach((row) => {
+        if (row?.label) {
+          existing.add(row.label);
+        }
+      });
+
+      sectionMap.set(sectionTitle, existing);
+    });
+  });
+
+  return Array.from(sectionMap, ([title, labels]) => ({
+    title,
+    rows: Array.from(labels, (label) => ({
+      label,
+      current: getCompareRowValue(currentSummary, title, label),
+      target: getCompareRowValue(targetSummary, title, label),
+    })),
+  })).filter((section) => section.rows.length);
+}
+
+function getCompareSummary(product, variant = null) {
   const specs = Array.isArray(product?.specs) ? product.specs : [];
   const specSections = Array.isArray(product?.spec_sections) ? product.spec_sections : [];
+  const variants = getArray(product?.variants);
+  const variantIndex = normalizeVariantIndex(product, variants.indexOf(variant));
+  const activeVariant = variant || getProductVariant(product, variantIndex);
+  const ramValue = getVariantSpecValue(activeVariant, "RAM");
+  const romValue = getVariantSpecValue(activeVariant, "ROM");
   const getSpecValue = (label) => specs.find((item) => item.label === label)?.value || "";
   const getSectionRowValue = (sectionTitles, rowLabels) => {
     const titles = Array.isArray(sectionTitles) ? sectionTitles : [sectionTitles];
@@ -288,17 +435,34 @@ function getCompareSummary(product) {
       label: "Bluetooth",
       value: getSectionRowValue(["Kết nối không dây", "Kết nối"], ["Bluetooth"]) || "Đang cập nhật"
     }
-  ];
+  ].map((item) => {
+    if (item.label === "RAM" && ramValue) {
+      return { ...item, value: ramValue };
+    }
 
-  return {
+    if (item.label === "ROM" && romValue) {
+      return { ...item, value: romValue };
+    }
+
+    return item;
+  });
+
+  const summary = {
     compactName: getCompactProductName(product),
-    price: product?.price || "Lien he",
+    image: window.VRTECH_ASSETS?.asset?.(product?.hero_image) || product?.hero_image || "",
+    variantLabel: activeVariant ? getVariantLabel(product, activeVariant, variantIndex) : "",
+    price: getProductPrice(product, activeVariant) || "Liên hệ",
+    condition: getProductCondition(product, activeVariant),
     category: product?.category || "Android Box O To",
     segment: getSpecValue("Phân khúc") || getSpecValue("Phan khuc") || product?.badge || "",
     connection: getSpecValue("Kết nối") || getSpecValue("Ket noi") || "Wi-Fi / Bluetooth",
     aftersales: getSpecValue("Hậu mãi") || getSpecValue("Hau mai") || product?.warranty_label || "",
     compareSpecs,
-    strengths: Array.isArray(product?.compare_good) ? product.compare_good.slice(0, 3) : [],
+  };
+
+  return {
+    ...summary,
+    detailSections: getCompareDetailSections(product, summary),
   };
 }
 
@@ -338,12 +502,16 @@ function fixProductPagePaths() {
 function initializeProductCompare(currentKey) {
   const toggle = document.querySelector("[data-product-compare-toggle]");
   const panel = document.querySelector("[data-product-compare-panel]");
-  const select = document.querySelector("[data-product-compare-select]");
+  const modelSelect = document.querySelector("[data-product-compare-select]");
+  const currentVariantSelect = document.querySelector("[data-product-compare-current-variant]");
+  const targetVariantSelect = document.querySelector("[data-product-compare-target-variant]");
+  const currentVariantWrap = document.querySelector("[data-product-compare-current-variant-wrap]");
+  const targetVariantWrap = document.querySelector("[data-product-compare-target-variant-wrap]");
   const results = document.querySelector("[data-product-compare-results]");
   const products = window.PRODUCTS || {};
   const compareKeys = Object.keys(products).filter((key) => key !== currentKey);
 
-  if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement) || !(select instanceof HTMLSelectElement) || !(results instanceof HTMLElement)) {
+  if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement) || !(modelSelect instanceof HTMLSelectElement) || !(results instanceof HTMLElement)) {
     return;
   }
 
@@ -359,6 +527,26 @@ function initializeProductCompare(currentKey) {
     return;
   }
 
+  let currentVariantIndex = 0;
+  let targetVariantIndex = 0;
+
+  const populateVariantSelect = (variantSelect, variantWrap, product, selectedIndex) => {
+    if (!(variantSelect instanceof HTMLSelectElement) || !(variantWrap instanceof HTMLElement)) {
+      return;
+    }
+
+    const variants = getArray(product?.variants);
+    const options = variants.length ? variants : [null];
+    const safeIndex = normalizeVariantIndex(product, selectedIndex);
+
+    variantWrap.hidden = variants.length < 2;
+    variantSelect.disabled = variants.length < 2;
+    variantSelect.innerHTML = options.map((variant, index) => `
+      <option value="${index}">${escapeHtml(getVariantOptionLabel(product, variant, index))}</option>
+    `).join("");
+    variantSelect.value = String(safeIndex);
+  };
+
   const renderCompare = (targetKey) => {
     const currentProduct = products[currentKey];
     const targetProduct = products[targetKey];
@@ -367,39 +555,60 @@ function initializeProductCompare(currentKey) {
       return;
     }
 
-    const currentSummary = getCompareSummary(currentProduct);
-    const targetSummary = getCompareSummary(targetProduct);
+    currentVariantIndex = normalizeVariantIndex(currentProduct, currentVariantIndex);
+    targetVariantIndex = normalizeVariantIndex(targetProduct, targetVariantIndex);
 
-    results.innerHTML = [currentSummary, targetSummary].map((summary, index) => {
-      const linkedKey = index === 0 ? currentKey : targetKey;
-      const linkedLabel = index === 0 ? "Bạn đang xem" : "Model đang so sánh";
+    populateVariantSelect(currentVariantSelect, currentVariantWrap, currentProduct, currentVariantIndex);
+    populateVariantSelect(targetVariantSelect, targetVariantWrap, targetProduct, targetVariantIndex);
 
-      return `
-        <article class="product-compare-mini-card">
-          <div class="product-compare-mini-head">
-            <span class="product-compare-mini-tag">${linkedLabel}</span>
-            <h3>${summary.compactName}</h3>
-          </div>
-          <div class="product-compare-mini-table">
-            <div><span>Phân khúc</span><strong>${summary.segment}</strong></div>
-            <div><span>Giá</span><strong>${summary.price}</strong></div>
-            <div><span>Loại</span><strong>${summary.category}</strong></div>
-            <div><span>Kết nối</span><strong>${summary.connection}</strong></div>
-            <div><span>Hậu mãi</span><strong>${summary.aftersales}</strong></div>
-            ${summary.compareSpecs.map((item) => `
-              <div><span>${item.label}</span><strong>${item.value}</strong></div>
-            `).join("")}
-          </div>
-          <ul class="product-compare-mini-points">
-            ${summary.strengths.map((item) => `<li>${item}</li>`).join("")}
-          </ul>
-          <a class="product-compare-mini-link" href="${getProductPagePath(linkedKey)}">Xem trang sản phẩm</a>
-        </article>
-      `;
-    }).join("");
+    const currentSummary = getCompareSummary(currentProduct, getProductVariant(currentProduct, currentVariantIndex));
+    const targetSummary = getCompareSummary(targetProduct, getProductVariant(targetProduct, targetVariantIndex));
+    const tableSections = buildCompareTableSections(currentSummary, targetSummary);
+
+    const productCards = [
+      { summary: currentSummary, key: currentKey, tag: "Bạn đang xem" },
+      { summary: targetSummary, key: targetKey, tag: "Model đang so sánh" },
+    ].map(({ summary, key, tag }) => `
+      <article class="product-compare-product-card">
+        <span class="product-compare-mini-tag">${escapeHtml(tag)}</span>
+        <a class="product-compare-image-frame" href="${escapeHtml(getProductPagePath(key))}">
+          <img src="${escapeHtml(summary.image)}" alt="${escapeHtml(summary.compactName)}" width="4000" height="4000" loading="eager" decoding="async">
+        </a>
+        <h3>${escapeHtml(summary.compactName)}</h3>
+        <p>${escapeHtml(summary.variantLabel || "Cấu hình tiêu chuẩn")}</p>
+        <div class="product-compare-card-meta">
+          <span><strong>Loại:</strong> ${escapeHtml(summary.category)}</span>
+          <span><strong>Giá:</strong> ${escapeHtml(summary.price)}</span>
+        </div>
+      </article>
+    `).join("");
+
+    results.innerHTML = `
+      <div class="product-compare-board">
+        <div class="product-compare-product-grid">
+          ${productCards}
+        </div>
+        <div class="product-compare-table" role="table" aria-label="Bảng so sánh sản phẩm">
+          ${tableSections.map((section) => `
+            <section class="product-compare-table-section">
+              <h4>${escapeHtml(section.title)}</h4>
+              ${section.rows.map((row) => `
+                <div class="product-compare-table-row" role="row">
+                  <div class="product-compare-table-label" role="rowheader">${escapeHtml(row.label)}</div>
+                  <div role="cell">${escapeHtml(row.current)}</div>
+                  <div role="cell">${escapeHtml(row.target)}</div>
+                </div>
+              `).join("")}
+            </section>
+          `).join("")}
+        </div>
+      </div>
+    `;
   };
 
-  select.innerHTML = compareKeys.map((key) => `<option value="${key}">${getCompactProductName(products[key])}</option>`).join("");
+  modelSelect.innerHTML = compareKeys.map((key) => `
+    <option value="${escapeHtml(key)}">${escapeHtml(getCompactProductName(products[key]))}</option>
+  `).join("");
   renderCompare(compareKeys[0]);
   panel.hidden = true;
   toggle.setAttribute("aria-expanded", "false");
@@ -410,9 +619,24 @@ function initializeProductCompare(currentKey) {
     toggle.setAttribute("aria-expanded", String(isHidden));
   });
 
-  select.addEventListener("change", () => {
-    renderCompare(select.value);
+  modelSelect.addEventListener("change", () => {
+    targetVariantIndex = 0;
+    renderCompare(modelSelect.value);
   });
+
+  if (currentVariantSelect instanceof HTMLSelectElement) {
+    currentVariantSelect.addEventListener("change", () => {
+      currentVariantIndex = normalizeVariantIndex(products[currentKey], currentVariantSelect.value);
+      renderCompare(modelSelect.value);
+    });
+  }
+
+  if (targetVariantSelect instanceof HTMLSelectElement) {
+    targetVariantSelect.addEventListener("change", () => {
+      targetVariantIndex = normalizeVariantIndex(products[modelSelect.value], targetVariantSelect.value);
+      renderCompare(modelSelect.value);
+    });
+  }
 }
 
 function loadProductPage() {

@@ -14,10 +14,20 @@
           <p class="product-compare-eyebrow">So sánh nhanh</p>
           <h2>Đối chiếu với các phiên bản Carlinkit V2 khác</h2>
         </div>
-        <label class="product-compare-select-wrap">
-          <span>Chọn model</span>
-          <select data-product-compare-select aria-label="Chọn sản phẩm để so sánh"></select>
-        </label>
+        <div class="product-compare-controls">
+          <label class="product-compare-select-wrap">
+            <span>Chọn model</span>
+            <select data-product-compare-select aria-label="Chọn sản phẩm để so sánh"></select>
+          </label>
+          <label class="product-compare-select-wrap" data-product-compare-current-variant-wrap hidden>
+            <span>Cấu hình đang xem</span>
+            <select data-product-compare-current-variant aria-label="Chọn cấu hình của sản phẩm đang xem"></select>
+          </label>
+          <label class="product-compare-select-wrap" data-product-compare-target-variant-wrap hidden>
+            <span>Cấu hình so sánh</span>
+            <select data-product-compare-target-variant aria-label="Chọn cấu hình của sản phẩm so sánh"></select>
+          </label>
+        </div>
       </div>
 
       <div class="product-compare-mini-grid" data-product-compare-results></div>
