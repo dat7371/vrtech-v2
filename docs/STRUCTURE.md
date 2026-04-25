@@ -93,8 +93,8 @@ Thư mục `dist/` chỉ chứa file runtime cần deploy: `index.html`, `pages/
 ## Images
 
 - `images/logo/`: logo và biến thể logo
-- `images/products12th/`: bộ ảnh cũ, giữ lại để tham chiếu hoặc rollback khi cần
 - `images/products12thv2/`: bộ ảnh đang dùng chính cho landing, product hero, product gallery và ảnh minh họa chi tiết
+- `images/vietmap/`: ảnh sản phẩm Vietmap Live Pro
 
 ## Current Asset Rule
 
