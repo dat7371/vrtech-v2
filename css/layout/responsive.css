@@ -22,6 +22,14 @@
     grid-template-columns:1fr;
   }
 
+  .vietmap-grid{
+    grid-template-columns:1fr;
+  }
+
+  .compare-card{
+    padding:28px;
+  }
+
   .hero-visual{
     min-height:460px;
   }
@@ -206,5 +214,62 @@
 
   .cta-box{
     padding:24px;
+  }
+
+  .official-card{
+    min-height:0;
+    padding:22px;
+    border-radius:22px;
+  }
+
+  .official-icon{
+    margin-bottom:22px;
+  }
+
+  .official-assurance{
+    justify-content:flex-start;
+    padding:12px;
+  }
+
+  .vietmap-content .section-title{
+    font-size:38px;
+  }
+
+  .vietmap-subtitle{
+    font-size:16px;
+  }
+
+  .vietmap-info-card{
+    padding:18px;
+    border-radius:22px;
+  }
+
+  .vietmap-image-card{
+    width:min(100%, 430px);
+    padding:18px;
+    border-radius:22px;
+  }
+
+  .vietmap-visual{
+    min-height:0;
+  }
+
+  .vietmap-note{
+    margin-top:18px;
+    padding-top:18px;
+  }
+
+  .compare-card{
+    padding:22px;
+    border-radius:22px;
+  }
+
+  .compare-list li{
+    min-height:48px;
+    padding:11px 12px;
+  }
+
+  .compare-card-head h3{
+    font-size:24px;
   }
 }
