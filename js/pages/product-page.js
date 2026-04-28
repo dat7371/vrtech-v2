@@ -212,12 +212,18 @@ function buildProductDetailBlocks(product) {
       const note = section?.note ? `<p class="product-detail-note">${escapeHtml(section.note)}</p>` : "";
       const image = section?.image?.src
         ? `
-        <figure class="product-detail-figure">
+        <figure
+          class="product-detail-figure product-detail-zoom-trigger"
+          tabindex="0"
+          role="button"
+          aria-label="Phóng to ${escapeHtml(section.image.alt || section.title || "ảnh minh họa sản phẩm")}"
+        >
           <img
             src="${escapeHtml(window.VRTECH_ASSETS?.asset?.(section.image.src) || section.image.src)}"
             alt="${escapeHtml(section.image.alt || section.title || "Hình minh họa sản phẩm")}"
             width="${escapeHtml(section.image.width || 1600)}"
             height="${escapeHtml(section.image.height || 1600)}"
+            data-detail-lightbox-image
             loading="lazy"
           >
         </figure>
@@ -871,6 +877,13 @@ function initializeProductGalleryLightbox() {
     })).filter((item) => item.src);
   };
 
+  const collectDetailItems = () =>
+    Array.from(document.querySelectorAll("[data-detail-lightbox-image]")).map((image, index) => ({
+      src: isImageElement(image) ? image.currentSrc || image.src : image.getAttribute("src") || "",
+      alt: isImageElement(image) ? image.alt || `Ảnh chi tiết sản phẩm ${index + 1}` : `Ảnh chi tiết sản phẩm ${index + 1}`,
+      element: image,
+    })).filter((item) => item.src);
+
   const setCurrentIndex = (nextIndex) => {
     if (!activeItems.length) {
       return;
@@ -928,6 +941,34 @@ function initializeProductGalleryLightbox() {
         },
       ]);
     }
+  });
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target instanceof HTMLElement ? event.target.closest(".product-detail-zoom-trigger") : null;
+
+    if (!(trigger instanceof HTMLElement)) {
+      return;
+    }
+
+    const image = trigger.querySelector("[data-detail-lightbox-image]");
+    const items = collectDetailItems();
+    const startIndex = items.findIndex((item) => item.element === image);
+    openLightbox(items.map(({ src, alt }) => ({ src, alt })), startIndex >= 0 ? startIndex : 0);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    const trigger = event.target instanceof HTMLElement ? event.target.closest(".product-detail-zoom-trigger") : null;
+
+    if (!(trigger instanceof HTMLElement)) {
+      return;
+    }
+
+    event.preventDefault();
+    trigger.click();
   });
 
   prevButton.addEventListener("click", () => {
@@ -1233,8 +1274,13 @@ function renderProductData() {
 
     if (specToggle instanceof HTMLButtonElement) {
       const fullSpecHeight = specWrap.scrollHeight;
-      const specHeightMin = window.innerWidth <= 768 ? 260 : 320;
-      const specHeightMax = window.innerWidth <= 768 ? 420 : 560;
+      const isCompactSpecViewport = window.innerWidth <= 768;
+      const specHeightMin = isCompactSpecViewport ? 220 : 320;
+      const specViewportMax = window.innerHeight - (isCompactSpecViewport ? 330 : 300);
+      const specHeightMax = Math.max(
+        specHeightMin,
+        Math.min(isCompactSpecViewport ? 360 : 520, specViewportMax)
+      );
       const collapsedSpecHeight = Math.min(
         Math.max(Math.round(fullSpecHeight / 3), specHeightMin),
         specHeightMax
