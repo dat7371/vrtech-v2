@@ -8,7 +8,7 @@ function fixAppPageHeaderPaths() {
     logoLink.setAttribute("href", "../index.html");
   }
 
-  document.querySelectorAll(".navbar a[href]").forEach((link) => {
+  document.querySelectorAll(".site-header a[href]").forEach((link) => {
     const href = link.getAttribute("href");
 
     if (!href) {
@@ -20,12 +20,7 @@ function fixAppPageHeaderPaths() {
       return;
     }
 
-    if (href === "pages/app-vrtech.html") {
-      link.setAttribute("href", "../pages/app-vrtech.html");
-      return;
-    }
-
-    if (href.startsWith("pages/products/")) {
+    if (href.startsWith("pages/")) {
       link.setAttribute("href", `../${href}`);
     }
   });

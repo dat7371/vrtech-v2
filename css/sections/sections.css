@@ -190,6 +190,18 @@
   flex:0 0 22px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.18);
   color:#ffd863;font-size:12px;font-weight:900;
 }
+.warranty-image-card{
+  overflow:hidden;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  box-shadow:0 36px 90px rgba(0,0,0,.4);
+}
+.warranty-image-card img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 .compare-section{
   overflow:hidden;
 }
@@ -206,6 +218,17 @@
 .compare-section > .container{
   position:relative;
   z-index:1;
+}
+.compare-image-wrap{
+  max-width:760px;
+}
+.compare-image-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 36px 90px rgba(0,0,0,.42);
 }
 .compare-grid{
   display:grid;

@@ -3,7 +3,7 @@ const SECTION_SEARCH_ROUTES = [
   { tokens: ["nexus", "ung dung", "app"], path: "pages/app-vrtech.html" },
   { tokens: ["san pham", "products"], path: "index.html#products" },
   { tokens: ["chinh hang", "vat", "official"], path: "index.html#official" },
-  { tokens: ["bao hanh", "warranty"], path: "index.html#warranty" },
+  { tokens: ["bao hanh", "warranty"], path: "pages/bao-hanh.html" },
   { tokens: ["lien he", "contact", "tu van"], path: "index.html#contact" },
 ];
 
