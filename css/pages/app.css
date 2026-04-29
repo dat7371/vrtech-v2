@@ -242,6 +242,11 @@
   object-fit:contain;
 }
 
+.app-store-btn--play .store-badge-icon{
+  background:transparent;
+  border-radius:0;
+}
+
 .app-store-btn small{
   display:block;
   color:#aeb7c2;
