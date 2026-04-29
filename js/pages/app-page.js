@@ -94,6 +94,6 @@ function initializeAppPage() {
   }, 0);
 }
 
-if (document.getElementById("header")) {
+if (document.body.dataset.page === "app" && document.getElementById("header")) {
   initializeAppPage();
 }

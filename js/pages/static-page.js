@@ -25,6 +25,6 @@ function initializeStaticPage() {
   }, 0);
 }
 
-if (document.getElementById("header") || document.getElementById("footer")) {
+if (document.body.dataset.page === "warranty-policy" && (document.getElementById("header") || document.getElementById("footer"))) {
   initializeStaticPage();
 }

@@ -1393,4 +1393,6 @@ function initializeHeroGallery() {
   });
 }
 
-loadProductPage();
+if (document.body.dataset.product) {
+  loadProductPage();
+}
