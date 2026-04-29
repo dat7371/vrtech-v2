@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dat7371.github.io/vrtech-v2/sitemap.xml
