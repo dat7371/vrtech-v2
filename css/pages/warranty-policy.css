@@ -30,7 +30,7 @@
   margin:18px 0 18px;
   max-width:760px;
   font-family:"Sora","Plus Jakarta Sans",sans-serif;
-  font-size:clamp(34px,4.5vw,58px);
+  font-size:clamp(30px,3.5vw,46px);
   line-height:1.04;
   letter-spacing:0;
 }
@@ -269,7 +269,7 @@
 
 @media (max-width: 768px){
   .warranty-policy-hero-copy h1{
-    font-size:36px;
+    font-size:32px;
   }
 
   .warranty-policy-lead{

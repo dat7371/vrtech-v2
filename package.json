@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-component-registry.mjs",
+    "build": "node scripts/build-component-registry.mjs && node scripts/build-css-bundle.mjs && node scripts/build-js-bundle.mjs",
     "build:static": "node scripts/build-static-site.mjs",
     "dist": "npm run check && npm run build:static",
     "check": "npm run build && npm run lint",
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "eslint": "^9.39.4",
-    "eslint-plugin-jsx-a11y": "^6.10.2"
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "terser": "^5.46.2"
   }
 }
