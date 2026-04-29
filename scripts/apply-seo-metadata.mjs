@@ -13,7 +13,7 @@ const defaultImage = "images/products12thv2/all/TBOX V2 SERIES.webp";
 const pages = [
   {
     file: "index.html",
-    url: "index.html",
+    url: "",
     title: "Carlinkit TBOX V2 by VRTECH | Android Box ô tô chính ngạch",
     description: "Carlinkit TBOX V2 phiên bản độc quyền bởi VRTECH: Android Box ô tô chính ngạch, tích hợp VRTECH Connect, bảo hành điện tử và xuất VAT đầy đủ.",
     image: defaultImage,
@@ -25,7 +25,7 @@ const pages = [
         "@context": "https://schema.org",
         "@type": "Organization",
         name: organizationName,
-        url: absoluteUrl("index.html"),
+        url: absoluteUrl(""),
         logo: absoluteUrl("images/logo/LOGO VRTECH-02.png"),
         email: "support@vrtech.vn",
         telephone: "0921515868",
@@ -46,7 +46,25 @@ const pages = [
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: siteName,
-        url: absoluteUrl("index.html"),
+        url: absoluteUrl(""),
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Danh sách sản phẩm Carlinkit V2 by VRTECH",
+        itemListElement: [
+          ["Carlinkit TBOX S2A V2", "pages/products/s2a.html"],
+          ["Carlinkit TBOX S2P V2", "pages/products/s2p.html"],
+          ["Carlinkit TBOX PLUS V2", "pages/products/plus.html"],
+          ["Carlinkit TBOX AMBIENT V2", "pages/products/ambient.html"],
+          ["Carlinkit ULTRA MAX V2", "pages/products/ultra.html"],
+          ["Vietmap Live Pro 2026", "pages/products/vietmap.html"],
+        ].map(([name, url], index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name,
+          url: absoluteUrl(url),
+        })),
       },
     ],
   },
@@ -194,7 +212,7 @@ function buildSeoBlock(page) {
 }
 
 function buildBreadcrumbJsonLd(page) {
-  if (page.noindex || page.url === "index.html") {
+  if (page.noindex || page.file === "index.html") {
     return [];
   }
 
