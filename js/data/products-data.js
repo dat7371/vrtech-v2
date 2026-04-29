@@ -204,8 +204,8 @@ window.PRODUCTS = {
   },
 
   s2a: {
-    name: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Android Box Ô Tô | Chip Qualcomm 6115 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
+    name: "VRTECH Edition | Carlinkit TBOX S2A V2 2026 | Android Box Ô Tô | Chip Qualcomm 6115 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "VRTECH Edition | Carlinkit TBOX S2A V2 2026 | Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX S2A V2 2026",
     badge: "Bản tiêu chuẩn",
     subtitle: "Chip Qualcomm 6115 | Apple CarPlay & Android Auto",
@@ -269,7 +269,7 @@ window.PRODUCTS = {
       },
       {
         title: "Bảo hành điện tử 12 tháng",
-        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+        desc: "Quản lý bảo hành qua VRTECH Connect, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
       },
       {
         title: "Hỗ trợ kỹ thuật trọn đời",
@@ -359,7 +359,7 @@ window.PRODUCTS = {
         note: "Đảm bảo kết nối nhanh, ít giật lag và ổn định khi di chuyển."
       },
       {
-        title: "6. Hệ sinh thái VRTECH NEXUS",
+        title: "6. Hệ sinh thái VRTECH Nexus",
         paragraphs: [
           "Điểm khác biệt lớn nhất của phiên bản VRTECH là hệ sinh thái quản lý thiết bị và xe đồng bộ hơn với nhu cầu người dùng Việt."
         ],
@@ -370,7 +370,7 @@ window.PRODUCTS = {
           "Điều khiển thiết bị từ xa",
           "Kích hoạt bảo hành điện tử"
         ],
-        note: "Tặng kèm 3 tháng VRTECH NEXUS PRO.",
+        note: "Tặng kèm 3 tháng VRTECH Pro.",
         image: {
           src: "images/products12thv2/s2av2/TBOX S2A 09.jpg",
           alt: "Giao diện hệ sinh thái VRTECH Nexus trên TBOX S2A V2"
@@ -499,11 +499,11 @@ window.PRODUCTS = {
       {
         title: "Phần mềm & hệ sinh thái",
         rows: [
-          { label: "App quản lý", value: "VRTECH NEXUS" },
+          { label: "App quản lý", value: "VRTECH Connect" },
           { label: "Bảo hành", value: "Điện tử qua App" },
           { label: "Thời gian bảo hành", value: "12 tháng" },
           { label: "Cập nhật OTA", value: "Có" },
-          { label: "Tặng kèm", value: "3 tháng VRTECH NEXUS Pro" }
+          { label: "Tặng kèm", value: "3 tháng VRTECH Pro" }
         ]
       }
     ],
@@ -538,8 +538,8 @@ window.PRODUCTS = {
   },
 
   s2p: {
-    name: "Vrtech Edition | Carlinkit TBOX S2P V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX S2P V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
+    name: "VRTECH Edition | Carlinkit TBOX S2P V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "VRTECH Edition | Carlinkit TBOX S2P V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX S2P V2 2026",
     badge: "Bán chạy nhất",
     subtitle: "Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
@@ -566,7 +566,7 @@ window.PRODUCTS = {
       },
       {
         image: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
-        alt: "Giao diện ứng dụng VRTECH NEXUS trên TBOX S2P V2"
+        alt: "Giao diện ứng dụng VRTECH Connect trên TBOX S2P V2"
       },
       {
         image: "images/products12thv2/s2pv2/TBOX S2P 10.png",
@@ -618,7 +618,7 @@ window.PRODUCTS = {
       },
       {
         title: "Bảo hành điện tử 12 tháng",
-        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+        desc: "Quản lý bảo hành qua VRTECH Connect, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
       },
       {
         title: "Hỗ trợ kỹ thuật trọn đời",
@@ -733,7 +733,7 @@ window.PRODUCTS = {
         note: "Phù hợp chạy liên tục trên xe."
       },
       {
-        title: "8. Ứng dụng VRTECH NEXUS",
+        title: "8. Ứng dụng VRTECH Connect",
         bullets: [
           "Truyền địa chỉ từ điện thoại lên màn hình xe",
           "Xem vị trí xe và lịch sử hành trình",
@@ -744,7 +744,7 @@ window.PRODUCTS = {
         note: "Tặng kèm 3 tháng Pro.",
         image: {
           src: "images/products12thv2/s2pv2/TBOX S2P 09.jpg",
-          alt: "Hình ứng dụng VRTECH NEXUS trên TBOX S2P V2"
+          alt: "Hình ứng dụng VRTECH Connect trên TBOX S2P V2"
         }
       },
       {
@@ -755,7 +755,7 @@ window.PRODUCTS = {
           "Hỗ trợ SIM 4G độc lập",
           "Android 13 đầy đủ tính năng",
           "Dễ lắp đặt, tương thích nhiều dòng xe",
-          "Tích hợp hệ sinh thái VRTECH NEXUS"
+          "Tích hợp hệ sinh thái VRTECH Nexus"
         ],
         image: {
           src: "images/products12thv2/s2pv2/TBOX S2P 11.png",
@@ -877,7 +877,7 @@ window.PRODUCTS = {
         ]
       },
       {
-        title: "Ứng dụng VRTECH NEXUS",
+        title: "Ứng dụng VRTECH Connect",
         rows: [
           { label: "Truyền địa chỉ", value: "Từ điện thoại" },
           { label: "Xem vị trí xe", value: "Có" },
@@ -919,8 +919,8 @@ window.PRODUCTS = {
   },
 
   plus: {
-    name: "Vrtech Edition | Carlinkit TBOX PLUS V2 2026 | Android Box Ô Tô | Chip Qualcomm 6125 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX PLUS V2 2026 | Chip Qualcomm 6125 | Apple CarPlay & Android Auto",
+    name: "VRTECH Edition | Carlinkit TBOX PLUS V2 2026 | Android Box Ô Tô | Chip Qualcomm 6125 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "VRTECH Edition | Carlinkit TBOX PLUS V2 2026 | Chip Qualcomm 6125 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX PLUS V2 2026",
     badge: "Nâng cấp hợp lý",
     subtitle: "Chip Qualcomm 6125 | Apple CarPlay & Android Auto",
@@ -951,7 +951,7 @@ window.PRODUCTS = {
       },
       {
         image: "images/products12thv2/plusv2/TBOX PLUS 10.jpg",
-        alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX PLUS V2"
+        alt: "Giao diện ứng dụng VRTECH Connect trên TBOX PLUS V2"
       },
       {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
@@ -995,7 +995,7 @@ window.PRODUCTS = {
       },
       {
         title: "Bảo hành điện tử 12 tháng",
-        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+        desc: "Quản lý bảo hành qua VRTECH Connect, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
       },
       {
         title: "Hỗ trợ kỹ thuật trọn đời",
@@ -1010,7 +1010,7 @@ window.PRODUCTS = {
       "Chip Qualcomm 6125 ổn định trong tầm giá",
       "Android 13 hiện đại, giao diện thân thiện",
       "Hỗ trợ SIM 4G độc lập, Wi-Fi kép và Bluetooth 5.0",
-      "Tích hợp hệ sinh thái VRTECH NEXUS",
+      "Tích hợp hệ sinh thái VRTECH Nexus",
       "Chính ngạch, VAT đầy đủ, bảo hành điện tử 12 tháng"
     ],
     detail_sections: [
@@ -1130,9 +1130,9 @@ window.PRODUCTS = {
         note: "Đảm bảo hoạt động ổn định liên tục."
       },
       {
-        title: "8. Hệ sinh thái VRTECH NEXUS",
+        title: "8. Hệ sinh thái VRTECH Nexus",
         paragraphs: [
-          "TBOX PLUS V2 tích hợp hệ sinh thái VRTECH NEXUS để tăng khả năng quản lý thiết bị, bảo hành điện tử và đồng bộ trải nghiệm sử dụng hằng ngày."
+          "TBOX PLUS V2 tích hợp hệ sinh thái VRTECH Nexus để tăng khả năng quản lý thiết bị, bảo hành điện tử và đồng bộ trải nghiệm sử dụng hằng ngày."
         ],
         bullets: [
           "Quản lý thiết bị qua ứng dụng",
@@ -1141,7 +1141,7 @@ window.PRODUCTS = {
         ],
         image: {
           src: "images/products12thv2/plusv2/TBOX PLUS 10.jpg",
-          alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX PLUS V2"
+          alt: "Giao diện ứng dụng VRTECH Connect trên TBOX PLUS V2"
         }
       },
       {
@@ -1152,7 +1152,7 @@ window.PRODUCTS = {
           "Hỗ trợ SIM 4G độc lập",
           "Thiết kế nhỏ gọn, dễ lắp",
           "Đa nhiệm mượt trong tầm giá",
-          "Tích hợp hệ sinh thái VRTECH NEXUS"
+          "Tích hợp hệ sinh thái VRTECH Nexus"
         ]
       },
       {
@@ -1236,7 +1236,7 @@ window.PRODUCTS = {
       {
         title: "Hệ sinh thái VRTECH",
         rows: [
-          { label: "Ứng dụng quản lý", value: "VRTECH NEXUS" },
+          { label: "Ứng dụng quản lý", value: "VRTECH Connect" },
           { label: "Bảo hành", value: "Điện tử qua hệ thống" },
           { label: "Hỗ trợ", value: "Kỹ thuật trọn đời" },
           { label: "VAT", value: "Có hỗ trợ đầy đủ" }
@@ -1258,7 +1258,7 @@ window.PRODUCTS = {
       "SIM 4G LTE độc lập",
       "WiFi kép và Bluetooth 5.0",
       "Google Maps, Vietmap, YouTube, Netflix",
-      "Tích hợp ứng dụng VRTECH Nexus"
+      "Tích hợp ứng dụng VRTECH Connect"
     ],
     compare_good: [
       "Chip 6125 ổn định",
@@ -1274,8 +1274,8 @@ window.PRODUCTS = {
   },
 
   ambient: {
-    name: "Vrtech Edition | Carlinkit TBOX AMBIENT V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX AMBIENT V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
+    name: "VRTECH Edition | Carlinkit TBOX AMBIENT V2 2026 | Android Box Ô Tô | Chip Qualcomm 6225 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "VRTECH Edition | Carlinkit TBOX AMBIENT V2 2026 | Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX AMBIENT V2 2026",
     badge: "Thẩm mỹ cao cấp",
     subtitle: "Chip Qualcomm 6225 | Apple CarPlay & Android Auto",
@@ -1294,7 +1294,7 @@ window.PRODUCTS = {
     gallery_extra: [
       {
         image: "images/products12thv2/ambientv2/TBOX AMBIENT 09.jpg",
-        alt: "Giao diện app VRTECH Nexus trên TBOX AMBIENT V2"
+        alt: "Giao diện app VRTECH Connect trên TBOX AMBIENT V2"
       },
       {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
@@ -1338,7 +1338,7 @@ window.PRODUCTS = {
       },
       {
         title: "Bảo hành điện tử 12 tháng",
-        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+        desc: "Quản lý bảo hành qua VRTECH Connect, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
       },
       {
         title: "Hỗ trợ kỹ thuật trọn đời",
@@ -1444,9 +1444,9 @@ window.PRODUCTS = {
         note: "Thiết kế gọn gàng, dễ sử dụng và tối ưu cho xe."
       },
       {
-        title: "App VRTECH NEXUS - khác biệt độc quyền",
+        title: "App VRTECH Connect - khác biệt độc quyền",
         paragraphs: [
-          "TBOX AMBIENT V2 tích hợp hệ sinh thái VRTECH NEXUS để tăng khả năng quản lý thiết bị và hỗ trợ sử dụng hằng ngày."
+          "TBOX AMBIENT V2 tích hợp hệ sinh thái VRTECH Nexus để tăng khả năng quản lý thiết bị và hỗ trợ sử dụng hằng ngày."
         ],
         bullets: [
           "Truyền địa chỉ từ điện thoại lên xe",
@@ -1455,10 +1455,10 @@ window.PRODUCTS = {
           "Bật/tắt WiFi box từ xa",
           "Kích hoạt bảo hành điện tử tự động"
         ],
-        note: "Tặng kèm 3 tháng VRTECH NEXUS Pro.",
+        note: "Tặng kèm 3 tháng VRTECH Pro.",
         image: {
           src: "images/products12thv2/ambientv2/TBOX AMBIENT 09.jpg",
-          alt: "Giao diện app VRTECH Nexus của TBOX AMBIENT V2"
+          alt: "Giao diện app VRTECH Connect của TBOX AMBIENT V2"
         }
       },
       {
@@ -1491,7 +1491,7 @@ window.PRODUCTS = {
       { label: "Chip xử lý", value: "Qualcomm 6225" },
       { label: "Nhóm khách phù hợp", value: "Người cần box Android ô tô ổn định, có 4G và dùng lâu dài" },
       { label: "Trải nghiệm chính", value: "Giải trí, dẫn đường, chia đôi màn hình, truyền file" },
-      { label: "Hệ sinh thái", value: "VRTECH NEXUS + bảo hành điện tử" },
+      { label: "Hệ sinh thái", value: "VRTECH Nexus + bảo hành điện tử" },
       { label: "Hậu mãi", value: "Bảo hành 12 tháng, hỗ trợ kỹ thuật, VAT đầy đủ" }
     ],
     spec_sections: [
@@ -1570,10 +1570,10 @@ window.PRODUCTS = {
       {
         title: "Hệ sinh thái VRTECH",
         rows: [
-          { label: "Ứng dụng quản lý", value: "VRTECH NEXUS" },
+          { label: "Ứng dụng quản lý", value: "VRTECH Connect" },
           { label: "Tính năng app", value: "Truyền địa chỉ dẫn đường, xem vị trí xe, lịch sử hành trình, truyền file, bật/tắt Wi-Fi box" },
           { label: "Bảo hành điện tử", value: "Kích hoạt trực tiếp qua ứng dụng" },
-          { label: "Ưu đãi kèm theo", value: "Tặng 3 tháng VRTECH NEXUS Pro" }
+          { label: "Ưu đãi kèm theo", value: "Tặng 3 tháng VRTECH Pro" }
         ]
       },
       {
@@ -1609,7 +1609,7 @@ window.PRODUCTS = {
       "Google Maps, Vietmap và định vị GPS",
       "Chia đôi màn hình và trợ lý giọng nói",
       "Truyền file không dây",
-      "Quản lý qua ứng dụng VRTECH NEXUS"
+      "Quản lý qua ứng dụng VRTECH Connect"
     ],
     compare_good: [
       "Cân bằng giữa hiệu năng và giá thành",
@@ -1625,8 +1625,8 @@ window.PRODUCTS = {
   },
 
   ultra: {
-    name: "Vrtech Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Android Box Ô Tô | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
-    top_title: "Vrtech Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto",
+    name: "VRTECH Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Android Box Ô Tô | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto | Bảo hành 12 tháng",
+    top_title: "VRTECH Edition | Carlinkit TBOX ULTRA MAX V2 2026 | Chip Qualcomm SM6350 | Apple CarPlay & Android Auto",
     short_name: "Carlinkit TBOX ULTRA MAX V2 2026",
     page_title: "TBOX ULTRA MAX V2 - VRTECH Edition 2026 | VRTECH",
     meta_description: "TBOX ULTRA MAX V2 - VRTECH Edition 2026: bản flagship mạnh nhất dòng V2 với chip Snapdragon 690, Android 15, WiFi 6, VRTECH Nexus và bảo hành điện tử 12 tháng.",
@@ -1663,7 +1663,7 @@ window.PRODUCTS = {
       },
       {
         image: "images/products12thv2/ultrav2/TBOX ULTRA MAX 11.jpg",
-        alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX ULTRA MAX V2"
+        alt: "Giao diện ứng dụng VRTECH Connect trên TBOX ULTRA MAX V2"
       },
       {
         image: "images/products12thv2/permit/vn-11134207-820l4-mf0ug7ovm32k1e.webp",
@@ -1701,7 +1701,7 @@ window.PRODUCTS = {
       },
       {
         title: "Bảo hành điện tử 12 tháng",
-        desc: "Quản lý bảo hành qua VRTECH NEXUS, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
+        desc: "Quản lý bảo hành qua VRTECH Connect, quy trình rõ ràng, dễ đối chiếu khi cần hỗ trợ."
       },
       {
         title: "Hỗ trợ kỹ thuật trọn đời",
@@ -1846,7 +1846,7 @@ window.PRODUCTS = {
           "Phiên bản VRTECH Edition mang lại nhiều giá trị vượt trội hơn bản quốc tế."
         ],
         bullets: [
-          "Tích hợp App VRTECH NEXUS",
+          "Tích hợp App VRTECH Connect",
           "Bảo hành điện tử trực tiếp trên app",
           "Hỗ trợ kỹ thuật lâu dài",
           "Tối ưu phần mềm riêng cho người Việt"
@@ -1854,7 +1854,7 @@ window.PRODUCTS = {
         note: "Trải nghiệm ổn định hơn bản quốc tế.",
         image: {
           src: "images/products12thv2/ultrav2/TBOX ULTRA MAX 11.jpg",
-          alt: "Giao diện ứng dụng VRTECH Nexus trên TBOX ULTRA MAX V2"
+          alt: "Giao diện ứng dụng VRTECH Connect trên TBOX ULTRA MAX V2"
         }
       },
       {
@@ -1903,7 +1903,7 @@ window.PRODUCTS = {
           { label: "Tên sản phẩm", value: "TBOX ULTRA MAX V2 - VRTECH Edition 2026" },
           { label: "Phiên bản", value: "Carlinkit TBOX Ultra Max V2" },
           { label: "Phân phối", value: "VRTECH Official Việt Nam" },
-          { label: "Bảo hành", value: "12 tháng (điện tử qua App VRTECH Nexus)" }
+          { label: "Bảo hành", value: "12 tháng (điện tử qua App VRTECH Connect)" }
         ]
       },
       {
