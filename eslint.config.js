@@ -35,7 +35,9 @@ export default [
         HTMLSelectElement: "readonly",
         HTMLMetaElement: "readonly",
         HTMLLinkElement: "readonly",
-        Node: "readonly"
+        HTMLScriptElement: "readonly",
+        Node: "readonly",
+        process: "readonly"
       },
     },
     rules: {

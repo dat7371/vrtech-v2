@@ -58,6 +58,48 @@ function getProductDetailTitle(product) {
   return product?.detail_title || `Giới thiệu và đánh giá ${getCompactProductName(product)}`;
 }
 
+function upsertMeta(selector, attributes) {
+  let element = document.head.querySelector(selector);
+
+  if (!element) {
+    element = document.createElement("meta");
+    document.head.append(element);
+  }
+
+  Object.entries(attributes).forEach(([name, value]) => {
+    element.setAttribute(name, value);
+  });
+}
+
+function upsertJsonLd(id, data) {
+  let element = document.getElementById(id);
+
+  if (!(element instanceof HTMLScriptElement)) {
+    element = document.createElement("script");
+    element.type = "application/ld+json";
+    element.id = id;
+    document.head.append(element);
+  }
+
+  element.textContent = JSON.stringify(data);
+}
+
+function getCurrentPagePath() {
+  const pagesIndex = window.location.pathname.indexOf("/pages/");
+
+  if (pagesIndex >= 0) {
+    return window.location.pathname.slice(pagesIndex + 1);
+  }
+
+  return window.location.pathname.split("/").pop() || "index.html";
+}
+
+function getNumericPrice(price) {
+  const value = Number.parseInt(String(price || "").replace(/[^\d]/g, ""), 10);
+
+  return Number.isNaN(value) ? "" : String(value);
+}
+
 function updateProductSeo(product) {
   if (!product) {
     return;
@@ -65,7 +107,11 @@ function updateProductSeo(product) {
 
   const pageTitle = product.page_title || `${getCompactProductName(product)} | VRTECH`;
   const metaDescription = product.meta_description || product.desc || "";
-  const canonicalHref = window.location.href;
+  const canonicalHref = window.VRTECH_ASSETS?.siteUrl?.(getCurrentPagePath()) || window.location.href;
+  const imagePath = product.hero_image || product.nexus_image || "";
+  const imageUrl = imagePath ? window.VRTECH_ASSETS?.siteUrl?.(imagePath) || window.VRTECH_ASSETS?.asset?.(imagePath) || imagePath : "";
+  const productName = getCompactProductName(product);
+  const price = getNumericPrice(getProductPrice(product, getProductVariant(product)));
 
   document.title = pageTitle;
 
@@ -77,6 +123,71 @@ function updateProductSeo(product) {
   const canonicalLink = document.querySelector('link[rel="canonical"]');
   if (canonicalLink instanceof HTMLLinkElement) {
     canonicalLink.setAttribute("href", canonicalHref);
+  }
+
+  upsertMeta('meta[property="og:type"]', { property: "og:type", content: "product" });
+  upsertMeta('meta[property="og:title"]', { property: "og:title", content: pageTitle });
+  upsertMeta('meta[property="og:description"]', { property: "og:description", content: metaDescription });
+  upsertMeta('meta[property="og:url"]', { property: "og:url", content: canonicalHref });
+  upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: window.VRTECH_CONFIG?.siteName || "Carlinkit V2 by VRTECH" });
+
+  if (imageUrl) {
+    upsertMeta('meta[property="og:image"]', { property: "og:image", content: imageUrl });
+    upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: imageUrl });
+  }
+
+  upsertMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
+  upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: pageTitle });
+  upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: metaDescription });
+
+  if (!document.getElementById("seo-jsonld-1")) {
+    upsertJsonLd("product-jsonld", {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: productName,
+      description: metaDescription,
+      image: imageUrl ? [imageUrl] : undefined,
+      brand: {
+        "@type": "Brand",
+        name: product.brand || "Carlinkit",
+      },
+      category: product.category || "Android Box Ô Tô",
+      offers: price ? {
+        "@type": "Offer",
+        url: canonicalHref,
+        priceCurrency: "VND",
+        price,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+      } : undefined,
+    });
+  }
+
+  if (!document.getElementById("seo-jsonld-2")) {
+    upsertJsonLd("breadcrumb-jsonld", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Trang chủ",
+          item: window.VRTECH_ASSETS?.siteUrl?.("index.html") || window.location.origin,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Sản phẩm",
+          item: window.VRTECH_ASSETS?.siteUrl?.("index.html#products") || window.location.origin,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: productName,
+          item: canonicalHref,
+        },
+      ],
+    });
   }
 }
 

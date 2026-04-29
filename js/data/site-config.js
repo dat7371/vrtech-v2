@@ -1,4 +1,9 @@
 window.VRTECH_CONFIG = window.VRTECH_CONFIG || {
+  siteUrl: "",
+  siteName: "Carlinkit V2 by VRTECH",
+  organizationName: "CARLINKIT VN STORE x VRTECH",
+  supportPhone: "0921515868",
+  supportEmail: "support@vrtech.vn",
   // Example: "https://cdn.example.com/vrtech-v2"
   assetBaseUrl: "",
 };
@@ -39,6 +44,13 @@ function asset(path) {
   return new URL(normalizedPath, getSiteBaseUrl()).toString();
 }
 
+function siteUrl(path = "") {
+  const baseUrl = String(window.VRTECH_CONFIG?.siteUrl || getSiteBaseUrl()).trim().replace(/\/+$/, "/");
+  const normalizedPath = normalizeAssetPath(path);
+
+  return new URL(normalizedPath, baseUrl).toString();
+}
+
 function applyAssetPaths(root = document) {
   if (!root?.querySelectorAll) {
     return;
@@ -59,6 +71,7 @@ function applyAssetPaths(root = document) {
 window.VRTECH_ASSETS = {
   asset,
   applyAssetPaths,
+  siteUrl,
 };
 
 function injectComponent(targetId, componentKey) {
