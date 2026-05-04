@@ -225,6 +225,10 @@ function getProductPrice(product, variant = null) {
   return variant?.price || product?.price || "";
 }
 
+function getProductOldPrice(product, variant = null) {
+  return variant?.old_price || product?.old_price || "";
+}
+
 function getProductCondition(product, variant = null) {
   return variant?.condition || product?.condition || "";
 }
@@ -1184,8 +1188,13 @@ function renderProductData() {
     const unitPrice = getProductPrice(product, selectedVariant);
     const unitPriceValue = parsePriceValue(unitPrice);
     const totalPrice = unitPriceValue > 0 ? formatPriceValue(unitPriceValue * selectedQuantity) : unitPrice;
+    const oldPrice = getProductOldPrice(product, selectedVariant);
 
     document.querySelectorAll("[data-product-price]").forEach(el => el.textContent = totalPrice);
+    document.querySelectorAll("[data-product-old-price]").forEach((el) => {
+      el.textContent = oldPrice;
+      el.hidden = !oldPrice;
+    });
   };
 
   document.querySelectorAll("[data-product-name]").forEach(el => el.textContent = product.name);
@@ -1236,13 +1245,6 @@ function renderProductData() {
   document.querySelectorAll("[data-product-hotline]").forEach(el => el.textContent = product.support_phone || "0921515868");
   document.querySelectorAll("[data-product-hotline-link]").forEach((el) => {
     el.setAttribute("href", formatPhoneHref(product.support_phone || "0921515868"));
-  });
-
-  const oldPriceElements = document.querySelectorAll("[data-product-old-price]");
-  oldPriceElements.forEach((el) => {
-    const hasOldPrice = Boolean(product.old_price);
-    el.textContent = product.old_price || "";
-    el.hidden = !hasOldPrice;
   });
 
   document.querySelectorAll("[data-product-promo]").forEach((el) => {

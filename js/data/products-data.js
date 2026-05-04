@@ -234,19 +234,21 @@
     stock_status: "Còn hàng",
     brand: "Carlinkit",
     category: "Android Box Ô Tô chính hãng",
-    price: "3.849.000",
-    old_price: "",
+    price: "3.272.500",
+    old_price: "3.850.000",
     vat_label: "(VAT 8%)",
     variants: [
       {
         label: "RAM 4GB / ROM 64GB",
-        price: "3.849.000",
+        price: "3.272.500",
+        old_price: "3.850.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bản tiêu chuẩn"
       },
       {
         label: "RAM 8GB / ROM 128GB",
-        price: "4.849.000",
+        price: "4.122.500",
+        old_price: "4.850.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bộ nhớ cao hơn"
       }
@@ -257,7 +259,7 @@
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "",
+    promo: "Khuyến mãi giảm 15% từ giá niêm yết.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -587,18 +589,21 @@
     condition: "Sản phẩm chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
-    price: "4.349.000",
+    price: "3.697.500",
+    old_price: "4.350.000",
     vat_label: "(VAT 8%)",
     variants: [
       {
         label: "RAM 4GB / ROM 64GB",
-        price: "4.349.000",
+        price: "3.697.500",
+        old_price: "4.350.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bản tiêu chuẩn"
       },
       {
         label: "RAM 8GB / ROM 128GB",
-        price: "5.349.000",
+        price: "4.547.500",
+        old_price: "5.350.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bộ nhớ cao hơn"
       }
@@ -606,7 +611,7 @@
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "Liên hệ để nhận giá và cấu hình phù hợp theo dòng xe.",
+    promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -964,18 +969,21 @@
     condition: "Sản phẩm chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
-    price: "4.299.000",
+    price: "3.655.000",
+    old_price: "4.300.000",
     vat_label: "(VAT 8%)",
     variants: [
       {
         label: "RAM 6GB / ROM 64GB",
-        price: "4.299.000",
+        price: "3.655.000",
+        old_price: "4.300.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bản tiêu chuẩn"
       },
       {
         label: "RAM 8GB / ROM 128GB",
-        price: "5.299.000",
+        price: "4.505.000",
+        old_price: "5.300.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bộ nhớ cao hơn"
       }
@@ -983,7 +991,7 @@
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "Liên hệ để nhận cấu hình phù hợp theo dòng xe và ưu đãi tốt nhất.",
+    promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -1307,18 +1315,21 @@
     condition: "Mới 100%, chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
-    price: "4.349.000",
+    price: "3.697.500",
+    old_price: "4.350.000",
     vat_label: "(VAT 8%)",
     variants: [
       {
         label: "RAM 4GB / ROM 64GB",
-        price: "4.349.000",
+        price: "3.697.500",
+        old_price: "4.350.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bản tiêu chuẩn"
       },
       {
         label: "RAM 8GB / ROM 128GB",
-        price: "5.349.000",
+        price: "4.547.500",
+        old_price: "5.350.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Bộ nhớ cao hơn"
       }
@@ -1326,7 +1337,7 @@
     primary_cta: "Mua ngay",
     support_cta: "Goi tu van",
     support_phone: "0921515868",
-    promo: "Liên hệ để nhận cấu hình phù hợp và ưu đãi tốt theo dòng xe.",
+    promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
@@ -1676,12 +1687,14 @@
     condition: "Sản phẩm chính hãng, fullbox",
     warranty_label: "Bảo hành 12 tháng",
     quantity_available: "Còn hàng",
-    price: "6.199.000",
+    price: "5.270.000",
+    old_price: "6.200.000",
     vat_label: "(VAT 8%)",
     variants: [
       {
         label: "RAM 8GB / ROM 128GB",
-        price: "6.199.000",
+        price: "5.270.000",
+        old_price: "6.200.000",
         condition: "Mới 100%, chưa active, fullbox",
         badge: "Cấu hình duy nhất"
       }
@@ -1689,7 +1702,7 @@
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
     support_phone: "0921515868",
-    promo: "Liên hệ để được tư vấn cấu hình cao cấp phù hợp nhu cầu thực tế.",
+    promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để được tư vấn cấu hình cao cấp phù hợp nhu cầu thực tế.",
     assurances: [
       {
         title: "VRTECH Official Việt Nam",
