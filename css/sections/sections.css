@@ -520,6 +520,67 @@
   flex-wrap:wrap;
 }
 
+.contact-form{
+  max-width:860px;
+  margin:28px auto 0;
+  text-align:left;
+}
+
+.contact-form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.contact-form label{
+  display:grid;
+  gap:7px;
+  margin-bottom:14px;
+  color:#eef2f8;
+  font-weight:800;
+}
+
+.contact-form span{
+  font-size:13px;
+  color:#cbd3df;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  width:100%;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:rgba(5,6,7,.54);
+  color:#fff;
+  padding:14px 15px;
+  outline:none;
+}
+
+.contact-form textarea{
+  resize:vertical;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  border-color:rgba(255,194,74,.55);
+  box-shadow:0 0 0 3px rgba(255,194,74,.12);
+}
+
+.contact-form-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.contact-form-status{
+  margin:0;
+  color:#d7dde6;
+  font-weight:700;
+}
+
 .contact-detail-pill{
   display:inline-flex;
   align-items:center;

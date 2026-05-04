@@ -77,6 +77,33 @@
       </div>
     </section>
 
+    <section class="section warranty-check-section" id="tra-cuu-bao-hanh">
+      <div class="container warranty-check-layout">
+        <div class="warranty-check-copy reveal show">
+          <span class="tag">Tra cứu bảo hành</span>
+          <h2>Kiểm tra thời hạn bảo hành điện tử</h2>
+          <p>
+            Nhập số điện thoại mua hàng hoặc serial thiết bị để xem sản phẩm, ngày kích hoạt,
+            ngày hết hạn và trạng thái hỗ trợ trên hệ thống VRTECH.
+          </p>
+        </div>
+
+        <form class="warranty-check-form reveal show" data-warranty-form>
+          <label>
+            <span>Số điện thoại mua hàng</span>
+            <input name="phone" type="tel" autocomplete="tel" placeholder="0909123456">
+          </label>
+          <label>
+            <span>Serial thiết bị</span>
+            <input name="serial_number" type="text" placeholder="VRTECH-S2P-0001">
+          </label>
+          <button class="btn btn-primary" type="submit">TRA CỨU NGAY</button>
+          <p class="warranty-check-status" data-warranty-status role="status" aria-live="polite"></p>
+          <div class="warranty-check-result" data-warranty-result hidden></div>
+        </form>
+      </div>
+    </section>
+
     <section class="section warranty-policy-content-section">
       <div class="container warranty-policy-layout">
         <aside class="warranty-policy-toc reveal show" aria-label="Mục lục chính sách bảo hành">

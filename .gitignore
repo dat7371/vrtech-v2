@@ -1,6 +1,7 @@
 node_modules/
 .vscode/
 dist/
+.tools/
 images/logo/*.original-backup.png
 
 # Local secrets and environment files

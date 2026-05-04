@@ -5,6 +5,42 @@
       <a href="tel:0909123456" class="btn btn-primary">MUA NGAY</a>
       <a href="mailto:support@vrtech.vn" class="btn btn-outline">LIÊN HỆ TƯ VẤN</a>
     </div>
+    <form class="contact-form" data-contact-form>
+      <div class="contact-form-grid">
+        <label>
+          <span>Họ tên</span>
+          <input name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          <span>Số điện thoại</span>
+          <input name="phone" type="tel" autocomplete="tel" required>
+        </label>
+        <label>
+          <span>Dòng xe</span>
+          <input name="car_model" type="text" placeholder="Mazda 3, Vios, CR-V...">
+        </label>
+        <label>
+          <span>Sản phẩm quan tâm</span>
+          <select name="product_interest">
+            <option value="">Chọn sản phẩm</option>
+            <option>TBOX S2A V2</option>
+            <option>TBOX S2P V2</option>
+            <option>TBOX PLUS V2</option>
+            <option>TBOX AMBIENT V2</option>
+            <option>TBOX ULTRA MAX V2</option>
+            <option>Vietmap Live Pro</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        <span>Nhu cầu tư vấn</span>
+        <textarea name="message" rows="4" placeholder="Cho VRTECH biết xe và nhu cầu của bạn"></textarea>
+      </label>
+      <div class="contact-form-actions">
+        <button class="btn btn-primary" type="submit">GỬI THÔNG TIN</button>
+        <p class="contact-form-status" data-contact-status role="status" aria-live="polite"></p>
+      </div>
+    </form>
     <div class="contact-details">
       <a href="tel:0909123456" class="contact-detail-pill">Hotline: 0909 123 456</a>
       <a href="mailto:support@vrtech.vn" class="contact-detail-pill">Email: support@vrtech.vn</a>

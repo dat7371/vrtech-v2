@@ -237,6 +237,14 @@
     padding:24px;
   }
 
+  .contact-form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .contact-form-actions .btn{
+    width:100%;
+  }
+
   .official-card{
     min-height:0;
     padding:22px;

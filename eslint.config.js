@@ -3,7 +3,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default [
   {
-    ignores: ["node_modules/**", "dist/**", "build/**", "js/app.min.js"],
+    ignores: ["node_modules/**", "dist/**", "build/**", "vrtech-backend/**", "js/app.min.js"],
   },
   js.configs.recommended,
   {
@@ -27,6 +27,7 @@ export default [
         setTimeout: "readonly",
         clearTimeout: "readonly",
         Event: "readonly",
+        FormData: "readonly",
         URL: "readonly",
         IntersectionObserver: "readonly",
         HTMLElement: "readonly",

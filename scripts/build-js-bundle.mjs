@@ -15,6 +15,7 @@ const jsFiles = [
   "js/pages/app-page.js",
   "js/core/menu.js",
   "js/core/reveal.js",
+  "js/core/api.js",
   "js/pages/product-page.js",
   "js/core/main.js",
 ];
