@@ -1,4 +1,4 @@
-﻿window.PRODUCTS = {
+window.PRODUCTS = {
   vietmap: {
     name: "Thẻ Vietmap Live Pro Chính Hãng 2026 | Cảnh Báo Tốc Độ | Camera Phạt Nguội | Dùng Trên Điện Thoại, Android Box, Màn Hình Ô Tô",
     top_title: "Vietmap Live Pro Chính Hãng 2026 | Cảnh Báo Tốc Độ | Camera Phạt Nguội",
@@ -43,7 +43,7 @@
     ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Trợ giá khi mua kèm Carlinkit V2.",
     compare_group: "vietmap",
     assurances: [
@@ -258,7 +258,7 @@
     quantity_available: "Còn hàng",
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Khuyến mãi giảm 15% từ giá niêm yết.",
     assurances: [
       {
@@ -610,7 +610,7 @@
     ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
@@ -990,7 +990,7 @@
     ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
@@ -1336,7 +1336,7 @@
     ],
     primary_cta: "Mua ngay",
     support_cta: "Goi tu van",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để nhận cấu hình phù hợp theo dòng xe.",
     assurances: [
       {
@@ -1701,7 +1701,7 @@
     ],
     primary_cta: "Mua ngay",
     support_cta: "Gọi tư vấn",
-    support_phone: "0921515868",
+    support_phone: "033 453 2635",
     promo: "Khuyến mãi giảm 15% từ giá niêm yết. Liên hệ để được tư vấn cấu hình cao cấp phù hợp nhu cầu thực tế.",
     assurances: [
       {

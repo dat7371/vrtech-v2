@@ -28,7 +28,7 @@ const pages = [
         url: absoluteUrl(""),
         logo: absoluteUrl("images/logo/LOGO VRTECH-02.png"),
         email: "support@vrtech.vn",
-        telephone: "0921515868",
+        telephone: "033 453 2635",
         address: {
           "@type": "PostalAddress",
           streetAddress: "13 Phạm Huy Thông, Phường 1, Gò Vấp",

@@ -1662,9 +1662,9 @@ function renderProductData() {
   document.querySelectorAll("[data-product-vat]").forEach(el => el.textContent = product.vat_label || "");
   document.querySelectorAll("[data-product-primary-cta]").forEach(el => el.textContent = product.primary_cta || "Mua ngay");
   document.querySelectorAll("[data-product-support-cta]").forEach(el => el.textContent = product.support_cta || "Goi tu van");
-  document.querySelectorAll("[data-product-hotline]").forEach(el => el.textContent = product.support_phone || "0921515868");
+  document.querySelectorAll("[data-product-hotline]").forEach(el => el.textContent = product.support_phone || "033 453 2635");
   document.querySelectorAll("[data-product-hotline-link]").forEach((el) => {
-    el.setAttribute("href", formatPhoneHref(product.support_phone || "0921515868"));
+    el.setAttribute("href", formatPhoneHref(product.support_phone || "033 453 2635"));
   });
 
   document.querySelectorAll("[data-product-promo]").forEach((el) => {

@@ -2,7 +2,7 @@ window.VRTECH_CONFIG = window.VRTECH_CONFIG || {
   siteUrl: "",
   siteName: "Carlinkit V2 by VRTECH",
   organizationName: "CARLINKIT VN STORE x VRTECH",
-  supportPhone: "0921515868",
+  supportPhone: "033 453 2635",
   supportEmail: "support@vrtech.vn",
   // Example: "https://cdn.example.com/vrtech-v2"
   assetBaseUrl: "",

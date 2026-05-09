@@ -28,6 +28,10 @@ function pageAsset(pathValue) {
   return pathValue ? `../../${String(pathValue).replace(/^\.?\//, "")}` : "";
 }
 
+function formatPhoneHref(phone) {
+  return `tel:${String(phone || "").replace(/[^\d+]/g, "")}`;
+}
+
 function getArray(value) {
   return Array.isArray(value) ? value : [];
 }
@@ -315,7 +319,7 @@ function renderProductHero(product) {
         </div>
         <div class="product-cta-row">
           <a href="#contact" class="btn btn-primary product-buy-button" data-product-primary-cta>${escapeHtml(product.primary_cta || "MUA NGAY")}</a>
-          <a href="tel:0921515868" class="btn btn-outline product-support-button" data-product-support-cta>${escapeHtml(product.support_cta || "GỌI TƯ VẤN")}</a>
+          <a href="tel:0334532635" class="btn btn-outline product-support-button" data-product-support-cta>${escapeHtml(product.support_cta || "GỌI TƯ VẤN")}</a>
         </div>
         <div class="product-promo-box" data-product-promo-box${product.promo ? "" : " hidden"}>
           <div class="product-promo-head">Ưu đãi hiện tại</div>
@@ -325,10 +329,10 @@ function renderProductHero(product) {
     </div>
 
     <aside class="product-side-rail reveal show">
-      <a class="product-hotline-box" data-product-hotline-link href="tel:${escapeHtml(product.support_phone || "0921515868")}">
+      <a class="product-hotline-box" data-product-hotline-link href="${escapeHtml(formatPhoneHref(product.support_phone || "033 453 2635"))}">
         <span class="product-hotline-head">
           <span class="product-hotline-label">Gọi ngay</span>
-          <strong data-product-hotline>${escapeHtml(product.support_phone || "0921515868")}</strong>
+          <strong data-product-hotline>${escapeHtml(product.support_phone || "033 453 2635")}</strong>
         </span>
         <span class="product-hotline-note">để được tư vấn tốt nhất</span>
       </a>
@@ -425,7 +429,7 @@ async function updateProductPage(productKey, product, products, shellComponents)
           <a href="#contact" class="btn btn-outline">LIÊN HỆ TƯ VẤN</a>
         </div>
         <div class="contact-details">
-          <a href="tel:0909123456" class="contact-detail-pill">Hotline: 0909 123 456</a>
+          <a href="tel:0334532635" class="contact-detail-pill">Hotline: 033 453 2635</a>
           <a href="mailto:support@vrtech.vn" class="contact-detail-pill">Email: support@vrtech.vn</a>
         </div>
       </div>
