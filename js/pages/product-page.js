@@ -18,6 +18,33 @@ const LIGHTBOX_FOCUSABLE_SELECTORS = [
   "textarea:not([disabled])",
   "[tabindex]:not([tabindex='-1'])",
 ].join(", ");
+const PRODUCT_API_SLUG_BY_KEY = {
+  s2a: "tbox-s2a-v2",
+  s2p: "tbox-s2p-v2",
+  plus: "tbox-plus-v2",
+  ambient: "tbox-ambient-v2",
+  ultra: "tbox-ultra-max-v2",
+  vietmap: "vietmap-live-pro-2026",
+};
+const PRODUCT_KEY_BY_API_SLUG = Object.fromEntries(
+  Object.entries(PRODUCT_API_SLUG_BY_KEY).map(([key, slug]) => [slug, key])
+);
+const PRODUCT_SKU_BY_KEY = {
+  s2a: "TBOX-S2A-V2",
+  s2p: "TBOX-S2P-V2",
+  plus: "TBOX-PLUS-V2",
+  ambient: "TBOX-AMBIENT-V2",
+  ultra: "TBOX-ULTRA-MAX-V2",
+  vietmap: "VIETMAP-LIVE-PRO-2026",
+};
+const PRODUCT_VARIANT_SKU_BY_KEY = {
+  s2a: ["TBOX-S2A-V2-4-64", "TBOX-S2A-V2-8-128"],
+  s2p: ["TBOX-S2P-V2-4-64", "TBOX-S2P-V2-8-128"],
+  plus: ["TBOX-PLUS-V2-6-64", "TBOX-PLUS-V2-8-128"],
+  ambient: ["TBOX-AMBIENT-V2-4-64", "TBOX-AMBIENT-V2-8-128"],
+  ultra: ["TBOX-ULTRA-MAX-V2-8-128"],
+  vietmap: ["VIETMAP-LIVE-PRO-1Y", "VIETMAP-LIVE-PRO-2Y"],
+};
 
 function isImageElement(element) {
   return !!element && element instanceof HTMLElement && element.tagName === "IMG";
@@ -29,6 +56,14 @@ function isButtonElement(element) {
 
 function formatPhoneHref(phone) {
   return `tel:${String(phone || "").replace(/[^\d+]/g, "")}`;
+}
+
+function normalizeOrderPhone(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidOrderPhone(value) {
+  return /^0\d{9}$/.test(normalizeOrderPhone(value));
 }
 
 function getCompactProductName(product) {
@@ -98,6 +133,142 @@ function getNumericPrice(price) {
   const value = Number.parseInt(String(price || "").replace(/[^\d]/g, ""), 10);
 
   return Number.isNaN(value) ? "" : String(value);
+}
+
+function getProductApiBase() {
+  return String(window.VRTECH_API_BASE || "http://127.0.0.1:8000").replace(/\/$/, "");
+}
+
+function formatBackendMoney(value) {
+  if (value === null || value === undefined || value === "") {
+    return "";
+  }
+
+  const parsed = Number.parseFloat(String(value));
+
+  if (!Number.isFinite(parsed)) {
+    return "";
+  }
+
+  return new Intl.NumberFormat("vi-VN", { maximumFractionDigits: 0 }).format(parsed);
+}
+
+function getBackendProductList(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+
+  if (Array.isArray(payload?.data)) {
+    return payload.data;
+  }
+
+  if (payload?.data && typeof payload.data === "object") {
+    return [payload.data];
+  }
+
+  return [];
+}
+
+function mergeBackendProduct(productKey, backendProduct) {
+  const product = window.PRODUCTS?.[productKey];
+
+  if (!product || !backendProduct) {
+    return;
+  }
+
+  const backendVariants = Array.isArray(backendProduct.active_variants)
+    ? backendProduct.active_variants
+    : Array.isArray(backendProduct.variants)
+      ? backendProduct.variants
+      : [];
+  const firstBackendVariant = backendVariants[0];
+  const regularPrice = formatBackendMoney(firstBackendVariant?.price ?? backendProduct.price);
+  const salePrice = formatBackendMoney(firstBackendVariant?.sale_price ?? backendProduct.sale_price);
+  const activePrice = salePrice || regularPrice;
+  const oldPrice = salePrice ? regularPrice : "";
+
+  if (!activePrice) {
+    return;
+  }
+
+  product.api_synced = true;
+  product.price = activePrice;
+  product.old_price = oldPrice;
+
+  const variants = getArray(product.variants);
+  backendVariants.forEach((backendVariant, index) => {
+    const targetVariant = variants.find((variant) => variant.label === backendVariant.label) || variants[index];
+    const variantRegularPrice = formatBackendMoney(backendVariant.price);
+    const variantSalePrice = formatBackendMoney(backendVariant.sale_price);
+
+    if (!targetVariant || (!variantRegularPrice && !variantSalePrice)) {
+      return;
+    }
+
+    targetVariant.price = variantSalePrice || variantRegularPrice;
+    targetVariant.old_price = variantSalePrice ? variantRegularPrice : "";
+    targetVariant.sku = backendVariant.sku || targetVariant.sku;
+  });
+}
+
+async function syncProductsFromBackend(currentProductKey) {
+  if (!window.PRODUCTS || window.VRTECH_DISABLE_PRODUCT_PRICE_SYNC === true) {
+    return false;
+  }
+
+  let didSync = false;
+  const Controller = window.AbortController;
+  const controller = Controller ? new Controller() : null;
+  const timeout = controller ? window.setTimeout(() => controller.abort(), 1200) : null;
+
+  try {
+    const response = await fetch(`${getProductApiBase()}/api/products`, {
+      headers: { Accept: "application/json" },
+      signal: controller?.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error("Product API unavailable");
+    }
+
+    const payload = await response.json();
+    getBackendProductList(payload).forEach((backendProduct) => {
+      const productKey = PRODUCT_KEY_BY_API_SLUG[backendProduct.slug];
+      if (productKey) {
+        mergeBackendProduct(productKey, backendProduct);
+        didSync = true;
+      }
+    });
+  } catch {
+    const slug = PRODUCT_API_SLUG_BY_KEY[currentProductKey];
+
+      if (!slug) {
+        return didSync;
+      }
+
+    try {
+      const response = await fetch(`${getProductApiBase()}/api/products/${slug}`, {
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const payload = await response.json();
+      const backendProduct = payload?.data || payload;
+      mergeBackendProduct(currentProductKey, backendProduct);
+      didSync = true;
+    } catch {
+      // Keep static product data when the backend is not running.
+    }
+  } finally {
+    if (timeout) {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  return didSync;
 }
 
 function updateProductSeo(product) {
@@ -340,6 +511,7 @@ function buildProductDetailBlocks(product) {
             height="${escapeHtml(section.image.height || 1600)}"
             data-detail-lightbox-image
             loading="lazy"
+            decoding="async"
           >
         </figure>
       `
@@ -675,7 +847,7 @@ function renderRelatedProducts(currentKey) {
     return `
       <a class="product-related-card" href="${escapeHtml(getProductPagePath(key))}">
         <span class="product-related-media">
-          <img src="${escapeHtml(image)}" alt="${escapeHtml(getCompactProductName(product))}" width="800" height="800" loading="lazy">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(getCompactProductName(product))}" width="800" height="800" loading="lazy" decoding="async">
         </span>
         <span class="product-related-copy">
           <span class="product-related-badge">${escapeHtml(product?.badge || product?.brand || "Sản phẩm liên quan")}</span>
@@ -864,15 +1036,263 @@ function initializeProductCompare(currentKey) {
   }
 }
 
+function getActiveVariantIndex() {
+  const activeOption = document.querySelector("[data-product-variant-index].active");
+  const variantIndex = Number.parseInt(activeOption?.getAttribute("data-product-variant-index") || "0", 10);
+
+  return Number.isNaN(variantIndex) ? 0 : variantIndex;
+}
+
+function updateExistingVariantOptions(product) {
+  const variantOptions = document.querySelector("[data-product-variant-options]");
+  const variants = getArray(product?.variants);
+
+  if (!(variantOptions instanceof HTMLElement) || !variants.length) {
+    return;
+  }
+
+  variantOptions.querySelectorAll("[data-product-variant-index]").forEach((option) => {
+    const variantIndex = Number.parseInt(option.getAttribute("data-product-variant-index") || "0", 10);
+    const variant = variants[Number.isNaN(variantIndex) ? 0 : variantIndex];
+
+    if (!variant) {
+      return;
+    }
+
+    const price = option.querySelector("strong");
+
+    if (price) {
+      price.textContent = variant.price || product.price || "";
+    }
+  });
+}
+
+function refreshSyncedProductFields(productKey) {
+  const product = window.PRODUCTS?.[productKey];
+
+  if (!product) {
+    return;
+  }
+
+  const selectedVariant = getProductVariant(product, getActiveVariantIndex());
+  const unitPrice = getProductPrice(product, selectedVariant);
+  const oldPrice = getProductOldPrice(product, selectedVariant);
+
+  updateExistingVariantOptions(product);
+
+  document.querySelectorAll("[data-product-price]").forEach(el => el.textContent = unitPrice);
+  document.querySelectorAll("[data-product-old-price]").forEach((el) => {
+    el.textContent = oldPrice;
+    el.hidden = !oldPrice;
+  });
+}
+
+function getCurrentOrderSelection(productKey, product) {
+  const variantIndex = getActiveVariantIndex();
+  const variant = getProductVariant(product, variantIndex);
+  const quantityInput = document.querySelector("[data-quantity-input]");
+  const quantity = quantityInput instanceof HTMLInputElement
+    ? Math.max(Number.parseInt(quantityInput.value || "1", 10) || 1, 1)
+    : 1;
+  const variantLabel = variant?.label || "";
+  const productName = `${getCompactProductName(product)}${variantLabel ? ` - ${variantLabel}` : ""}`;
+
+  return {
+    variant,
+    variantSku: variant?.sku || PRODUCT_VARIANT_SKU_BY_KEY[productKey]?.[variantIndex] || PRODUCT_SKU_BY_KEY[productKey],
+    quantity,
+    productName,
+  };
+}
+
+function ensureOrderDialog(productKey, product) {
+  let dialog = document.querySelector("[data-order-dialog]");
+
+  if (dialog instanceof HTMLElement) {
+    return dialog;
+  }
+
+  dialog = document.createElement("div");
+  dialog.className = "order-dialog";
+  dialog.dataset.orderDialog = "";
+  dialog.hidden = true;
+  dialog.innerHTML = `
+    <div class="order-dialog-backdrop" data-order-close></div>
+    <div class="order-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="order-dialog-title">
+      <button class="order-dialog-close" type="button" data-order-close aria-label="Đóng form đặt hàng">×</button>
+      <div class="order-dialog-head">
+        <span>Đặt hàng</span>
+        <h2 id="order-dialog-title">Thông tin nhận tư vấn và đặt hàng</h2>
+        <p data-order-summary></p>
+      </div>
+      <form class="order-form" data-order-form>
+        <div class="order-form-grid">
+          <label>
+            <span>Họ tên</span>
+            <input name="customer_name" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            <span>Số điện thoại</span>
+            <input name="customer_phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="13" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="customer_email" type="email" autocomplete="email">
+          </label>
+          <label>
+            <span>Địa chỉ</span>
+            <input name="customer_address" type="text" autocomplete="street-address">
+          </label>
+        </div>
+        <label>
+          <span>Ghi chú tư vấn</span>
+          <textarea name="consulting_note" rows="3" placeholder="Dòng xe, đời xe hoặc thời gian muốn được gọi lại"></textarea>
+        </label>
+        <p class="order-form-status" data-order-status role="status" aria-live="polite"></p>
+        <div class="order-form-actions">
+          <button class="btn btn-primary" type="submit">GỬI ĐƠN HÀNG</button>
+          <button class="btn btn-outline" type="button" data-order-close>Hủy</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.append(dialog);
+
+  const form = dialog.querySelector("[data-order-form]");
+  const status = dialog.querySelector("[data-order-status]");
+  const summary = dialog.querySelector("[data-order-summary]");
+  const closeDialog = () => {
+    dialog.hidden = true;
+    document.body.classList.remove("order-dialog-open");
+  };
+
+  dialog.querySelectorAll("[data-order-close]").forEach((button) => {
+    button.addEventListener("click", closeDialog);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !dialog.hidden) {
+      closeDialog();
+    }
+  });
+
+  if (form instanceof HTMLElement && form.tagName === "FORM") {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const selection = getCurrentOrderSelection(productKey, product);
+      const submitButton = form.querySelector('button[type="submit"]');
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const phoneInput = form.querySelector('input[name="customer_phone"]');
+
+      if (!isValidOrderPhone(payload.customer_phone)) {
+        if (status) {
+          status.textContent = "Số điện thoại phải đủ đúng 10 chữ số, ví dụ 0866 955 966.";
+        }
+        if (phoneInput instanceof HTMLElement) {
+          phoneInput.focus();
+        }
+        return;
+      }
+      payload.customer_phone = normalizeOrderPhone(payload.customer_phone);
+
+      payload.items = [{
+        product_slug: PRODUCT_API_SLUG_BY_KEY[productKey],
+        variant_sku: selection.variantSku,
+        product_name: selection.productName,
+        sku: PRODUCT_SKU_BY_KEY[productKey],
+        quantity: selection.quantity,
+      }];
+
+      if (status) {
+        status.textContent = "Đang gửi đơn hàng...";
+      }
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        const response = await fetch(`${getProductApiBase()}/api/orders`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+        const json = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(json.message || "Không gửi được đơn hàng.");
+        }
+
+        form.reset();
+        if (status) {
+          status.textContent = `Đã gửi đơn hàng${json.data?.code ? ` ${json.data.code}` : ""}. VRTECH sẽ liên hệ xác nhận.`;
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = error.message || "Chưa gửi được đơn hàng. Vui lòng gọi hotline hoặc thử lại sau.";
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
+
+  dialog.updateSummary = () => {
+    const selection = getCurrentOrderSelection(productKey, product);
+    if (summary) {
+      summary.textContent = `${selection.productName} × ${selection.quantity} - ${getProductPrice(product, selection.variant)}`;
+    }
+    if (status) {
+      status.textContent = "";
+    }
+  };
+
+  return dialog;
+}
+
+function initializeProductOrder(productKey, product) {
+  const buyButton = document.querySelector(".product-buy-button");
+
+  if (!product || !(buyButton instanceof HTMLElement) || buyButton.dataset.orderBound === "true") {
+    return;
+  }
+
+  buyButton.dataset.orderBound = "true";
+  buyButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const dialog = ensureOrderDialog(productKey, product);
+    if (typeof dialog.updateSummary === "function") {
+      dialog.updateSummary();
+    }
+    dialog.hidden = false;
+    document.body.classList.add("order-dialog-open");
+    dialog.querySelector("input")?.focus();
+  });
+}
+
 function loadProductPage() {
   window.VRTECH_COMPONENTS?.injectComponents?.(PRODUCT_PAGE_COMPONENTS);
 
   renderProductData();
+  initializeProductOrder(document.body.dataset.product, window.PRODUCTS?.[document.body.dataset.product]);
   initializeProductGalleryLightbox();
   fixProductPagePaths();
   setTimeout(() => {
     document.dispatchEvent(new Event("componentsLoaded"));
   }, 0);
+
+  syncProductsFromBackend(document.body.dataset.product).then((didSync) => {
+    if (didSync) {
+      refreshSyncedProductFields(document.body.dataset.product);
+    }
+  });
 }
 
 function initializeProductGalleryLightbox() {
@@ -905,7 +1325,7 @@ function initializeProductGalleryLightbox() {
         <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" data-lightbox-prev aria-label="Xem ảnh trước">
           <span aria-hidden="true">‹</span>
         </button>
-        <img class="gallery-lightbox-image" alt="">
+        <img class="gallery-lightbox-image" alt="" decoding="async">
         <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" data-lightbox-next aria-label="Xem ảnh tiếp theo">
           <span aria-hidden="true">›</span>
         </button>
@@ -971,7 +1391,7 @@ function initializeProductGalleryLightbox() {
         data-lightbox-thumb="${index}"
         aria-label="Xem ảnh ${index + 1}"
       >
-        <img src="${item.src}" alt="${item.alt}" width="200" height="200" loading="lazy">
+        <img src="${item.src}" alt="${item.alt}" width="200" height="200" loading="lazy" decoding="async">
       </button>
     `).join("");
   };
@@ -1261,18 +1681,21 @@ function renderProductData() {
 
   if (variantBlock instanceof HTMLElement && variantOptions instanceof HTMLElement) {
     variantBlock.hidden = variants.length < 2;
-    variantOptions.innerHTML = variants.map((variant, index) => `
-      <button
-        type="button"
-        class="product-variant-option${index === 0 ? " active" : ""}"
-        data-product-variant-index="${index}"
-        aria-pressed="${index === 0 ? "true" : "false"}"
-      >
-        <span>${escapeHtml(variant.label || `Cấu hình ${index + 1}`)}</span>
-        <strong>${escapeHtml(variant.price || product.price || "")}</strong>
-        ${variant.badge ? `<em>${escapeHtml(variant.badge)}</em>` : ""}
-      </button>
-    `).join("");
+
+    if (!variantOptions.querySelector("[data-product-variant-index]")) {
+      variantOptions.innerHTML = variants.map((variant, index) => `
+        <button
+          type="button"
+          class="product-variant-option${index === 0 ? " active" : ""}"
+          data-product-variant-index="${index}"
+          aria-pressed="${index === 0 ? "true" : "false"}"
+        >
+          <span>${escapeHtml(variant.label || `Cấu hình ${index + 1}`)}</span>
+          <strong>${escapeHtml(variant.price || product.price || "")}</strong>
+          ${variant.badge ? `<em>${escapeHtml(variant.badge)}</em>` : ""}
+        </button>
+      `).join("");
+    }
 
     variantOptions.addEventListener("click", (event) => {
       const option = event.target instanceof HTMLElement ? event.target.closest("[data-product-variant-index]") : null;
@@ -1327,7 +1750,7 @@ function renderProductData() {
   }
 
   const heroThumbs = document.getElementById("product-hero-thumbs");
-  if (heroThumbs && product.hero_image) {
+  if (heroThumbs && product.hero_image && !heroThumbs.querySelector(".product-thumb-button")) {
     const extraGallery = Array.isArray(product.gallery_extra) ? product.gallery_extra.map((item) => item.image) : [];
     const heroGallery = [product.hero_image, ...(product.gallery || []).slice(0, 5), ...extraGallery];
     heroThumbs.innerHTML = heroGallery.map((image, index) => `
@@ -1338,7 +1761,7 @@ function renderProductData() {
         data-hero-alt="${product.name} - góc nhìn ${index + 1}"
         aria-label="Xem ảnh ${index + 1} của ${product.name}"
       >
-        <img src="${window.VRTECH_ASSETS?.asset?.(image) || image}" alt="${product.name} - thumbnail ${index + 1}" width="800" height="800" loading="lazy">
+        <img src="${window.VRTECH_ASSETS?.asset?.(image) || image}" alt="${product.name} - thumbnail ${index + 1}" width="800" height="800" loading="lazy" decoding="async">
       </button>
     `).join("");
   }
@@ -1356,29 +1779,31 @@ function renderProductData() {
     `).join("") : "";
 
   const assuranceWrap = document.getElementById("product-assurance-list");
-  if (assuranceWrap) {
+  if (assuranceWrap && !assuranceWrap.children.length) {
     assuranceWrap.innerHTML = assuranceMarkup;
   }
 
   const specWrap = document.getElementById("product-spec-list");
   const specToggle = document.querySelector("[data-product-spec-toggle]");
   if (specWrap && Array.isArray(product.spec_sections) && product.spec_sections.length) {
-    specWrap.innerHTML = product.spec_sections.map((section) => `
-      <section class="product-spec-section">
-        <div class="product-spec-section-head">
-          <span class="product-spec-dot" aria-hidden="true"></span>
-          <h3>${section.title}</h3>
-        </div>
-        <div class="product-spec-table" role="table" aria-label="${section.title}">
-          ${section.rows.map((row) => `
-            <div class="product-spec-row" role="row">
-              <div class="product-spec-key" role="rowheader">${row.label}</div>
-              <div class="product-spec-data" role="cell">${row.value}</div>
-            </div>
-          `).join("")}
-        </div>
-      </section>
-    `).join("");
+    if (!specWrap.children.length) {
+      specWrap.innerHTML = product.spec_sections.map((section) => `
+        <section class="product-spec-section">
+          <div class="product-spec-section-head">
+            <span class="product-spec-dot" aria-hidden="true"></span>
+            <h3>${section.title}</h3>
+          </div>
+          <div class="product-spec-table" role="table" aria-label="${section.title}">
+            ${section.rows.map((row) => `
+              <div class="product-spec-row" role="row">
+                <div class="product-spec-key" role="rowheader">${row.label}</div>
+                <div class="product-spec-data" role="cell">${row.value}</div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `).join("");
+    }
 
     if (specToggle instanceof HTMLButtonElement) {
       const fullSpecHeight = specWrap.scrollHeight;
@@ -1409,16 +1834,18 @@ function renderProductData() {
         : null;
     }
   } else if (specWrap && Array.isArray(product.specs)) {
-    specWrap.innerHTML = `
-      <div class="product-spec-grid">
-        ${product.specs.map(item => `
-          <article class="product-spec-card">
-            <span class="product-spec-label">${item.label}</span>
-            <strong class="product-spec-value">${item.value}</strong>
-          </article>
-        `).join("")}
-      </div>
-    `;
+    if (!specWrap.children.length) {
+      specWrap.innerHTML = `
+        <div class="product-spec-grid">
+          ${product.specs.map(item => `
+            <article class="product-spec-card">
+              <span class="product-spec-label">${item.label}</span>
+              <strong class="product-spec-value">${item.value}</strong>
+            </article>
+          `).join("")}
+        </div>
+      `;
+    }
     if (specToggle instanceof HTMLButtonElement) {
       specToggle.hidden = true;
       specToggle.onclick = null;

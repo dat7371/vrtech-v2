@@ -4,6 +4,23 @@ function getApiBase() {
   return (window.VRTECH_API_BASE || DEFAULT_API_BASE).replace(/\/$/, "");
 }
 
+function normalizeVietnamesePhone(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidVietnamesePhone(value) {
+  return /^0\d{9}$/.test(normalizeVietnamesePhone(value));
+}
+
+function showPhoneError(status, input) {
+  if (status) {
+    status.textContent = "Số điện thoại phải đủ đúng 10 chữ số, ví dụ 0866 955 966.";
+  }
+  if (input instanceof HTMLElement) {
+    input.focus();
+  }
+}
+
 function initializeContactForms() {
   document.querySelectorAll("[data-contact-form]").forEach((form) => {
     if (form.dataset.bound === "true") {
@@ -17,6 +34,13 @@ function initializeContactForms() {
       event.preventDefault();
       const submitButton = form.querySelector('button[type="submit"]');
       const payload = Object.fromEntries(new FormData(form).entries());
+      const phoneInput = form.querySelector('input[name="phone"]');
+
+      if (!isValidVietnamesePhone(payload.phone)) {
+        showPhoneError(status, phoneInput);
+        return;
+      }
+      payload.phone = normalizeVietnamesePhone(payload.phone);
 
       if (status) {
         status.textContent = "Đang gửi thông tin...";
@@ -102,6 +126,13 @@ function initializeWarrantyForms() {
           status.textContent = "Vui lòng nhập số điện thoại hoặc serial thiết bị.";
         }
         return;
+      }
+      if (payload.phone && !isValidVietnamesePhone(payload.phone)) {
+        showPhoneError(status, form.querySelector('input[name="phone"]'));
+        return;
+      }
+      if (payload.phone) {
+        payload.phone = normalizeVietnamesePhone(payload.phone);
       }
 
       if (status) {

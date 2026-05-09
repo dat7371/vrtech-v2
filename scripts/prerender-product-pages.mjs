@@ -113,6 +113,7 @@ function renderDetailBlocks(product) {
               height="${escapeHtml(section.image.height || 1600)}"
               data-detail-lightbox-image
               loading="lazy"
+              decoding="async"
             >
           </figure>`
         : "";
@@ -159,15 +160,57 @@ function renderSpecSections(product) {
     </article>`).join("")}</div>`;
 }
 
+function getAssuranceIconType(title) {
+  const normalizedTitle = String(title || "").toLowerCase();
+
+  if (normalizedTitle.includes("official") || normalizedTitle.includes("chính thức") || normalizedTitle.includes("viet nam") || normalizedTitle.includes("việt nam")) {
+    return "official";
+  }
+
+  if (normalizedTitle.includes("cam kết") || normalizedTitle.includes("sản phẩm") || normalizedTitle.includes("san pham")) {
+    return "product";
+  }
+
+  if (normalizedTitle.includes("bảo hành") || normalizedTitle.includes("bao hanh")) {
+    return "warranty";
+  }
+
+  if (normalizedTitle.includes("kỹ thuật") || normalizedTitle.includes("ky thuat") || normalizedTitle.includes("hỗ trợ") || normalizedTitle.includes("ho tro")) {
+    return "support";
+  }
+
+  if (normalizedTitle.includes("giao hàng") || normalizedTitle.includes("giao hang") || normalizedTitle.includes("vận chuyển") || normalizedTitle.includes("van chuyen")) {
+    return "delivery";
+  }
+
+  return "official";
+}
+
+function getAssuranceIconSvg(iconType) {
+  const icons = {
+    official: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.3-2.5 8.1-7 10-4.5-1.9-7-5.7-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 12.2l1.7 1.7 3.4-3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    product: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    warranty: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.3-2.5 8.1-7 10-4.5-1.9-7-5.7-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 12.2l1.7 1.7 3.4-3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    support: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 0l-2 2a4 4 0 0 0 0 5.4l3 3a4 4 0 0 0 5.4 0l2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    delivery: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h3l3 3v2h-6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>',
+  };
+
+  return icons[iconType] || icons.official;
+}
+
 function renderAssurances(product) {
-  return getArray(product.assurances).map((item) => `
+  return getArray(product.assurances).map((item) => {
+    const iconType = getAssuranceIconType(item.title);
+
+    return `
         <article class="product-assurance-item reveal">
-          <div class="product-assurance-icon" aria-hidden="true">✓</div>
+          <div class="product-assurance-icon" data-icon="${iconType}" aria-hidden="true">${getAssuranceIconSvg(iconType)}</div>
           <div class="product-assurance-copy">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.desc)}</p>
           </div>
-        </article>`).join("");
+        </article>`;
+  }).join("");
 }
 
 function renderRelatedProducts(currentKey, products) {
@@ -181,7 +224,7 @@ function renderRelatedProducts(currentKey, products) {
     return `
           <a class="product-related-card" href="${escapeHtml(`${key}.html`)}">
             <span class="product-related-media">
-              <img src="${escapeHtml(pageAsset(product.hero_image))}" alt="${escapeHtml(getCompactProductName(product))}" width="800" height="800" loading="lazy">
+              <img src="${escapeHtml(pageAsset(product.hero_image))}" alt="${escapeHtml(getCompactProductName(product))}" width="800" height="800" loading="lazy" decoding="async">
             </span>
             <span class="product-related-copy">
               <span class="product-related-badge">${escapeHtml(product?.badge || product?.brand || "Sản phẩm liên quan")}</span>
@@ -230,14 +273,14 @@ function renderProductHero(product) {
       <div class="product-hero-main">
         <button type="button" class="product-hero-nav product-hero-nav-prev" data-hero-prev aria-label="Xem ảnh trước"><span aria-hidden="true">‹</span></button>
         <button type="button" class="product-hero-frame product-hero-trigger" data-product-hero-trigger aria-label="Xem toàn màn hình ảnh sản phẩm">
-          <img data-product-hero-image src="${escapeHtml(pageAsset(product.hero_image))}" alt="${escapeHtml(product.name)}" width="1600" height="1600" fetchpriority="high">
+          <img data-product-hero-image src="${escapeHtml(pageAsset(product.hero_image))}" alt="${escapeHtml(product.name)}" width="1600" height="1600" decoding="async" fetchpriority="high">
         </button>
         <button type="button" class="product-hero-nav product-hero-nav-next" data-hero-next aria-label="Xem ảnh tiếp theo"><span aria-hidden="true">›</span></button>
       </div>
       <div class="product-hero-thumbs" id="product-hero-thumbs">
         ${gallery.map((image, index) => `
         <button type="button" class="product-thumb-button${index === 0 ? " active" : ""}" data-hero-image="${escapeHtml(pageAsset(image))}" data-hero-alt="${escapeHtml(`${product.name} - góc nhìn ${index + 1}`)}" aria-label="Xem ảnh ${index + 1} của ${escapeHtml(product.name)}">
-          <img src="${escapeHtml(pageAsset(image))}" alt="${escapeHtml(`${product.name} - thumbnail ${index + 1}`)}" width="800" height="800" loading="lazy">
+          <img src="${escapeHtml(pageAsset(image))}" alt="${escapeHtml(`${product.name} - thumbnail ${index + 1}`)}" width="800" height="800" loading="lazy" decoding="async">
         </button>`).join("")}
       </div>
     </div>
@@ -348,7 +391,25 @@ async function loadProducts() {
   return sandbox.window.PRODUCTS;
 }
 
-async function updateProductPage(productKey, product, products) {
+async function loadProductPageShellComponents() {
+  const [header, footer] = await Promise.all([
+    readFile(path.join(projectRoot, "components/shared/header.html"), "utf8"),
+    readFile(path.join(projectRoot, "components/shared/footer.html"), "utf8"),
+  ]);
+
+  const rewriteForProductPage = (source) => source
+    .trim()
+    .replaceAll('href="index.html', 'href="../../index.html')
+    .replaceAll('href="pages/', 'href="../../pages/')
+    .replaceAll('src="images/', 'src="../../images/');
+
+  return {
+    header: rewriteForProductPage(header),
+    footer: rewriteForProductPage(footer),
+  };
+}
+
+async function updateProductPage(productKey, product, products, shellComponents) {
   const pagePath = path.join(projectRoot, productPages[productKey]);
   const html = await readFile(pagePath, "utf8");
   const main = `<main id="main-content">
@@ -377,12 +438,16 @@ async function updateProductPage(productKey, product, products) {
     throw new Error(`Could not replace main content in ${productPages[productKey]}`);
   }
 
-  const updated = html.replace(mainPattern, main);
+  const updated = html
+    .replace(/<div id="header"><\/div>|<header class="site-header">[\s\S]*?<\/header>/, shellComponents.header)
+    .replace(mainPattern, main)
+    .replace(/<div id="footer"><\/div>|<footer class="site-footer">[\s\S]*?<\/footer>/, shellComponents.footer);
 
   await writeFile(pagePath, updated, "utf8");
 }
 
 const products = await loadProducts();
+const shellComponents = await loadProductPageShellComponents();
 
 await Promise.all(
   Object.entries(productPages).map(([productKey]) => {
@@ -392,7 +457,7 @@ await Promise.all(
       throw new Error(`Missing product data for ${productKey}`);
     }
 
-    return updateProductPage(productKey, product, products);
+    return updateProductPage(productKey, product, products, shellComponents);
   })
 );
 

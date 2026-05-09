@@ -1634,6 +1634,142 @@ body.lightbox-open {
   padding: 0 32px;
 }
 
+.order-dialog[hidden] {
+  display: none;
+}
+
+.order-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.order-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(8px);
+}
+
+.order-dialog-panel {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: min(760px, calc(100vh - 40px));
+  overflow: auto;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: linear-gradient(180deg, rgba(24, 27, 33, .98), rgba(12, 14, 18, .98));
+  box-shadow: 0 32px 90px rgba(0, 0, 0, .5);
+}
+
+.order-dialog-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .04);
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.order-dialog-head {
+  padding-right: 48px;
+}
+
+.order-dialog-head span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 194, 74, .12);
+  color: #ffe08a;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.order-dialog-head h2 {
+  margin: 12px 0 8px;
+  font-family: "Sora", "Plus Jakarta Sans", sans-serif;
+  font-size: 26px;
+  line-height: 1.18;
+}
+
+.order-dialog-head p {
+  margin: 0 0 18px;
+  color: #cbd3df;
+  font-weight: 800;
+}
+
+.order-form,
+.order-form label {
+  display: grid;
+  gap: 10px;
+}
+
+.order-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.order-form label span {
+  color: #dfe5ee;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 14px;
+  background: rgba(5, 6, 7, .45);
+  color: #fff;
+  outline: none;
+}
+
+.order-form textarea {
+  min-height: 96px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+.order-form input:focus,
+.order-form textarea:focus {
+  border-color: rgba(255, 194, 74, .55);
+  box-shadow: 0 0 0 3px rgba(255, 194, 74, .12);
+}
+
+.order-form-status {
+  min-height: 24px;
+  margin: 4px 0 0;
+  color: #ffe08a;
+  font-weight: 800;
+}
+
+.order-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+body.order-dialog-open {
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .product-hero {
     padding: 40px 0;
@@ -1883,6 +2019,30 @@ body.lightbox-open {
   }
 
   .product-cta-actions .btn {
+    width: 100%;
+  }
+
+  .order-dialog {
+    padding: 12px;
+  }
+
+  .order-dialog-panel {
+    padding: 22px 16px;
+  }
+
+  .order-dialog-head {
+    padding-right: 44px;
+  }
+
+  .order-dialog-head h2 {
+    font-size: 22px;
+  }
+
+  .order-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-form-actions .btn {
     width: 100%;
   }
 

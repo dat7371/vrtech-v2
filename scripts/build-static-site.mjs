@@ -7,6 +7,7 @@ const projectRoot = path.resolve(scriptDir, "..");
 const distDir = path.join(projectRoot, "dist");
 
 const runtimeEntries = [
+  ".htaccess",
   "index.html",
   "css",
   "js",
