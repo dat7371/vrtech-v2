@@ -3,10 +3,18 @@
 @section('title', $product->exists ? 'Sửa sản phẩm' : 'Thêm sản phẩm')
 
 @section('content')
+    @php
+        $variantRows = collect(old('variants', $product->variants?->toArray() ?: []));
+        $emptyRows = max(0, 4 - $variantRows->count());
+        for ($i = 0; $i < $emptyRows; $i++) {
+            $variantRows->push([]);
+        }
+    @endphp
+
     <div class="page-head">
         <div>
             <h1>{{ $product->exists ? 'Sửa sản phẩm' : 'Thêm sản phẩm' }}</h1>
-            <p class="page-desc">Thông tin này dùng cho admin, API sản phẩm và tư vấn khách hàng.</p>
+            <p class="page-desc">Thông tin này lưu trong database backend/API. Frontend tĩnh chỉ tự đổi sau khi đã gắn API hoặc build lại dữ liệu tĩnh.</p>
         </div>
         <a class="btn ghost" href="{{ route('admin.products.index') }}">Quay lại</a>
     </div>
@@ -52,15 +60,68 @@
 
             <div class="form-grid three">
                 <label>Giá niêm yết
-                    <input name="price" type="number" min="0" step="1000" value="{{ old('price', $product->price ?? 0) }}">
+                    <input name="price" type="number" min="0" step="500" value="{{ old('price', $product->price !== null ? (int) $product->price : 0) }}">
+                    <span class="help">Giá cũ hiển thị dạng gạch ngang.</span>
                 </label>
                 <label>Giá khuyến mãi
-                    <input name="sale_price" type="number" min="0" step="1000" value="{{ old('sale_price', $product->sale_price) }}">
+                    <input name="sale_price" type="number" min="0" step="500" value="{{ old('sale_price', $product->sale_price !== null ? (int) $product->sale_price : '') }}">
+                    <span class="help">Đây là giá đang bán. Để trống nếu không khuyến mãi.</span>
                 </label>
                 <label>Bảo hành
                     <input name="warranty_months" type="number" min="0" value="{{ old('warranty_months', $product->warranty_months ?? 12) }}">
                 </label>
             </div>
+            @error('price') <p class="error">{{ $message }}</p> @enderror
+            @error('sale_price') <p class="error">{{ $message }}</p> @enderror
+            @error('warranty_months') <p class="error">{{ $message }}</p> @enderror
+        </div>
+
+        <div class="card">
+            <h2>Phiên bản và giá theo cấu hình</h2>
+            <p class="help">Frontend chỉ đồng bộ giá theo các phiên bản này. Tên, ảnh, mô tả và layout frontend vẫn giữ nguyên.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phiên bản</th>
+                            <th>SKU phiên bản</th>
+                            <th>RAM</th>
+                            <th>ROM</th>
+                            <th>Giá niêm yết</th>
+                            <th>Giá khuyến mãi</th>
+                            <th>Nhãn</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($variantRows as $index => $variant)
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="variants[{{ $index }}][id]" value="{{ $variant['id'] ?? '' }}">
+                                    <input type="hidden" name="variants[{{ $index }}][sort_order]" value="{{ $index }}">
+                                    <input name="variants[{{ $index }}][label]" value="{{ $variant['label'] ?? '' }}" placeholder="RAM 4GB / ROM 64GB">
+                                </td>
+                                <td><input name="variants[{{ $index }}][sku]" value="{{ $variant['sku'] ?? '' }}" placeholder="TBOX-S2A-V2-4-64"></td>
+                                <td><input name="variants[{{ $index }}][ram]" value="{{ $variant['ram'] ?? '' }}" placeholder="4GB"></td>
+                                <td><input name="variants[{{ $index }}][rom]" value="{{ $variant['rom'] ?? '' }}" placeholder="64GB"></td>
+                                <td><input name="variants[{{ $index }}][price]" type="number" min="0" step="500" value="{{ isset($variant['price']) && $variant['price'] !== null ? (int) $variant['price'] : '' }}"></td>
+                                <td><input name="variants[{{ $index }}][sale_price]" type="number" min="0" step="500" value="{{ isset($variant['sale_price']) && $variant['sale_price'] !== null ? (int) $variant['sale_price'] : '' }}"></td>
+                                <td><input name="variants[{{ $index }}][badge]" value="{{ $variant['badge'] ?? '' }}" placeholder="Bản tiêu chuẩn"></td>
+                                <td>
+                                    <select name="variants[{{ $index }}][status]">
+                                        <option value="active" @selected(($variant['status'] ?? 'active') === 'active')>Đang bán</option>
+                                        <option value="inactive" @selected(($variant['status'] ?? 'active') === 'inactive')>Ẩn</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @error('variants.*.sku') <p class="error">{{ $message }}</p> @enderror
+            @error('variants.*.price') <p class="error">{{ $message }}</p> @enderror
+            @error('variants.*.sale_price') <p class="error">{{ $message }}</p> @enderror
         </div>
 
         <div class="card">

@@ -19,8 +19,10 @@ class DashboardController extends Controller
             'newContactCount' => Contact::where('status', 'new')->count(),
             'warrantyCount' => Warranty::count(),
             'orderCount' => Order::count(),
+            'newOrderCount' => Order::where('status', 'new')->count(),
             'activeProductCount' => Product::where('status', 'active')->count(),
             'latestContacts' => Contact::latest()->take(8)->get(),
+            'latestOrders' => Order::withCount('items')->latest()->take(6)->get(),
             'latestWarranties' => Warranty::with(['customer', 'product'])->latest()->take(6)->get(),
         ]);
     }

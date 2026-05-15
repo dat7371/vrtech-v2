@@ -37,8 +37,8 @@
                 </label>
                 <label>Trạng thái
                     <select name="status">
-                        <option value="active" @selected(old('status', $category->status) === 'active')>active</option>
-                        <option value="inactive" @selected(old('status', $category->status) === 'inactive')>inactive</option>
+                        <option value="active" @selected(old('status', $category->status) === 'active')>Đang hiển thị</option>
+                        <option value="inactive" @selected(old('status', $category->status) === 'inactive')>Ẩn khỏi API</option>
                     </select>
                 </label>
             </div>

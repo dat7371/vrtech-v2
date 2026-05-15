@@ -30,10 +30,39 @@
             <span>Bảo hành đã kích hoạt</span>
             <small>Tra cứu theo SĐT / serial</small>
         </a>
-        <div class="card metric">
-            <strong>{{ $orderCount }}</strong>
+        <a class="card metric" href="{{ route('admin.orders.index') }}">
+            <strong>{{ $newOrderCount }}/{{ $orderCount }}</strong>
             <span>Đơn đặt hàng</span>
-            <small>API đã sẵn sàng, màn quản trị làm sau</small>
+            <small>Đơn mới / tổng đơn</small>
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="page-head">
+            <div>
+                <h2>Đơn hàng mới nhất</h2>
+                <p class="page-desc">Theo dõi đơn từ website và cập nhật trạng thái xử lý.</p>
+            </div>
+            <a class="btn ghost" href="{{ route('admin.orders.index') }}">Quản lý đơn hàng</a>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Mã đơn</th><th>Khách</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th><th>Ngày tạo</th></tr></thead>
+                <tbody>
+                    @forelse ($latestOrders as $order)
+                        <tr>
+                            <td><a href="{{ route('admin.orders.show', $order) }}"><strong>{{ $order->code }}</strong></a></td>
+                            <td>{{ $order->customer_name }}<br><span class="text-muted">{{ $order->customer_phone }}</span></td>
+                            <td>{{ $order->items_count }} dòng</td>
+                            <td>{{ number_format((float) $order->total_amount, 0, ',', '.') }}đ</td>
+                            <td><span class="badge {{ $order->status }}">{{ $order->status }}</span></td>
+                            <td>{{ $order->created_at?->format('d/m/Y H:i') }}</td>
+                        </tr>
+                    @empty
+                        <tr><td class="empty" colspan="6">Chưa có đơn hàng từ website.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 

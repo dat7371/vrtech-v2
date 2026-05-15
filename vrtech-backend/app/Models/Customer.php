@@ -15,4 +15,9 @@ class Customer extends Model
     {
         return $this->hasMany(Warranty::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -42,7 +42,7 @@
                     </select>
                 </label>
                 <label>Serial number
-                    <input name="serial_number" value="{{ old('serial_number', $warranty->serial_number) }}" required>
+                    <input name="serial_number" value="{{ old('serial_number', $warranty->serial_number) }}" placeholder="VRTECH-S2P-000001" required>
                 </label>
             </div>
             @error('serial_number') <p class="error">{{ $message }}</p> @enderror

@@ -11,6 +11,24 @@
     </div>
 
     <div class="card">
+        <form class="filters" method="get" action="{{ route('admin.contacts.index') }}">
+            <label>Tìm kiếm
+                <input name="q" value="{{ $keyword }}" placeholder="Tên, SĐT, dòng xe, sản phẩm">
+            </label>
+            <label>Trạng thái
+                <select name="status">
+                    <option value="">Tất cả trạng thái</option>
+                    @foreach ($statuses as $value => $label)
+                        <option value="{{ $value }}" @selected($status === $value)>{{ $label }}</option>
+                    @endforeach
+                </select>
+            </label>
+            <div class="actions">
+                <button class="btn" type="submit">Lọc</button>
+                <a class="btn ghost" href="{{ route('admin.contacts.index') }}">Xóa lọc</a>
+            </div>
+        </form>
+
         <div class="table-wrap">
             <table>
                 <thead><tr><th>Khách</th><th>Xe</th><th>Sản phẩm quan tâm</th><th>Nhu cầu</th><th>Trạng thái</th><th>Nguồn</th><th>Ngày tạo</th></tr></thead>
@@ -26,10 +44,9 @@
                                 @csrf
                                 @method('patch')
                                 <select name="status" onchange="this.form.submit()">
-                                    <option value="new" @selected($contact->status === 'new')>Mới</option>
-                                    <option value="contacted" @selected($contact->status === 'contacted')>Đã gọi</option>
-                                    <option value="quoted" @selected($contact->status === 'quoted')>Đã báo giá</option>
-                                    <option value="closed" @selected($contact->status === 'closed')>Đóng</option>
+                                    @foreach ($statuses as $value => $label)
+                                        <option value="{{ $value }}" @selected($contact->status === $value)>{{ $label }}</option>
+                                    @endforeach
                                 </select>
                             </form>
                         </td>

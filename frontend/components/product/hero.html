@@ -1,0 +1,113 @@
+﻿<section class="product-hero">
+  <div class="container">
+    <div class="product-title-bar reveal">
+      <h1 class="product-page-title" data-product-name-full></h1>
+      <button type="button" class="product-compare-toggle" data-product-compare-toggle aria-expanded="false" aria-controls="productComparePanel">
+        <span aria-hidden="true">⊕</span>
+        <span>So sánh</span>
+      </button>
+    </div>
+
+    <div class="product-compare-panel" id="productComparePanel" data-product-compare-panel hidden>
+      <div class="product-compare-panel-head">
+        <div>
+          <p class="product-compare-eyebrow">So sánh nhanh</p>
+          <h2>Đối chiếu với các phiên bản Carlinkit V2 khác</h2>
+        </div>
+        <div class="product-compare-controls">
+          <label class="product-compare-select-wrap">
+            <span>Chọn model</span>
+            <select data-product-compare-select aria-label="Chọn sản phẩm để so sánh"></select>
+          </label>
+          <label class="product-compare-select-wrap" data-product-compare-current-variant-wrap hidden>
+            <span>Cấu hình đang xem</span>
+            <select data-product-compare-current-variant aria-label="Chọn cấu hình của sản phẩm đang xem"></select>
+          </label>
+          <label class="product-compare-select-wrap" data-product-compare-target-variant-wrap hidden>
+            <span>Cấu hình so sánh</span>
+            <select data-product-compare-target-variant aria-label="Chọn cấu hình của sản phẩm so sánh"></select>
+          </label>
+        </div>
+      </div>
+
+      <div class="product-compare-mini-grid" data-product-compare-results></div>
+    </div>
+  </div>
+
+  <div class="container product-hero-layout">
+    <div class="product-hero-media reveal">
+      <div class="product-hero-main">
+        <button type="button" class="product-hero-nav product-hero-nav-prev" data-hero-prev aria-label="Xem ảnh trước">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button type="button" class="product-hero-frame product-hero-trigger" data-product-hero-trigger aria-label="Xem toàn màn hình ảnh sản phẩm">
+          <img data-product-hero-image alt="" width="4000" height="4000" decoding="async" fetchpriority="high">
+        </button>
+        <button type="button" class="product-hero-nav product-hero-nav-next" data-hero-next aria-label="Xem ảnh tiếp theo">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
+      <div class="product-hero-thumbs" id="product-hero-thumbs">
+      </div>
+    </div>
+
+    <div class="product-hero-content reveal">
+      <div class="product-summary-card">
+        <div class="product-meta-line">
+          <span><strong>Tình trạng:</strong> <span data-product-stock>Đang cập nhật</span></span>
+          <span><strong>Thương hiệu:</strong> <span data-product-brand>Carlinkit</span></span>
+          <span><strong>Loại:</strong> <span data-product-category>Android Box Ô Tô</span></span>
+        </div>
+        <h2 class="product-title-compact" data-product-name-compact></h2>
+        <h3 class="product-subtitle" data-product-subtitle></h3>
+        <p class="product-desc" data-product-desc></p>
+
+        <div class="product-variant-block" data-product-variant-block hidden>
+          <span class="product-variant-label">Cấu hình</span>
+          <div class="product-variant-options" data-product-variant-options></div>
+        </div>
+
+        <div class="product-price-panel">
+          <div class="product-price-row">
+            <span class="product-old-price" data-product-old-price hidden></span>
+            <strong class="product-current-price" data-product-price></strong>
+            <span class="product-vat-note" data-product-vat>(Đã có VAT)</span>
+          </div>
+          <p class="product-condition" data-product-condition></p>
+          <div class="product-warranty-chip" data-product-warranty></div>
+        </div>
+
+        <div class="product-quantity-block">
+          <span class="product-quantity-label">Số lượng</span>
+          <div class="product-quantity-controls" aria-label="Điều chỉnh số lượng">
+            <button type="button" class="quantity-button" data-quantity-decrease aria-label="Giảm số lượng">-</button>
+            <input type="number" class="quantity-input" data-quantity-input value="1" min="1" inputmode="numeric" aria-label="Số lượng sản phẩm">
+            <button type="button" class="quantity-button" data-quantity-increase aria-label="Tăng số lượng">+</button>
+          </div>
+        </div>
+
+        <div class="product-cta-row">
+          <a href="#contact" class="btn btn-primary product-buy-button" data-product-primary-cta>MUA NGAY</a>
+          <a href="tel:0334532635" class="btn btn-outline product-support-button" data-product-support-cta>GỌI TƯ VẤN</a>
+        </div>
+
+        <div class="product-promo-box" data-product-promo-box>
+          <div class="product-promo-head">Ưu đãi hiện tại</div>
+          <p class="product-promo-text" data-product-promo></p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="product-side-rail reveal">
+      <a class="product-hotline-box" data-product-hotline-link href="tel:0334532635">
+        <span class="product-hotline-head">
+          <span class="product-hotline-label">Gọi ngay</span>
+          <strong data-product-hotline>033 453 2635</strong>
+        </span>
+        <span class="product-hotline-note">để được tư vấn tốt nhất</span>
+      </a>
+
+      <div class="product-assurance-list" id="product-assurance-list"></div>
+    </aside>
+  </div>
+</section>

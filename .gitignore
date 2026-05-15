@@ -2,6 +2,8 @@ node_modules/
 .vscode/
 dist/
 .tools/
+deploy/
+PROJECT-CONTEXT.md
 images/logo/*.original-backup.png
 
 # Local secrets and environment files
@@ -28,3 +30,15 @@ id_dsa.pub
 .pnpmrc
 credentials.json
 secrets.json
+
+# Local databases and deploy/archive artifacts
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.bak
+*.backup

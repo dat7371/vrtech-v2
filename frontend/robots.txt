@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carlinkitv2.vn/sitemap.xml
+Sitemap: https://carlinkitv2.vn/sitemap-posts.xml

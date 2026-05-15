@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'VRTECH Admin')</title>
+    <link rel="icon" type="image/png" href="/images/logo/favicon-vrtech.png">
+    <link rel="apple-touch-icon" href="/images/logo/favicon-vrtech.png">
     <style>
         :root {
             --bg: #f4f6f8;
@@ -65,13 +67,16 @@
         th { background: #f8fafc; color: #344054; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
         tbody tr:hover { background: #fafafa; }
         label { display: grid; gap: 7px; margin: 13px 0; font-weight: 800; color: #344054; }
+        .help { color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.45; }
         input, select, textarea { width: 100%; border: 1px solid #d0d5dd; border-radius: var(--radius); padding: 11px 12px; background: #fff; color: var(--ink); }
         textarea { min-height: 116px; resize: vertical; }
         input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--red); box-shadow: 0 0 0 3px rgba(229, 9, 20, .12); }
         .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
         .form-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .filters { display: grid; grid-template-columns: minmax(220px, 1fr) 220px auto; gap: 10px; align-items: end; margin-bottom: 16px; }
         .btn { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: var(--radius); padding: 0 14px; background: var(--red); color: #fff; cursor: pointer; font-weight: 800; }
+        .btn.small { min-height: 34px; padding: 0 11px; font-size: 13px; }
         .btn.secondary { background: #344054; }
         .btn.ghost { background: #fff; color: #344054; border: 1px solid #d0d5dd; }
         .btn.danger { background: #b42318; }
@@ -81,9 +86,14 @@
         .badge { display: inline-flex; align-items: center; min-height: 26px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 900; background: #f2f4f7; color: #344054; }
         .badge.active, .badge.contacted, .badge.activated { background: #ecfdf3; color: #027a48; }
         .badge.new { background: #fff4e5; color: #b77900; }
-        .badge.inactive, .badge.closed, .badge.expired { background: #fef3f2; color: #b42318; }
-        .badge.quoted { background: #eff8ff; color: #175cd3; }
+        .badge.inactive, .badge.closed, .badge.expired, .badge.cancelled, .badge.ignored { background: #fef3f2; color: #b42318; }
+        .badge.quoted, .badge.confirmed, .badge.processing { background: #eff8ff; color: #175cd3; }
+        .badge.completed { background: #ecfdf3; color: #027a48; }
         .text-muted { color: var(--muted); }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+        .summary-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; background: #fbfcfe; }
+        .summary-item span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+        .summary-item strong { display: block; font-size: 17px; }
         .thumb { width: 56px; height: 56px; object-fit: contain; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
         .inline-form { margin: 0; }
         .logout { margin: 0; }
@@ -97,6 +107,7 @@
             .brand { grid-template-columns: 96px minmax(0, 1fr); }
             .wrap { width: min(100% - 28px, 1240px); }
             .form-grid, .form-grid.three { grid-template-columns: 1fr; }
+            .filters { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -104,18 +115,21 @@
     <div class="shell">
         <aside class="sidebar">
             <a class="brand" href="{{ route('admin.dashboard') }}">
-                <img class="brand-logo" src="{{ route('admin.assets.show', ['path' => 'images/logo/LOGO VRTECH-02.png']) }}" alt="VRTECH">
+                <img class="brand-logo" src="/images/logo/LOGO%20VRTECH-02.png" alt="VRTECH">
                 <span>
                     <strong>VRTECH Admin</strong>
                     <span>Carlinkit V2 / Bảo hành</span>
                 </span>
             </a>
             @auth
-                <nav class="nav" aria-label="Admin navigation">
+                <nav class="nav" aria-label="Điều hướng admin">
                     <a class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Tổng quan</a>
                     <a class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}" href="{{ route('admin.products.index') }}">Sản phẩm <small>API</small></a>
+                    <a class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">Bài viết <small>SEO</small></a>
                     <a class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">Danh mục</a>
                     <a class="{{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}" href="{{ route('admin.contacts.index') }}">Lead tư vấn</a>
+                    <a class="{{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">Đơn hàng</a>
+                    <a class="{{ request()->routeIs('admin.customers.*') ? 'active' : '' }}" href="{{ route('admin.customers.index') }}">Khách hàng</a>
                     <a class="{{ request()->routeIs('admin.warranties.*') ? 'active' : '' }}" href="{{ route('admin.warranties.index') }}">Bảo hành</a>
                 </nav>
             @endauth

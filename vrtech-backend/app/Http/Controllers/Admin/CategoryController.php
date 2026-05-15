@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
         Category::create($this->validated($request));
 
-        return redirect()->route('admin.categories.index')->with('status', 'Da tao danh muc.');
+        return redirect()->route('admin.categories.index')->with('status', 'Đã tạo danh mục.');
     }
 
     /**
@@ -80,7 +80,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->update($this->validated($request, $category->id));
 
-        return redirect()->route('admin.categories.index')->with('status', 'Da cap nhat danh muc.');
+        return redirect()->route('admin.categories.index')->with('status', 'Đã cập nhật danh mục.');
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {
         Category::findOrFail($id)->delete();
 
-        return redirect()->route('admin.categories.index')->with('status', 'Da xoa danh muc.');
+        return redirect()->route('admin.categories.index')->with('status', 'Đã xóa danh mục.');
     }
 
     private function validated(Request $request, ?int $ignoreId = null): array

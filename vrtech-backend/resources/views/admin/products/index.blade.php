@@ -21,7 +21,7 @@
                         <td>
                             <div class="actions" style="flex-wrap:nowrap;">
                                 @if ($product->main_image)
-                                    <img class="thumb" src="{{ str_starts_with($product->main_image, 'http') ? $product->main_image : route('admin.assets.show', ['path' => $product->main_image]) }}" alt="">
+                                    <img class="thumb" src="{{ str_starts_with($product->main_image, 'http') ? $product->main_image : '/' . ltrim(str_replace('\\', '/', $product->main_image), '/') }}" alt="">
                                 @else
                                     <span class="thumb" style="display:grid;place-items:center;font-weight:900;color:#e50914;">VR</span>
                                 @endif
@@ -32,11 +32,23 @@
                             </div>
                         </td>
                         <td>{{ $product->category?->name ?: '-' }}</td>
-                        <td>{{ collect([$product->cpu, $product->ram, $product->rom, $product->os])->filter()->join(' / ') ?: '-' }}</td>
                         <td>
-                            <strong>{{ number_format((float) ($product->sale_price ?: $product->price), 0, ',', '.') }}đ</strong>
-                            @if ($product->sale_price)
-                                <br><span class="text-muted"><s>{{ number_format((float) $product->price, 0, ',', '.') }}đ</s></span>
+                            <strong>{{ collect([$product->cpu, $product->ram, $product->rom, $product->os])->filter()->join(' / ') ?: '-' }}</strong>
+                            @if ($product->variants->isNotEmpty())
+                                <br>
+                                <span class="text-muted">
+                                    {{ $product->variants->pluck('label')->join(', ') }}
+                                </span>
+                            @endif
+                        </td>
+                        <td>
+                            @php $firstVariant = $product->variants->first(); @endphp
+                            <strong>{{ number_format((float) (($firstVariant?->sale_price ?: $firstVariant?->price) ?: ($product->sale_price ?: $product->price)), 0, ',', '.') }}đ</strong>
+                            @if ($firstVariant?->sale_price || $product->sale_price)
+                                <br><span class="text-muted"><s>{{ number_format((float) ($firstVariant?->price ?: $product->price), 0, ',', '.') }}đ</s></span>
+                            @endif
+                            @if ($product->variants->count() > 1)
+                                <br><span class="text-muted">{{ $product->variants->count() }} phiên bản</span>
                             @endif
                         </td>
                         <td>{{ $product->warranty_months }} tháng</td>

@@ -10,6 +10,7 @@ if (!(Test-Path $sqlite)) {
 
 $env:DB_CONNECTION = "sqlite"
 $env:DB_DATABASE = $sqlite
+$env:CACHE_DRIVER = "array"
 
 Set-Location $root
 & $php artisan serve --host=127.0.0.1 --port=8000

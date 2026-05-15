@@ -9,7 +9,7 @@ class FrontendAssetController extends Controller
 {
     public function show(string $path)
     {
-        $frontendRoot = realpath(base_path('..'));
+        $frontendRoot = realpath(base_path('../frontend'));
         $fullPath = realpath($frontendRoot . DIRECTORY_SEPARATOR . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path));
 
         abort_unless($frontendRoot && $fullPath && str_starts_with($fullPath, $frontendRoot), 404);

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Warranty;
+use App\Support\PhoneNumber;
+use App\Support\SerialNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -65,10 +67,21 @@ class WarrantyController extends Controller
     {
         return $request->validate([
             'customer_name' => ['required', 'string', 'max:120'],
-            'customer_phone' => ['required', 'string', 'max:30'],
+            'customer_phone' => [
+                'required',
+                'string',
+                'max:30',
+                fn ($attribute, $value, $fail) => PhoneNumber::isValid($value) ? null : $fail(PhoneNumber::validationMessage()),
+            ],
             'car_model' => ['nullable', 'string', 'max:120'],
             'product_id' => ['required', 'exists:products,id'],
-            'serial_number' => ['required', 'string', 'max:120', 'unique:warranties,serial_number' . ($ignoreId ? ',' . $ignoreId : '')],
+            'serial_number' => [
+                'required',
+                'string',
+                'max:120',
+                'unique:warranties,serial_number' . ($ignoreId ? ',' . $ignoreId : ''),
+                fn ($attribute, $value, $fail) => SerialNumber::isValid($value) ? null : $fail(SerialNumber::validationMessage()),
+            ],
             'purchase_date' => ['nullable', 'date'],
             'activated_at' => ['nullable', 'date'],
             'expired_at' => ['nullable', 'date'],
@@ -80,7 +93,7 @@ class WarrantyController extends Controller
     private function findOrCreateCustomer(array $data): Customer
     {
         return Customer::updateOrCreate(
-            ['phone' => $data['customer_phone']],
+            ['phone' => PhoneNumber::normalize($data['customer_phone'])],
             [
                 'name' => $data['customer_name'],
                 'car_model' => $data['car_model'] ?? null,
@@ -99,7 +112,7 @@ class WarrantyController extends Controller
         return [
             'customer_id' => $customer->id,
             'product_id' => $product->id,
-            'serial_number' => $data['serial_number'],
+            'serial_number' => SerialNumber::normalize($data['serial_number']),
             'purchase_date' => $data['purchase_date'] ?? null,
             'activated_at' => $activatedAt,
             'expired_at' => $expiredAt,

@@ -31,4 +31,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'telegram' => [
+        'enabled' => env('TELEGRAM_ENABLED', false),
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+        'chat_id' => env('TELEGRAM_CHAT_ID'),
+        'ca_bundle' => env('TELEGRAM_CA_BUNDLE', base_path('../.tools/cacert.pem')),
+        'verify_ssl' => env('TELEGRAM_VERIFY_SSL', true),
+    ],
+
 ];

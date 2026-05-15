@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         return Product::query()
-            ->with(['category', 'images'])
+            ->with(['category', 'images', 'activeVariants'])
             ->where('status', 'active')
             ->latest()
             ->paginate(20);
@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         $product = Product::query()
-            ->with(['category', 'images'])
+            ->with(['category', 'images', 'activeVariants'])
             ->where('status', 'active')
             ->where('slug', $slug)
             ->firstOrFail();

@@ -16,5 +16,9 @@ if (!$env:DB_DATABASE) {
     $env:DB_DATABASE = $sqlite
 }
 
+if (!$env:CACHE_DRIVER) {
+    $env:CACHE_DRIVER = "array"
+}
+
 Set-Location $root
 & $php artisan @args
